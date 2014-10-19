@@ -1,0 +1,25 @@
+# See: http://code.google.com/p/arduino/wiki/Platforms
+
+menu.cpu=Processor
+
+kurumi.name=GR-KURUMI
+kurumi.upload.tool=rl78flash
+kurumi.upload.protocol=rl78
+kurumi.upload.maximum_size=256000
+kurumi.upload.maximum_data_size=20000
+kurumi.upload.speed=115200
+
+kurumi.bootloader.tool=
+kurumi.bootloader.low_fuses=
+kurumi.bootloader.high_fuses=
+kurumi.bootloader.extended_fuses=
+kurumi.bootloader.unlock_bits=
+kurumi.bootloader.lock_bits=
+kurumi.bootloader.file=
+
+kurumi.build.mcu=rl78
+kurumi.build.f_cpu=32000000L
+kurumi.build.board=RL78_KURUMI
+kurumi.build.core=arduino
+kurumi.build.ldscript=linker_scripts/rl78_R5F100GJAFB.ld
+kurumi.build.variant=gr_kurumi

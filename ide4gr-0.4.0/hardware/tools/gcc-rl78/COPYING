@@ -1,0 +1,34 @@
+
+	       KPIT Cummins GNU Tools
+  	            Terms of use
+	
+a) The KPIT Cummins GNU Tools are based on the FSF GNU sources
+   (Binutils, GCC) & Newlib library sources. All of these are released
+   under free software licenses.
+   (See http://www.kpitgnutools.com/licenses.php for full details).
+ 
+b) If you use KPIT GNU Tools to develop your application, you should *NOT*
+   have to release the source code of your application.  
+   See http://www.kpitgnutools.com/licenses-faq.php for full details.
+ 
+c) The GNURX/RL78/V850/SH/H8/M16CM32C installers are distributed in the 
+   hope that they will be useful, but WITHOUT ANY WARRANTY; without even 
+   the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR 
+   PURPOSE. 
+
+d) The GNURX/RL78/V850/SH/H8/M16CM32C installers, FAQs, IAR-GNU Migration 
+   Guide, Renesas-GNU Migration Guide are intellectual property of 
+   KPIT Cummins. You may download and use the tools and information 
+   available on this web site.
+
+e) All KPIT GNU toolchains can be freely re-distributed by third parties 
+   provided that all end users are directed to kpitgnutools.com to register for
+   free prior to use. Windows installers enforce this by requesting an 
+   activation code during installation. Users automatically receive their 
+   individual activation code during free registration. Please help us continue
+   to provide this service by ensuring all users register at kpitgnutools.com.
+   Thank-you.   
+   
+  For any queries regarding 'Terms of Use', please log on and ask us at
+  http://www.kpitgnutools.com
+

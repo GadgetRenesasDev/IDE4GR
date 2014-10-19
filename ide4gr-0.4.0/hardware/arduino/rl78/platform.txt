@@ -1,0 +1,72 @@
+
+# RL78 and platform.
+# ------------------------------
+
+# For more info:
+
+name=Gadget Renesas Boards
+version=0.1.0
+
+# AVR compile variables
+# --------------------- 
+
+# Default "compiler.path" is correct, change only if you want to overidde the initial value
+compiler.path={runtime.ide.path}/hardware/tools/gcc-rl78/rl78-elf/bin/
+compiler.c.cmd=rl78-elf-gcc
+compiler.c.flags=-Os -fno-function-cse -funit-at-a-time -falign-jumps -fdata-sections -ffunction-sections -fno-cprop-registers -fsigned-char -g2 -g -DREL_GR_KURUMI -DARDUINO=100 -DWORKAROUND_READ_MODIFY_WRITE
+compiler.S.cmd=rl78-elf-as
+compiler.S.flags=-Os -fno-function-cse -funit-at-a-time -falign-jumps -fdata-sections -ffunction-sections -fno-cprop-registers -fsigned-char -g2 -g -Wa,-gdwarf2
+#compiler.elf2hex.flags=-O binary --gap-fill 0xff
+compiler.elf2hex.flags=-O srec
+compiler.elf2hex.cmd=rl78-elf-objcopy
+compiler.c.elf.cmd=rl78-elf-ld
+compiler.c.elf.flags=
+compiler.ar.cmd=rl78-elf-ar
+compiler.ar.flags=rcs
+compiler.ldflags=
+compiler.size.cmd=rl78-elf-size
+# this can be overriden in boards.txt
+build.extra_flags=
+
+# AVR compile patterns
+# --------------------
+
+## Compile c files
+recipe.c.o.pattern="{compiler.path}{compiler.c.cmd}" {includes} {compiler.c.flags} -c -x c "{source_file}" -o "{object_file}"
+
+## Compile c++ files
+recipe.cpp.o.pattern="{compiler.path}{compiler.c.cmd}" {includes} {compiler.c.flags} -c -x c++ "{source_file}" -o "{object_file}"
+
+## Compile S files
+recipe.S.o.pattern="{compiler.path}{compiler.c.cmd}" {includes} {compiler.S.flags} -c -x assembler-with-cpp "{source_file}" -o "{object_file}"
+
+## Create archives
+recipe.ar.pattern="{compiler.path}{compiler.ar.cmd}" {compiler.ar.flags} "{build.path}/{archive_file}" "{object_file}"
+
+## Combine gc-sections, archives, and objects
+recipe.c.combine.pattern="{compiler.path}{compiler.c.elf.cmd}" "-M={build.path}/{build.project_name}.map" {object_files} "{build.path}/exception_handler.cpp.o" "{build.path}/vector_table.c.o" "-L{build.path}" "{build.path}/{archive_file}" -e_PowerON_Reset "-T{build.variant.path}/{build.ldscript}" {compiler.c.elf.flags} "{runtime.ide.path}/hardware/tools/gcc-rl78/rl78-elf/lib/gcc/rl78-elf/4.8-GNURL78_v13.01/crtbegin.o" "{runtime.ide.path}/hardware/tools/gcc-rl78/rl78-elf/lib/gcc/rl78-elf/4.8-GNURL78_v13.01/crtend.o" "{runtime.ide.path}/hardware/tools/gcc-rl78/rl78-elf/rl78-elf/lib/crtn.o" -o "{build.path}/{build.project_name}.elf" "-L{runtime.ide.path}/hardware/tools/gcc-rl78/rl78-elf/rl78-elf/lib" "-L{runtime.ide.path}/hardware/tools/gcc-rl78/rl78-elf/lib/gcc/rl78-elf/4.8-GNURL78_v13.01" --start-group --gc-sections -lstdc++ -lnosys -lm -lc -lgcc --end-group
+
+
+## Create eeprom
+recipe.objcopy.eep.pattern=
+
+## Create hex
+recipe.objcopy.hex.pattern="{compiler.path}{compiler.elf2hex.cmd}" {compiler.elf2hex.flags} "{build.path}/{build.project_name}.elf" "{build.path}/{build.project_name}.mot"
+
+## Compute size
+recipe.size.pattern="{compiler.path}{compiler.size.cmd}" -A "{build.path}/{build.project_name}.elf"
+recipe.size.regex=^(?:\.text|\.data|\.bootloader)\s+([0-9]+).*
+recipe.size.regex.data=^(?:\.data|\.bss|\.noinit)\s+([0-9]+).*
+recipe.size.regex.eeprom=^(?:\.eeprom)\s+([0-9]+).*
+
+
+# SAM3 Uploader tools
+# -------------------
+
+tools.rl78flash.cmd=rl78flash
+tools.rl78flash.cmd.windows=rl78flash.exe
+tools.rl78flash.path={runtime.ide.path}/hardware/tools/rl78
+
+tools.rl78flash.upload.params.verbose=
+tools.rl78flash.upload.params.quiet=
+tools.rl78flash.upload.pattern="{path}/{cmd}" -m 2 -vivewr {serial.port.file} "{build.path}/{build.project_name}.mot"

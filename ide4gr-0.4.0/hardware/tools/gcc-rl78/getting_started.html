@@ -1,0 +1,371 @@
+<!doctype HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta name="GENERATOR" content="Microsoft FrontPage 5.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Quick Start Guide</title>
+<script language="javascript" src="ssi/js/MM_functions.js"></script>
+<script language="javascript" src="ssi/css/stylesheet.js"></script>
+</head>
+
+<body>
+
+<p class="MsoPlainText" align="center" style="text-align: center; mso-outline-level: 1">
+<span style="mso-bidi-font-size: 10.0pt; font-family: Trebuchet MS; mso-fareast-font-family: MS Mincho">
+<font size="2">Quick Start Guide</font></span></p>
+<p class="MsoPlainText" align="center" style="text-align: center; mso-outline-level: 1">&nbsp;</p>
+<p class="MsoPlainText" align="center" style="text-align: left; mso-outline-level: 1">
+<span style="mso-bidi-font-size: 12.0pt; font-family: Trebuchet MS">
+<font size="2">The following procedure describes how to debug a program using the command line 
+GDB. Refer to the GDB Manual for information about various GDB commands and the 
+Insight Manual for operational commands.</font></span></p>
+<p class="MsoPlainText" align="center" style="text-align: left; mso-outline-level: 1">
+<i><span style="font-family: Trebuchet MS"><font size="2">Note: </font></span>
+<span style="mso-bidi-font-size: 10.0pt; font-family: Trebuchet MS; mso-fareast-font-family: MS Mincho">
+<font size="2">This procedure is applicable if you are using the rl78-elf 
+toolchain. If you are using a different toolchain, use appropriate commands.</font></span></i></p>
+<p align="center">
+<span style="mso-bidi-font-size: 10.0pt; font-family: Trebuchet MS; mso-fareast-font-family: MS Mincho">
+<a href="#Windows Users"><font size="2">For Windows Users</font></a></span><font face="Trebuchet MS" size="2">
+</font> </p>
+<p align="center">
+<span style="mso-bidi-font-size: 10.0pt; font-family: Trebuchet MS; mso-fareast-font-family: MS Mincho">
+<a href="#GNU/Linux users"><font size="2">For GNU/Linux Users</font></a></span><font face="Trebuchet MS" size="2">
+</font> </p>
+<p align="center">&nbsp;</p>
+<p class="MsoPlainText" style="text-align: justify">
+<b style="mso-bidi-font-weight: normal">
+<span style="mso-bidi-font-size: 10.0pt; font-family: Trebuchet MS; mso-fareast-font-family: MS Mincho">
+<a name="Windows Users"><font size="2">Windows Users</font></a></span></b></p>
+<ol>
+  <li>
+  <p style="margin-top: 8px; margin-bottom: 8px">
+  <span style="font-family: Trebuchet MS; "><font size="2">Click</font></span><span style="mso-bidi-font-size: 10.0pt; font-family: Trebuchet MS; mso-fareast-font-family: MS Mincho"><font size="2"> 
+  the &quot;toolchain&quot; shortcut in the Windows Start menu.</font></span></li>
+  <li>
+  <p style="margin-top: 8px; margin-bottom: 8px">
+  <span style="mso-bidi-font-size: 10.0pt; font-family: Trebuchet MS; mso-fareast-font-family: MS Mincho">
+  <font size="2">Create a new folder named &quot;test&quot;.&nbsp; </font> </span></li>
+  <li>
+  <p style="margin-top: 8px; margin-bottom: 3px">
+  <span style="mso-bidi-font-size: 10.0pt; font-family: Trebuchet MS; mso-fareast-font-family: MS Mincho">
+  <font size="2">In the &quot;test&quot; folder, write a &quot;Hello World!&quot; program in file hello.c.</font></span></li>
+</ol>
+<blockquote>
+  <p style="margin-top: 1px; margin-bottom: 1px">
+  <font face="Trebuchet MS" size="2">
+  <span style="mso-bidi-font-size: 12.0pt">#include &lt;stdio.h&gt;</span></font></p>
+  <p style="margin-top: 1px; margin-bottom: 1px">
+  <font face="Trebuchet MS" size="2">
+  <span style="mso-bidi-font-size: 12.0pt">&nbsp; int 
+  main(void)</span></font></p>
+  <p style="margin-top: 1px; margin-bottom: 1px">
+  <font face="Trebuchet MS" size="2">
+  <span style="mso-bidi-font-size: 12.0pt">&nbsp;&nbsp;{ &nbsp;&nbsp;</span></font></p>
+  <p style="margin-top: 1px; margin-bottom: 1px">
+  <font face="Trebuchet MS" size="2">
+  <span style="mso-bidi-font-size: 12.0pt">&nbsp;&nbsp;&nbsp; 
+  int ret;</span></font></p>
+  <p style="margin-top: 1px; margin-bottom: 1px">
+  <font face="Trebuchet MS" size="2">
+  <span style="mso-bidi-font-size: 12.0pt">&nbsp;&nbsp;&nbsp; 
+  ret = printf(&quot;Hello World!\r\n&quot;);</span></font></p>
+  <p style="margin-top: 1px; margin-bottom: 1px">
+  <font face="Trebuchet MS" size="2">
+  <span style="mso-bidi-font-size: 12.0pt">&nbsp;&nbsp;&nbsp; 
+  return ret;</span></font></p>
+  <p style="margin-top: 1px; margin-bottom: 1px">
+  <font face="Trebuchet MS" size="2">
+  <span style="mso-bidi-font-size: 12.0pt">&nbsp; } </span>
+  </font></p>
+</blockquote>
+<ol start="4">
+  <li>
+  <p style="margin-top: 8px; margin-bottom: 8px">
+  <span style="mso-bidi-font-size: 10.0pt; font-family: Trebuchet MS; mso-fareast-font-family: MS Mincho">
+  <font size="2">Compile the program with the following command:</font></span></li>
+</ol>
+<blockquote>
+  <p style="margin-top: 1px; margin-bottom: 1px">
+  <span style="mso-bidi-font-size: 12.0pt">
+  <font face="Trebuchet MS" size="2">&gt; rl78-elf-gcc hello.c -o hello.out -g -msim</font></span></p>
+  <p><span style="font-family: Trebuchet MS; "><font size="2">An </font> </span>
+  <span style="mso-bidi-font-size: 12.0pt; font-family: Trebuchet MS">
+  <font size="2">executable file called hello.out is generated.</font></span></p>
+</blockquote>
+<ol start="5">
+  <li>
+  <p style="margin-top: 8px; margin-bottom: 8px">
+  <span style="mso-bidi-font-size: 10.0pt; font-family: Trebuchet MS; mso-fareast-font-family: MS Mincho">
+  <font size="2">Run the executable file using the rl78-elf simulator with the following 
+  command:</font></span></li>
+</ol>
+<blockquote>
+  <p style="margin-top: 1px; margin-bottom: 1px">
+  <span style="mso-bidi-font-size: 12.0pt">
+  <font face="Trebuchet MS" size="2">&gt; rl78-elf-run hello.out</font></span></p>
+  <p>
+  <span style="mso-bidi-font-size: 12.0pt; font-family: Trebuchet MS">
+  <font size="2">The string &quot;Hello World!&quot; is displayed on the console.
+  </font> </span></p>
+</blockquote>
+<ol start="6">
+  <li>
+  <p style="margin-top: 8px; margin-bottom: 8px">
+  <span style="mso-bidi-font-size: 12.0pt; font-family: Trebuchet MS">
+  <font size="2">Debug the program using the rl78-elf debugger with the following command:</font></span></li>
+</ol>
+<blockquote>
+  <p style="margin-top: 1px; margin-bottom: 3px">
+  <span style="mso-bidi-font-size: 12.0pt; font-family: Trebuchet MS">
+  <font size="2">&gt; rl78-elf-gdb hello.out</font></span></p>
+  <p style="margin-top: 8px; margin-bottom: 1px">
+  <span style="mso-bidi-font-size: 12.0pt; font-family: Trebuchet MS">
+  <font size="2">The GDB prompt (gdb) appears on the console.</font></span></p>
+</blockquote>
+<ol start="7">
+  <li>
+  <p style="margin-top: 8px; margin-bottom: 8px">
+  <span style="mso-bidi-font-size: 12.0pt; font-family: Trebuchet MS">
+  <font size="2">Connect the GDB to the target simulator with the following command:</font></span></li>
+</ol>
+<blockquote>
+  <p>
+  <span style="mso-bidi-font-size: 12.0pt; font-family: Trebuchet MS">
+  <font size="2">&lt;gdb&gt; target sim</font></span></p>
+  <p>
+  <span style="mso-bidi-font-size: 12.0pt; font-family: Trebuchet MS">
+  <font size="2">The
+  message
+  &quot;Connected to the simulator&quot; is displayed.</font></span></p>
+  <p>
+  <span style="mso-bidi-font-size: 12.0pt; font-family: Trebuchet MS">
+  <font size="2">Load 
+  the symbols with the following command:</font></span></p>
+  <p>
+  <span style="mso-bidi-font-size: 12.0pt; font-family: Trebuchet MS">
+  <font size="2">&lt;gdb&gt; load </font> </span></p>
+</blockquote>
+<ol start="8">
+  <li>
+  <p style="margin-top: 8px; margin-bottom: 8px">
+  <span style="mso-bidi-font-size: 12.0pt; font-family: Trebuchet MS">
+  <font size="2">&nbsp;Set the break point at the main with the following commands:</font></span></li>
+</ol>
+<blockquote>
+  <p style="margin-top: 1px; margin-bottom: 1px">
+  <span style="mso-bidi-font-size: 12.0pt; font-family: Trebuchet MS">
+  <font size="2">&lt;gdb&gt; b main </font> </span></p>
+  <p style="margin-top: 1px; margin-bottom: 1px">
+  <span style="mso-bidi-font-size: 12.0pt; font-family: Trebuchet MS">
+  <font size="2">&lt;gdb&gt; run </font> </span></p>
+  <p style="margin-top: 8px; margin-bottom: 8px">
+  <span style="mso-bidi-font-size: 12.0pt; font-family: Trebuchet MS">
+  <font size="2">The program stops at the break point 'main'. </font> </span></p>
+</blockquote>
+<ol start="9">
+  <li>
+  <p style="margin-top: 8px; margin-bottom: 8px">
+  <span style="mso-bidi-font-size: 12.0pt; font-family: Trebuchet MS">
+  <font size="2">You can step the program with the following command:</font></span></li>
+</ol>
+<blockquote>
+  <p style="margin-top: 1px; margin-bottom: 6px">
+  <span style="mso-bidi-font-size: 12.0pt; font-family: Trebuchet MS">
+  <font size="2">&lt;gdb&gt; s </font> </span></p>
+  <p style="margin-top: 8px; margin-bottom: 8px"><i>
+  <span style="mso-bidi-font-size: 12.0pt; font-family: Trebuchet MS"><font size="2">
+  Note: You can also try various gdb options such as &quot;p&quot; for printing a 
+  variable, &quot;watch &quot; for watching a variable, and so on. For more information, 
+  refer to the &quot;gdb.html&quot; document.</font></span></i></p>
+</blockquote>
+<span style="font-size: 11.0pt; mso-bidi-font-size: 12.0pt; font-family: Verdana">
+<div class="Section1">
+  <p class="MsoPlainText" style="text-align: justify">&nbsp;</p>
+  </span>
+<span style="mso-bidi-font-size: 12.0pt; font-family: Verdana">
+  <p class="MsoPlainText" style="text-align: justify">
+  <b style="mso-bidi-font-weight: normal">
+  <span style="mso-bidi-font-size: 10.0pt; font-family: Trebuchet MS; mso-fareast-font-family: MS Mincho">
+  <a name="GNU/Linux users"><font size="2">GNU/Linux Users</font></a></span></b></p>
+  </span>
+<span style="font-size: 11.0pt; mso-bidi-font-size: 12.0pt; font-family: Verdana">
+  <ol>
+    <li>
+    <span style="mso-bidi-font-size: 10.0pt; font-family: Trebuchet MS; mso-fareast-font-family: MS Mincho">
+    <font size="2">Add the toolchain path to the current path with the following command:</font></span></li>
+  </ol>
+  <blockquote>
+    <p>
+    <span style="mso-bidi-font-size: 10.0pt; font-family: Trebuchet MS; mso-fareast-font-family: MS Mincho">
+    <font size="2">$ export PATH=$PATH:/usr/share/gnurl78_v11.01_elf-1/bin/</font></span></p>
+  </blockquote>
+  <ol start="2">
+    <li>
+    <p style="margin-top: 8px; margin-bottom: 8px">
+    <span style="mso-bidi-font-size: 12.0pt; font-family: Trebuchet MS">
+    <font size="2">Create a new folder named &quot;test&quot;. </font> </span></li>
+    <li>
+    <p style="margin-top: 8px; margin-bottom: 8px">
+    <span style="mso-bidi-font-size: 10.0pt; font-family: Trebuchet MS; mso-fareast-font-family: MS Mincho">
+    <font size="2">In the &quot;test&quot; folder, w</font></span><span style="mso-bidi-font-size: 12.0pt; font-family: Trebuchet MS"><font size="2">rite 
+    a &quot;Hello World!&quot; program in file hello.c.</font></span></li>
+  </ol>
+  <blockquote>
+    <p>
+    <span style="mso-bidi-font-size: 12.0pt; font-family: Trebuchet MS">
+    <font size="2">#include &lt;stdio.h&gt;<br>
+    &nbsp;&nbsp;int main(void)<br>
+    &nbsp;&nbsp;{&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br>
+&nbsp;&nbsp;&nbsp; int ret;<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;ret = printf(&quot;Hello World!\r\n&quot;);<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;return ret;<br>
+    &nbsp;&nbsp;} </font> </span></p>
+  </blockquote>
+  <ol start="4">
+    <li>
+    <span style="mso-bidi-font-size: 12.0pt; font-family: Trebuchet MS">
+    <font size="2">Compile the program with the following command:</font></span></li>
+  </ol>
+  <blockquote>
+    <p>
+    <span style="mso-bidi-font-size: 12.0pt; font-family: Trebuchet MS">
+    <font size="2">$rl78-elf-gcc hello.c -o hello.out -g -msim </font></span></p>
+<span style="font-size: 11.0pt; mso-bidi-font-size: 12.0pt; font-family: Verdana">
+    <p><span style="font-family: Trebuchet MS; "><font size="2">An </font> </span></span></span>
+<span style="mso-bidi-font-size: 12.0pt; ">
+    <font face="Trebuchet MS" size="2">executable 
+    file called hello.out is generated.</font></p>
+  </blockquote>
+  </span>
+<span style="mso-bidi-font-size: 12.0pt; font-family: Verdana">
+  <ol start="5">
+    <li>
+    <span style="mso-bidi-font-size: 12.0pt; font-family: Trebuchet MS">
+    <font size="2">Run the executable file using the rl78-elf simulator with the following 
+    command:</font></span></li>
+  </ol>
+  </span>
+  <blockquote>
+    <p><span style="mso-bidi-font-size: 12.0pt">
+    <font face="Trebuchet MS" size="2">$rl78-elf-run hello.out</font></p>
+    <p><font face="Trebuchet MS" size="2">The &quot;Hello World!&quot; string is displayed on the console.
+    </font> </p>
+  </blockquote>
+    </span>
+    <span style="font-size: 11.0pt; mso-bidi-font-size: 12.0pt">
+  <ol start="6">
+    <li><font face="Trebuchet MS" size="2">Debug the program using the rl78-elf debugger with the following 
+    command:</font></li>
+  </ol>
+    </span>
+    <span style="mso-bidi-font-size: 12.0pt; font-family: Verdana">
+  <blockquote>
+    <p>
+    <span style="mso-bidi-font-size: 12.0pt; font-family: Trebuchet MS">
+    <font size="2">$rl78-elf-gdb hello.out</font></span></p>
+    <p>
+    <span style="mso-bidi-font-size: 12.0pt; font-family: Trebuchet MS">
+    <font size="2">The GDB prompt (gdb) appears on the console.</font></span></p>
+  </blockquote>
+  </span>
+    <span style="font-size: 11.0pt; mso-bidi-font-size: 12.0pt; font-family: Verdana">
+  <ol start="7">
+    <li><font face="Trebuchet MS" size="2">Connect the GDB to the target simulator with the following command</font><span style="mso-bidi-font-size: 12.0pt; font-family: Trebuchet MS"><font size="2">:</font></span></li>
+  </ol>
+  <blockquote>
+    <p>
+    <span style="mso-bidi-font-size: 12.0pt; font-family: Trebuchet MS">
+    <font size="2">target sim</font></span></p>
+    <p>
+    <span style="mso-bidi-font-size: 12.0pt; font-family: Trebuchet MS">
+    <font size="2">The message &quot;Connected to target simulator&quot; is displayed.</font></span></p>
+  </blockquote>
+  <ol start="8">
+    <li>
+    <span style="mso-bidi-font-size: 12.0pt; font-family: Trebuchet MS">
+    <font size="2">Load the program in the memory with the following command:</font></span></li>
+  </ol>
+  <blockquote>
+    <p>
+    <span style="mso-bidi-font-size: 12.0pt; font-family: Trebuchet MS">
+    <font size="2">load</font></span></p>
+    <p>
+    <span style="mso-bidi-font-size: 12.0pt; font-family: Trebuchet MS">
+    <font size="2">A message indicating that the program is loaded is displayed.</font></span></p>
+  </blockquote>
+  <ol start="9">
+    <li>
+    <span style="mso-bidi-font-size: 12.0pt; font-family: Trebuchet MS">
+    <font size="2">Set the break point at the main with the following command:</font></span></li>
+  </ol>
+  <blockquote>
+    <p>
+    <span style="mso-bidi-font-size: 12.0pt; font-family: Trebuchet MS">
+    <font size="2">b main</font></span></p>
+    <p>
+    <span style="mso-bidi-font-size: 12.0pt; font-family: Trebuchet MS">
+    <font size="2">The message &quot;Breakpoint 1 at 0x1516: file hello.c, line 5.&quot; is displayed.</font></span></p>
+  </blockquote>
+    <span style="font-size: 11.0pt; mso-bidi-font-size: 12.0pt; font-family: Verdana">
+  <ol start="10">
+    <li>
+    <span style="mso-bidi-font-size: 12.0pt; font-family: Trebuchet MS">
+    <font size="2">Run the program with the following command:</font></span></li>
+  </ol>
+  </span></span>
+  <blockquote>
+    <p><span style="mso-bidi-font-size: 12.0pt">
+    <font face="Trebuchet MS" size="2">run</font></p>
+    </span>
+    <span style="mso-bidi-font-size: 12.0pt; font-family: Verdana">
+    <p>
+    <span style="mso-bidi-font-size: 12.0pt; font-family: Trebuchet MS">
+    <font size="2">The program stops at breakpoint in hello.c, and the following messages are 
+    displayed:</font></span></p>
+    <p>
+    <span style="mso-bidi-font-size: 12.0pt; font-family: Trebuchet MS">
+    <font size="2">&nbsp;&nbsp;&nbsp; 
+    ---------------------------------------------------------- <br>
+&nbsp;&nbsp;&nbsp; Starting program: /home/user/test/hello.out<br>
+&nbsp;&nbsp;&nbsp; Breakpoint 1, main () at hello.c:5<br>
+&nbsp;&nbsp;&nbsp; 5 ret = printf(&quot;Hello World!\r\n&quot;); <br>
+&nbsp;&nbsp;&nbsp; ----------------------------------------------------------
+    </font>
+    </span></p>
+  </blockquote>
+  </span>
+    <span style="font-size: 11.0pt; mso-bidi-font-size: 12.0pt; font-family: Verdana">
+  <ol start="11">
+    <li>
+    <p style="margin-top: 8px; margin-bottom: 8px">
+    <span style="mso-bidi-font-size: 12.0pt; font-family: Trebuchet MS">
+    <font size="2">Press 'N' to go to the next line. The string &quot;Hello World!&quot; is displayed on 
+    the console, and the program stops at line 7.</font></span></li>
+    <span style="font-size: 11.0pt; mso-bidi-font-size: 12.0pt; font-family: Verdana">
+    <li>
+    <p style="margin-top: 8px; margin-bottom: 8px">
+    <span style="mso-bidi-font-size: 12.0pt; font-family: Trebuchet MS">
+    <font size="2">To view the value of &quot;ret&quot;, execute the following command:</font></span></li>
+  </ol>
+  </span></span>
+  <blockquote>
+    <p><span style="mso-bidi-font-size: 12.0pt">
+    <font face="Trebuchet MS" size="2">disp ret</font></p>
+    </span><span style="mso-bidi-font-size: 12.0pt; font-family: Verdana">
+    <p style="margin-bottom: 0"><font size="2">
+    <span style="mso-bidi-font-size: 12.0pt; font-family: Trebuchet MS; font-style: italic">
+    Note: You can also view the source and all the break points with the 
+    following command:<br>
+    </span></font></span><font size="2">
+    <span style="mso-bidi-font-size: 12.0pt; font-style: italic">
+    <font face="Trebuchet MS">&nbsp;&nbsp;&nbsp;&nbsp; gdbgui</font></span></font><span style="mso-bidi-font-size: 12.0pt"></p>
+  </blockquote>
+</div>
+</span>
+
+</body>
+
+</html>

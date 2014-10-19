@@ -1,0 +1,59 @@
+set -x
+#!/bin/bash
+#                 Build Script For GDB build
+                                                    
+#        The source directory is where all the source will be untared.
+#        The build directory is where all the object directories for build will
+#        be present.
+#        The prefix is the path of the directory specified wherein all the
+#        executable binaries should be built. If no prefix is given, the default
+#        path used is /usr/local/bin.
+
+# All the Build Directories are present under /home/kpit (BUILD_DIR_PATH)
+# All the Binaries (prefix) are present under /usr (PREFIX_DIR_PATH)
+# All the Source Directories are present under /home/kpit/fsfsrc
+# (SOURCE_DIR_PATH). 
+# NOTE: In this directory the sources should be extracted under  
+#       the separate directories. 
+#       For example: gdb sources will be extracted to 
+#                    gdb-$GDB_VERSION directory. 
+
+
+# Only change the following variables if required. The other variables will be
+# generated automatically.
+CPU=rl78
+OBJ_FORMAT=elf
+
+# Do not leading \ for the directories below
+SOURCE_DIR_PATH=/home/kpit/fsfsrc/elf-v12.02-src-rl78
+BUILD_DIR_PATH=/home/kpit
+PREFIX_DIR_PATH=/usr/share
+GDB_VERSION=7.3-20120329
+TARGET=$CPU-$OBJ_FORMAT
+
+GDBSRCDIR=$SOURCE_DIR_PATH/"gdb-"$GDB_VERSION
+
+
+BUILD_X_TARGET_DIR=$BUILD_DIR_PATH/$CPU-$OBJ_FORMAT"bld"$GDB_VERSION
+PREFIX_BUILD_X_TARGET=$PREFIX_DIR_PATH/$CPU-$OBJ_FORMAT"gdb"$GDB_VERSION
+
+if [ ! -d $BUILD_X_TARGET_DIR ]; then
+        mkdir $BUILD_X_TARGET_DIR
+fi
+
+cd $BUILD_X_TARGET_DIR
+
+if ! $GDBSRCDIR/configure --target=$TARGET --with-expat=no --prefix=$PREFIX_BUILD_X_TARGET > configure.out 2>&1; then
+echo "Error in gdb configure...(2)";
+exit 1;
+fi
+
+if ! make > make1.out 2>&1; then
+echo "Error in make...(2)";
+exit 1;
+fi
+
+if ! make install > makeinstall.out 2>&1; then
+echo "Error in make install...(2)";
+exit 1;
+fi

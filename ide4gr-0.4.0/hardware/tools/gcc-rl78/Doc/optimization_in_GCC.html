@@ -1,0 +1,3365 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns:m="http://schemas.microsoft.com/office/2004/12/omml"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 12">
+<meta name=Originator content="Microsoft Word 12">
+<link rel=File-List href="optimization_in_GCC_files/filelist.xml">
+<link rel=Edit-Time-Data href="optimization_in_GCC_files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>Optimization Notes</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>kpit</o:Author>
+  <o:Template>Normal</o:Template>
+  <o:LastAuthor>vinayk7</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>3</o:TotalTime>
+  <o:Created>2012-07-13T10:48:00Z</o:Created>
+  <o:LastSaved>2012-07-13T10:48:00Z</o:LastSaved>
+  <o:Pages>7</o:Pages>
+  <o:Words>4112</o:Words>
+  <o:Characters>23444</o:Characters>
+  <o:Company>kpit</o:Company>
+  <o:Lines>195</o:Lines>
+  <o:Paragraphs>55</o:Paragraphs>
+  <o:CharactersWithSpaces>27501</o:CharactersWithSpaces>
+  <o:Version>12.00</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]-->
+<link rel=dataStoreItem href="optimization_in_GCC_files/item0006.xml"
+target="optimization_in_GCC_files/props0007.xml">
+<link rel=themeData href="optimization_in_GCC_files/themedata.thmx">
+<link rel=colorSchemeMapping
+href="optimization_in_GCC_files/colorschememapping.xml">
+<!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:Zoom>BestFit</w:Zoom>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:TrackMoves>false</w:TrackMoves>
+  <w:TrackFormatting/>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:DoNotPromoteQF/>
+  <w:LidThemeOther>EN-US</w:LidThemeOther>
+  <w:LidThemeAsian>X-NONE</w:LidThemeAsian>
+  <w:LidThemeComplexScript>X-NONE</w:LidThemeComplexScript>
+  <w:Compatibility>
+   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>
+   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>
+   <w:DontGrowAutofit/>
+   <w:SplitPgBreakAndParaMark/>
+   <w:DontVertAlignCellWithSp/>
+   <w:DontBreakConstrainedForcedTables/>
+   <w:DontVertAlignInTxbx/>
+   <w:Word11KerningPairs/>
+   <w:CachedColBalance/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+  <m:mathPr>
+   <m:mathFont m:val="Cambria Math"/>
+   <m:brkBin m:val="before"/>
+   <m:brkBinSub m:val="&#45;-"/>
+   <m:smallFrac m:val="off"/>
+   <m:dispDef/>
+   <m:lMargin m:val="0"/>
+   <m:rMargin m:val="0"/>
+   <m:defJc m:val="centerGroup"/>
+   <m:wrapIndent m:val="1440"/>
+   <m:intLim m:val="subSup"/>
+   <m:naryLim m:val="undOvr"/>
+  </m:mathPr></w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" DefUnhideWhenUsed="false"
+  DefSemiHidden="false" DefQFormat="false" LatentStyleCount="267">
+  <w:LsdException Locked="false" QFormat="true" Name="Normal"/>
+  <w:LsdException Locked="false" QFormat="true" Name="heading 1"/>
+  <w:LsdException Locked="false" QFormat="true" Name="heading 2"/>
+  <w:LsdException Locked="false" QFormat="true" Name="heading 3"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="heading 4"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="heading 5"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="heading 6"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="heading 7"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="heading 8"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="heading 9"/>
+  <w:LsdException Locked="false" SemiHidden="true" UnhideWhenUsed="true"
+   QFormat="true" Name="caption"/>
+  <w:LsdException Locked="false" QFormat="true" Name="Title"/>
+  <w:LsdException Locked="false" Priority="1" Name="Default Paragraph Font"/>
+  <w:LsdException Locked="false" QFormat="true" Name="Subtitle"/>
+  <w:LsdException Locked="false" QFormat="true" Name="Strong"/>
+  <w:LsdException Locked="false" QFormat="true" Name="Emphasis"/>
+  <w:LsdException Locked="false" Priority="99" Name="Plain Text"/>
+  <w:LsdException Locked="false" Priority="99" Name="No List"/>
+  <w:LsdException Locked="false" Priority="99" SemiHidden="true"
+   Name="Placeholder Text"/>
+  <w:LsdException Locked="false" Priority="1" QFormat="true" Name="No Spacing"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 1"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="99" SemiHidden="true" Name="Revision"/>
+  <w:LsdException Locked="false" Priority="34" QFormat="true"
+   Name="List Paragraph"/>
+  <w:LsdException Locked="false" Priority="29" QFormat="true" Name="Quote"/>
+  <w:LsdException Locked="false" Priority="30" QFormat="true"
+   Name="Intense Quote"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 1"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 1"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 1"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 2"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 2"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 2"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 2"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 3"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 3"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 3"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 3"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 4"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 4"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 4"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 4"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 5"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 5"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 5"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 5"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="60" Name="Light Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="61" Name="Light List Accent 6"/>
+  <w:LsdException Locked="false" Priority="62" Name="Light Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="63" Name="Medium Shading 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="64" Name="Medium Shading 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="65" Name="Medium List 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="66" Name="Medium List 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="67" Name="Medium Grid 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="68" Name="Medium Grid 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="69" Name="Medium Grid 3 Accent 6"/>
+  <w:LsdException Locked="false" Priority="70" Name="Dark List Accent 6"/>
+  <w:LsdException Locked="false" Priority="71" Name="Colorful Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="72" Name="Colorful List Accent 6"/>
+  <w:LsdException Locked="false" Priority="73" Name="Colorful Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="19" QFormat="true"
+   Name="Subtle Emphasis"/>
+  <w:LsdException Locked="false" Priority="21" QFormat="true"
+   Name="Intense Emphasis"/>
+  <w:LsdException Locked="false" Priority="31" QFormat="true"
+   Name="Subtle Reference"/>
+  <w:LsdException Locked="false" Priority="32" QFormat="true"
+   Name="Intense Reference"/>
+  <w:LsdException Locked="false" Priority="33" QFormat="true" Name="Book Title"/>
+  <w:LsdException Locked="false" Priority="37" SemiHidden="true"
+   UnhideWhenUsed="true" Name="Bibliography"/>
+  <w:LsdException Locked="false" Priority="39" SemiHidden="true"
+   UnhideWhenUsed="true" QFormat="true" Name="TOC Heading"/>
+ </w:LatentStyles>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:2;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:0 268435456 0 0 -2147483648 0;}
+@font-face
+	{font-family:"MS Mincho";
+	panose-1:2 2 6 9 4 2 5 8 3 4;
+	mso-font-alt:"\FF2D\FF33 \660E\671D";
+	mso-font-charset:128;
+	mso-generic-font-family:modern;
+	mso-font-pitch:fixed;
+	mso-font-signature:-536870145 1791491579 18 0 131231 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:-536870145 1107305727 0 0 415 0;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-520081665 -1073717157 41 0 66047 0;}
+@font-face
+	{font-family:Verdana;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-1593833729 1073750107 16 0 415 0;}
+@font-face
+	{font-family:"\@MS Mincho";
+	panose-1:2 2 6 9 4 2 5 8 3 4;
+	mso-font-charset:128;
+	mso-generic-font-family:modern;
+	mso-font-pitch:fixed;
+	mso-font-signature:-536870145 1791491579 18 0 131231 0;}
+@font-face
+	{font-family:Consolas;
+	panose-1:2 11 6 9 2 2 4 3 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:modern;
+	mso-font-pitch:fixed;
+	mso-font-signature:-520092929 1073806591 9 0 415 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"MS Mincho";}
+h1
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 1 Char";
+	margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:1;
+	font-size:16.0pt;
+	font-family:"Arial","sans-serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	font-weight:bold;}
+h2
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 2 Char";
+	margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:2;
+	font-size:14.0pt;
+	font-family:"Arial","sans-serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	font-weight:bold;
+	font-style:italic;}
+h3
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 3 Char";
+	margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:3;
+	font-size:13.0pt;
+	font-family:"Arial","sans-serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	font-weight:bold;}
+p.MsoToc1, li.MsoToc1, div.MsoToc1
+	{mso-style-update:auto;
+	mso-style-unhide:no;
+	margin-top:.25in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"MS Mincho";
+	font-weight:bold;}
+p.MsoToc2, li.MsoToc2, div.MsoToc2
+	{mso-style-update:auto;
+	mso-style-unhide:no;
+	margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:12.0pt;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Verdana","sans-serif";
+	mso-fareast-font-family:"MS Mincho";
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-font-style:italic;}
+p.MsoToc3, li.MsoToc3, div.MsoToc3
+	{mso-style-update:auto;
+	mso-style-unhide:no;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:24.0pt;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"MS Mincho";}
+p.MsoToc4, li.MsoToc4, div.MsoToc4
+	{mso-style-update:auto;
+	mso-style-unhide:no;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"MS Mincho";}
+p.MsoToc5, li.MsoToc5, div.MsoToc5
+	{mso-style-update:auto;
+	mso-style-unhide:no;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:48.0pt;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"MS Mincho";}
+p.MsoToc6, li.MsoToc6, div.MsoToc6
+	{mso-style-update:auto;
+	mso-style-unhide:no;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:60.0pt;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"MS Mincho";}
+p.MsoToc7, li.MsoToc7, div.MsoToc7
+	{mso-style-update:auto;
+	mso-style-unhide:no;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:1.0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"MS Mincho";}
+p.MsoToc8, li.MsoToc8, div.MsoToc8
+	{mso-style-update:auto;
+	mso-style-unhide:no;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:84.0pt;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"MS Mincho";}
+p.MsoToc9, li.MsoToc9, div.MsoToc9
+	{mso-style-update:auto;
+	mso-style-unhide:no;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:96.0pt;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"MS Mincho";}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{mso-style-unhide:no;
+	mso-style-link:"Header Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"MS Mincho";}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{mso-style-unhide:no;
+	mso-style-link:"Footer Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"MS Mincho";}
+p.MsoTof, li.MsoTof, div.MsoTof
+	{mso-style-unhide:no;
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"MS Mincho";}
+a:link, span.MsoHyperlink
+	{mso-style-unhide:no;
+	color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-unhide:no;
+	color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+p.MsoDocumentMap, li.MsoDocumentMap, div.MsoDocumentMap
+	{mso-style-unhide:no;
+	mso-style-link:"Document Map Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:8.0pt;
+	font-family:"Tahoma","sans-serif";
+	mso-fareast-font-family:"MS Mincho";}
+p.MsoPlainText, li.MsoPlainText, div.MsoPlainText
+	{mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-link:"Plain Text Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.5pt;
+	font-family:Consolas;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p
+	{mso-style-unhide:no;
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;}
+code
+	{mso-style-unhide:no;
+	font-family:"Courier New";
+	mso-ascii-font-family:"Courier New";
+	mso-fareast-font-family:"MS Mincho";
+	mso-hansi-font-family:"Courier New";
+	mso-bidi-font-family:"Courier New";}
+samp
+	{mso-style-unhide:no;
+	font-family:"Courier New";
+	mso-ascii-font-family:"Courier New";
+	mso-fareast-font-family:"MS Mincho";
+	mso-hansi-font-family:"Courier New";
+	mso-bidi-font-family:"Courier New";}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+	{mso-style-unhide:no;
+	mso-style-link:"Balloon Text Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:8.0pt;
+	font-family:"Tahoma","sans-serif";
+	mso-fareast-font-family:"MS Mincho";}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{mso-style-priority:34;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"MS Mincho";}
+p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParagraphCxSpFirst
+	{mso-style-priority:34;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-type:export-only;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"MS Mincho";}
+p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListParagraphCxSpMiddle
+	{mso-style-priority:34;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-type:export-only;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"MS Mincho";}
+p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxSpLast
+	{mso-style-priority:34;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-type:export-only;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:.5in;
+	margin-bottom:.0001pt;
+	mso-add-space:auto;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"MS Mincho";}
+span.Heading1Char
+	{mso-style-name:"Heading 1 Char";
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 1";
+	mso-ansi-font-size:14.0pt;
+	mso-bidi-font-size:14.0pt;
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Cambria;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#365F91;
+	mso-themecolor:accent1;
+	mso-themeshade:191;
+	font-weight:bold;}
+span.Heading2Char
+	{mso-style-name:"Heading 2 Char";
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 2";
+	mso-ansi-font-size:13.0pt;
+	mso-bidi-font-size:13.0pt;
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Cambria;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#4F81BD;
+	mso-themecolor:accent1;
+	font-weight:bold;}
+span.Heading3Char
+	{mso-style-name:"Heading 3 Char";
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 3";
+	mso-ansi-font-size:12.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Cambria;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#4F81BD;
+	mso-themecolor:accent1;
+	font-weight:bold;}
+span.HeaderChar
+	{mso-style-name:"Header Char";
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:Header;
+	mso-ansi-font-size:12.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"MS Mincho";
+	mso-ascii-font-family:"MS Mincho";
+	mso-fareast-font-family:"MS Mincho";
+	mso-hansi-font-family:"MS Mincho";}
+span.FooterChar
+	{mso-style-name:"Footer Char";
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:Footer;
+	mso-ansi-font-size:12.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"MS Mincho";
+	mso-ascii-font-family:"MS Mincho";
+	mso-fareast-font-family:"MS Mincho";
+	mso-hansi-font-family:"MS Mincho";}
+span.DocumentMapChar
+	{mso-style-name:"Document Map Char";
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Document Map";
+	mso-ansi-font-size:8.0pt;
+	mso-bidi-font-size:8.0pt;
+	font-family:"Tahoma","sans-serif";
+	mso-ascii-font-family:Tahoma;
+	mso-fareast-font-family:"MS Mincho";
+	mso-hansi-font-family:Tahoma;
+	mso-bidi-font-family:Tahoma;}
+span.PlainTextChar
+	{mso-style-name:"Plain Text Char";
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Plain Text";
+	mso-ansi-font-size:10.5pt;
+	mso-bidi-font-size:10.5pt;
+	font-family:Consolas;
+	mso-ascii-font-family:Consolas;
+	mso-hansi-font-family:Consolas;
+	mso-bidi-font-family:Consolas;}
+span.BalloonTextChar
+	{mso-style-name:"Balloon Text Char";
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Balloon Text";
+	mso-ansi-font-size:8.0pt;
+	mso-bidi-font-size:8.0pt;
+	font-family:"Tahoma","sans-serif";
+	mso-ascii-font-family:Tahoma;
+	mso-fareast-font-family:"MS Mincho";
+	mso-hansi-font-family:Tahoma;
+	mso-bidi-font-family:Tahoma;}
+p.normal1, li.normal1, div.normal1
+	{mso-style-name:normal1;
+	mso-style-unhide:no;
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"MS Mincho";}
+span.option
+	{mso-style-name:option;
+	mso-style-unhide:no;}
+span.msoIns
+	{mso-style-type:export-only;
+	mso-style-name:"";
+	text-decoration:underline;
+	text-underline:single;
+	color:teal;}
+span.SpellE
+	{mso-style-name:"";
+	mso-spl-e:yes;}
+span.GramE
+	{mso-style-name:"";
+	mso-gram-e:yes;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	mso-default-props:yes;
+	font-size:10.0pt;
+	mso-ansi-font-size:10.0pt;
+	mso-bidi-font-size:10.0pt;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:45.35pt 63.35pt .75in 63.35pt;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ @list l0
+	{mso-list-id:516505534;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1166445752 -468656676 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l0:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	mso-bidi-font-size:10.0pt;}
+@list l0:level2
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level3
+	{mso-level-number-format:roman-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:right;
+	text-indent:-9.0pt;}
+@list l1
+	{mso-list-id:534974881;
+	mso-list-type:hybrid;
+	mso-list-template-ids:676081370 67698703 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l1:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2
+	{mso-list-id:590503191;
+	mso-list-type:hybrid;
+	mso-list-template-ids:621053400 67698713 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l2:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l3
+	{mso-list-id:637539895;
+	mso-list-type:hybrid;
+	mso-list-template-ids:29629018 67698713 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l3:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.75in;
+	text-indent:-.25in;}
+@list l4
+	{mso-list-id:721948147;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1517526986 67698713 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l4:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:1.0in;
+	text-indent:-.25in;}
+@list l5
+	{mso-list-id:811362441;
+	mso-list-type:hybrid;
+	mso-list-template-ids:313544200 -148491820 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l5:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:"Verdana","sans-serif";
+	mso-ansi-font-weight:bold;}
+@list l6
+	{mso-list-id:886646540;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1888679680 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l6:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:121.4pt;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l7
+	{mso-list-id:976178564;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-81366732 -148491820 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l7:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:"Verdana","sans-serif";
+	mso-ansi-font-weight:bold;}
+@list l8
+	{mso-list-id:1150368939;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1764422218 67698703 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l8:level1
+	{mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.75in;
+	text-indent:-.25in;}
+@list l9
+	{mso-list-id:1238054093;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-963100344 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l9:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:1.0in;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l10
+	{mso-list-id:1300183889;
+	mso-list-type:hybrid;
+	mso-list-template-ids:380288812 -1900406350 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l10:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:"Verdana","sans-serif";
+	mso-ansi-font-weight:bold;}
+@list l11
+	{mso-list-id:1707094281;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1445594502 -148491820 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l11:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:"Verdana","sans-serif";
+	mso-ansi-font-weight:bold;}
+@list l12
+	{mso-list-id:1815557755;
+	mso-list-template-ids:-1917390872;}
+@list l12:level1
+	{mso-level-text:%1;
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:26.25pt;
+	text-indent:-26.25pt;}
+@list l12:level2
+	{mso-level-start-at:5;
+	mso-level-text:"%1\.%2";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.5in;
+	text-indent:-.5in;}
+@list l12:level3
+	{mso-level-text:"%1\.%2\.%3";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.75in;
+	text-indent:-.75in;}
+@list l12:level4
+	{mso-level-text:"%1\.%2\.%3\.%4";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:.75in;
+	text-indent:-.75in;}
+@list l12:level5
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:1.0in;
+	text-indent:-1.0in;}
+@list l12:level6
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:1.25in;
+	text-indent:-1.25in;}
+@list l12:level7
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:1.5in;
+	text-indent:-1.5in;}
+@list l12:level8
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:1.75in;
+	text-indent:-1.75in;}
+@list l12:level9
+	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.%9";
+	mso-level-tab-stop:none;
+	mso-level-number-position:left;
+	margin-left:1.75in;
+	text-indent:-1.75in;}
+ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="8194"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=EN-US link=blue vlink=purple style='tab-interval:.5in'>
+
+<div class=Section1>
+
+<blockquote style='margin-top:5.0pt;margin-bottom:5.0pt'>
+
+<blockquote style='margin-top:5.0pt;margin-bottom:5.0pt'>
+
+<p class=MsoNormal style='margin-bottom:12.0pt'><a name="_Toc131249576"><b><u><span
+style='font-size:18.0pt;font-family:"Verdana","sans-serif"'>Recommended Tools
+Option for Optimization</span></u></b></a><span style='mso-bookmark:_Toc131249576'></span><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoToc1><span style='font-family:"Verdana","sans-serif"'><a
+href="#_Toc131311766"><span style='text-decoration:none;text-underline:none'>1</span><span
+style='font-size:12.0pt;color:windowtext;text-decoration:none;text-underline:
+none'>&nbsp;</span><span style='text-decoration:none;text-underline:none'>Code
+Size Optimization</span><span style='color:windowtext;display:none;mso-hide:
+all;text-decoration:none;text-underline:none'>.. 2</span></a><o:p></o:p></span></p>
+
+<p class=MsoToc2><a href="#_Toc131311767"><span style='mso-bidi-font-style:
+normal;text-decoration:none;text-underline:none'>1.1</span><span
+style='font-size:12.0pt;color:windowtext;mso-bidi-font-style:normal;text-decoration:
+none;text-underline:none'>&nbsp;</span><span style='mso-bidi-font-style:normal;
+text-decoration:none;text-underline:none'>Generic</span><span style='color:
+windowtext;display:none;mso-hide:all;mso-bidi-font-style:normal;text-decoration:
+none;text-underline:none'>. 2</span></a></p>
+
+<p class=MsoToc2><a href="#_Toc131311768"><span style='mso-bidi-font-style:
+normal;text-decoration:none;text-underline:none'>1.2</span><span
+style='font-size:12.0pt;color:windowtext;mso-bidi-font-style:normal;text-decoration:
+none;text-underline:none'>&nbsp;</span><span style='mso-bidi-font-style:normal;
+text-decoration:none;text-underline:none'>H8 Specific</span><span
+style='color:windowtext;display:none;mso-hide:all;mso-bidi-font-style:normal;
+text-decoration:none;text-underline:none'>. 3</span></a></p>
+
+<p class=MsoToc2><a href="#_Toc131311769"><span style='mso-bidi-font-style:
+normal;text-decoration:none;text-underline:none'>1.3</span><span
+style='font-size:12.0pt;color:windowtext;mso-bidi-font-style:normal;text-decoration:
+none;text-underline:none'>&nbsp;</span><span style='mso-bidi-font-style:normal;
+text-decoration:none;text-underline:none'>SH Specific</span><span
+style='color:windowtext;display:none;mso-hide:all;mso-bidi-font-style:normal;
+text-decoration:none;text-underline:none'>. 4</span></a></p>
+
+<p class=MsoToc2><a href="#_Toc131311770"><span style='mso-bidi-font-style:
+normal;text-decoration:none;text-underline:none'>1.4</span><span
+style='font-size:12.0pt;color:windowtext;mso-bidi-font-style:normal;text-decoration:
+none;text-underline:none'>&nbsp;</span><span style='mso-bidi-font-style:normal;
+text-decoration:none;text-underline:none'>M16CM32C Specific</span><span
+style='color:windowtext;display:none;mso-hide:all;mso-bidi-font-style:normal;
+text-decoration:none;text-underline:none'>. 5</span></a></p>
+
+<p class=MsoToc2><a href="#_1.5_RX_Specific"><span style='text-decoration:none;
+text-underline:none'>1.5 RX Specific</span></a></p>
+
+<p class=MsoToc2><a href="#_1.6_RL78_Specific"><span style='text-decoration:
+none;text-underline:none'>1.6 RL78 Specific</span></a></p>
+
+<p class=MsoToc2><a href="#_1.7_V850_Specific_2"><span style='text-decoration:
+none;text-underline:none'>1.7 V850 Specific</span></a></p>
+
+<p class=MsoToc1><span style='font-family:"Verdana","sans-serif"'><a
+href="#_Toc131311771"><span style='text-decoration:none;text-underline:none'>2.</span><span
+style='font-size:12.0pt;color:windowtext;text-decoration:none;text-underline:
+none'>&nbsp;</span><span style='text-decoration:none;text-underline:none'>Speed
+Optimization</span><span style='color:windowtext;display:none;mso-hide:all;
+text-decoration:none;text-underline:none'>.. 5</span></a><o:p></o:p></span></p>
+
+<p class=MsoToc2><a href="#_Toc131311772"><span style='mso-bidi-font-style:
+normal;text-decoration:none;text-underline:none'>2.1</span><span
+style='font-size:12.0pt;color:windowtext;mso-bidi-font-style:normal;text-decoration:
+none;text-underline:none'>&nbsp;</span><span style='mso-bidi-font-style:normal;
+text-decoration:none;text-underline:none'>Generic</span><span style='color:
+windowtext;display:none;mso-hide:all;mso-bidi-font-style:normal;text-decoration:
+none;text-underline:none'>. 5</span></a></p>
+
+<p class=MsoToc2><a href="#_Toc131311773"><span style='mso-bidi-font-style:
+normal;text-decoration:none;text-underline:none'>2.2</span><span
+style='font-size:12.0pt;color:windowtext;mso-bidi-font-style:normal;text-decoration:
+none;text-underline:none'>&nbsp;</span><span style='mso-bidi-font-style:normal;
+text-decoration:none;text-underline:none'>H8 Specific</span><span
+style='color:windowtext;display:none;mso-hide:all;mso-bidi-font-style:normal;
+text-decoration:none;text-underline:none'>. 6</span></a></p>
+
+<p class=MsoToc2><a href="#_Toc131311774"><span style='mso-bidi-font-style:
+normal;text-decoration:none;text-underline:none'>2.3</span><span
+style='font-size:12.0pt;color:windowtext;mso-bidi-font-style:normal;text-decoration:
+none;text-underline:none'>&nbsp;</span><span style='mso-bidi-font-style:normal;
+text-decoration:none;text-underline:none'>SH Specific</span><span
+style='color:windowtext;display:none;mso-hide:all;mso-bidi-font-style:normal;
+text-decoration:none;text-underline:none'>. 6</span></a></p>
+
+<p class=MsoToc2><a href="#_Toc131311775"><span style='mso-bidi-font-style:
+normal;text-decoration:none;text-underline:none'>2.4</span><span
+style='font-size:12.0pt;color:windowtext;mso-bidi-font-style:normal;text-decoration:
+none;text-underline:none'>&nbsp;</span><span style='mso-bidi-font-style:normal;
+text-decoration:none;text-underline:none'>M16CM32C Specific</span><span
+style='color:windowtext;display:none;mso-hide:all;mso-bidi-font-style:normal;
+text-decoration:none;text-underline:none'>. 6</span></a></p>
+
+<p class=MsoToc2><a href="#_2.5_RX_Specific"><span style='text-decoration:none;
+text-underline:none'>2.5 RX Specific</span></a></p>
+
+<p class=MsoToc2><a href="#_2.6_RL78_Specific"><span style='text-decoration:
+none;text-underline:none'>2.6 RL78 Specific</span></a></p>
+
+<p class=MsoToc2><a href="#_2.7_V850_Specific"><span style='text-decoration:
+none;text-underline:none'>2.7 V850 Specific</span></a></p>
+
+<p class=MsoToc1><span style='font-family:"Verdana","sans-serif"'><a
+href="#_Toc131311776"><span style='text-decoration:none;text-underline:none'>3.</span><span
+style='font-size:12.0pt;color:windowtext;text-decoration:none;text-underline:
+none'>&nbsp;</span><span style='text-decoration:none;text-underline:none'>Workaround
+for some known problems with Optimization</span><span style='color:windowtext;
+display:none;mso-hide:all;text-decoration:none;text-underline:none'>.. 6</span></a><o:p></o:p></span></p>
+
+<p class=MsoToc2><a href="#_Toc131311777"><span style='mso-bidi-font-style:
+normal;text-decoration:none;text-underline:none'>3.1</span><span
+style='font-size:12.0pt;color:windowtext;mso-bidi-font-style:normal;text-decoration:
+none;text-underline:none'>&nbsp;</span><span style='mso-bidi-font-style:normal;
+text-decoration:none;text-underline:none'>Generic</span><span style='color:
+windowtext;display:none;mso-hide:all;mso-bidi-font-style:normal;text-decoration:
+none;text-underline:none'>. 6</span></a></p>
+
+<p class=MsoToc2><a href="#_Toc131311778"><span style='mso-bidi-font-style:
+normal;text-decoration:none;text-underline:none'>3.2</span><span
+style='font-size:12.0pt;color:windowtext;mso-bidi-font-style:normal;text-decoration:
+none;text-underline:none'>&nbsp;</span><span style='mso-bidi-font-style:normal;
+text-decoration:none;text-underline:none'>H8 Specific</span><span
+style='color:windowtext;display:none;mso-hide:all;mso-bidi-font-style:normal;
+text-decoration:none;text-underline:none'>. 8</span></a></p>
+
+<p class=MsoToc2><a href="#_Toc131311779"><span style='mso-bidi-font-style:
+normal;text-decoration:none;text-underline:none'>3.3</span><span
+style='font-size:12.0pt;color:windowtext;mso-bidi-font-style:normal;text-decoration:
+none;text-underline:none'>&nbsp;</span><span style='mso-bidi-font-style:normal;
+text-decoration:none;text-underline:none'>SH Specific</span><span
+style='color:windowtext;display:none;mso-hide:all;mso-bidi-font-style:normal;
+text-decoration:none;text-underline:none'>. 8</span></a></p>
+
+<p class=MsoToc2><a href="#_Toc131311780"><span style='mso-bidi-font-style:
+normal;text-decoration:none;text-underline:none'>3.4</span><span
+style='font-size:12.0pt;color:windowtext;mso-bidi-font-style:normal;text-decoration:
+none;text-underline:none'>&nbsp;</span><span style='mso-bidi-font-style:normal;
+text-decoration:none;text-underline:none'>M16CM32C Specific</span><span
+style='color:windowtext;display:none;mso-hide:all;mso-bidi-font-style:normal;
+text-decoration:none;text-underline:none'>. 8</span></a></p>
+
+<p class=MsoToc2><a href="#_3.5_RX_Specific_1"><span style='text-decoration:
+none;text-underline:none'>3.5 RX Specific</span></a></p>
+
+<p class=MsoToc2><a href="#_3.6_RL78_Specific"><span style='text-decoration:
+none;text-underline:none'>3.6 RL78 Specific</span></a></p>
+
+<p class=MsoToc2><a href="#_3.7_V850_Specific_2"><span style='text-decoration:
+none;text-underline:none'>3.7 V850 Specific</span></a></p>
+
+<p class=MsoToc2><o:p>&nbsp;</o:p></p>
+
+<p class=MsoToc1><span style='font-family:"Verdana","sans-serif"'><a
+href="#_Toc131311781"><span style='text-decoration:none;text-underline:none'>4.</span><span
+style='font-size:12.0pt;color:windowtext;text-decoration:none;text-underline:
+none'>&nbsp;</span><span style='text-decoration:none;text-underline:none'>Optimization
+that user can do in application code itself</span><span style='color:windowtext;
+display:none;mso-hide:all;text-decoration:none;text-underline:none'>. 8</span></a><o:p></o:p></span></p>
+
+<p class=MsoToc2><a href="#_Toc131311782"><span style='mso-bidi-font-style:
+normal;text-decoration:none;text-underline:none'>4.1</span><span
+style='font-size:12.0pt;color:windowtext;mso-bidi-font-style:normal;text-decoration:
+none;text-underline:none'>&nbsp;</span><span style='mso-bidi-font-style:normal;
+text-decoration:none;text-underline:none'>Care to be taken in startup assembly
+file</span><span style='color:windowtext;display:none;mso-hide:all;mso-bidi-font-style:
+normal;text-decoration:none;text-underline:none'>. 8</span></a></p>
+
+<p class=MsoToc2><a href="#_Toc131311783"><span style='mso-bidi-font-style:
+normal;text-decoration:none;text-underline:none'>4.2</span><span
+style='font-size:12.0pt;color:windowtext;mso-bidi-font-style:normal;text-decoration:
+none;text-underline:none'>&nbsp;</span><span style='mso-bidi-font-style:normal;
+text-decoration:none;text-underline:none'>General Tips</span><span
+style='color:windowtext;display:none;mso-hide:all;mso-bidi-font-style:normal;
+text-decoration:none;text-underline:none'> 8</span></a></p>
+
+<p class=MsoToc1><span style='font-family:"Verdana","sans-serif"'><a
+href="#_Toc131311784"><span style='text-decoration:none;text-underline:none'>5.</span><span
+style='font-size:12.0pt;color:windowtext;text-decoration:none;text-underline:
+none'>&nbsp;</span><span style='text-decoration:none;text-underline:none'>Summary</span><span
+style='color:windowtext;display:none;mso-hide:all;text-decoration:none;
+text-underline:none'>.. 9</span></a><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:"Verdana","sans-serif"'>&nbsp;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:"Verdana","sans-serif"'>&nbsp;<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:14.0pt;font-family:"Verdana","sans-serif"'>Revision
+History</span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:"Verdana","sans-serif"'>&nbsp;<o:p></o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width=655
+ style='width:491.4pt;border-collapse:collapse;mso-yfti-tbllook:1184;
+ mso-padding-alt:0in 0in 0in 0in'>
+ <thead>
+  <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;height:33.25pt'>
+   <td width=79 valign=top style='width:59.4pt;border:solid windowtext 1.0pt;
+   padding:0in 5.4pt 0in 5.4pt;height:33.25pt'>
+   <p class=MsoNormal><b><span style='font-size:11.0pt;font-family:"Verdana","sans-serif"'>Version
+   No.</span></b><span style='font-size:11.0pt;font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+   </td>
+   <td width=156 valign=top style='width:117.0pt;border:solid windowtext 1.0pt;
+   border-left:none;padding:0in 5.4pt 0in 5.4pt;height:33.25pt'>
+   <p class=MsoNormal><b><span style='font-size:11.0pt;font-family:"Verdana","sans-serif"'>Date</span></b><span
+   style='font-size:11.0pt;font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+   </td>
+   <td width=420 valign=top style='width:315.0pt;border:solid windowtext 1.0pt;
+   border-left:none;padding:0in 5.4pt 0in 5.4pt;height:33.25pt'>
+   <p class=MsoNormal><b><span style='font-size:11.0pt;font-family:"Verdana","sans-serif"'>Overview
+   of Changes</span></b><span style='font-size:11.0pt;font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+   </td>
+  </tr>
+ </thead>
+ <tr style='mso-yfti-irow:1;height:22.9pt'>
+  <td width=79 style='width:59.4pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0in 5.4pt 0in 5.4pt;height:22.9pt'>
+  <p class=normal1 align=left style='text-align:left'><span style='font-size:
+  11.0pt;font-family:"Verdana","sans-serif"'>1.0<o:p></o:p></span></p>
+  </td>
+  <td width=156 style='width:117.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt;height:22.9pt'>
+  <p class=MsoNormal><span style='font-size:11.0pt;font-family:"Verdana","sans-serif"'>31
+  March 2006<o:p></o:p></span></p>
+  </td>
+  <td width=420 style='width:315.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt;height:22.9pt'>
+  <p class=normal1 align=left style='text-align:left'><span style='font-size:
+  11.0pt;font-family:"Verdana","sans-serif"'>Draft Created<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:2;height:22.9pt'>
+  <td width=79 style='width:59.4pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0in 5.4pt 0in 5.4pt;height:22.9pt'>
+  <p class=MsoNormal><span style='font-size:11.0pt;font-family:"Verdana","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'>2.0<o:p></o:p></span></p>
+  </td>
+  <td width=156 style='width:117.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt;height:22.9pt'>
+  <p class=MsoNormal><span style='font-size:11.0pt;font-family:"Verdana","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'>03 October 2006<o:p></o:p></span></p>
+  </td>
+  <td width=420 style='width:315.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt;height:22.9pt'>
+  <p class=MsoNormal><span style='font-size:11.0pt;font-family:"Verdana","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'>Added section <a
+  href="#_Toc131311770">1.4.1</a><o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:3;height:22.9pt'>
+  <td width=79 style='width:59.4pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0in 5.4pt 0in 5.4pt;height:22.9pt'>
+  <p class=MsoNormal><span style='font-size:11.0pt;font-family:"Verdana","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'>3.0<o:p></o:p></span></p>
+  </td>
+  <td width=156 style='width:117.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt;height:22.9pt'>
+  <p class=MsoNormal><span style='font-size:11.0pt;font-family:"Verdana","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'>08 June 2007<o:p></o:p></span></p>
+  </td>
+  <td width=420 style='width:315.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt;height:22.9pt'>
+  <p class=MsoNormal><span style='font-size:11.0pt;font-family:"Verdana","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'>Modified for Optimized libraries
+  section<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:4;height:22.9pt'>
+  <td width=79 style='width:59.4pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0in 5.4pt 0in 5.4pt;height:22.9pt'>
+  <p class=MsoNormal><span style='font-size:11.0pt;font-family:"Verdana","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'>4.0<o:p></o:p></span></p>
+  </td>
+  <td width=156 style='width:117.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt;height:22.9pt'>
+  <p class=MsoNormal><span style='font-size:11.0pt;font-family:"Verdana","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'>30 May 2008<o:p></o:p></span></p>
+  </td>
+  <td width=420 style='width:315.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt;height:22.9pt'>
+  <p class=MsoNormal><span style='font-size:11.0pt;font-family:"Verdana","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'>Modified for Library Generator
+  addition (Section <a href="#_Toc131311767">1.1.1</a>)<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:5;height:22.9pt'>
+  <td width=79 style='width:59.4pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0in 5.4pt 0in 5.4pt;height:22.9pt'>
+  <p class=MsoNormal><span style='font-size:11.0pt;font-family:"Verdana","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'>5.0<o:p></o:p></span></p>
+  </td>
+  <td width=156 style='width:117.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt;height:22.9pt'>
+  <p class=MsoNormal><span style='font-size:11.0pt;font-family:"Verdana","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'>30 September 2008<o:p></o:p></span></p>
+  </td>
+  <td width=420 style='width:315.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt;height:22.9pt'>
+  <p class=MsoNormal><span style='font-size:11.0pt;font-family:"Verdana","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'>Added the option '-mbitops'
+  (Section <a href="#_SH_options">1.3.1</a>)<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:6;height:21.75pt'>
+  <td width=79 style='width:59.4pt;border:solid windowtext 1.0pt;border-top:
+  none;mso-border-left-alt:solid windowtext 1.0pt;mso-border-bottom-alt:solid windowtext .5pt;
+  mso-border-right-alt:solid windowtext 1.0pt;padding:0in 5.4pt 0in 5.4pt;
+  height:21.75pt'>
+  <p class=MsoNormal><span style='font-size:11.0pt;font-family:"Verdana","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'>6.0<o:p></o:p></span></p>
+  </td>
+  <td width=156 style='width:117.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt;height:21.75pt'>
+  <p class=MsoNormal><span style='font-size:11.0pt;font-family:"Verdana","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'>30 September 2009<o:p></o:p></span></p>
+  </td>
+  <td width=420 style='width:315.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  mso-border-bottom-alt:solid windowtext .5pt;mso-border-right-alt:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt;height:21.75pt'>
+  <p class=MsoNormal><span style='font-size:11.0pt;font-family:"Verdana","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'>Added information about the new
+  compiler option called &quot;optimize&quot;.<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:7;height:4.5pt'>
+  <td width=79 style='width:59.4pt;border-top:none;border-left:solid windowtext 1.0pt;
+  border-bottom:none;border-right:solid windowtext 1.0pt;mso-border-top-alt:
+  solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;height:4.5pt'></td>
+  <td width=156 style='width:117.0pt;border:none;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;
+  height:4.5pt'></td>
+  <td width=420 style='width:315.0pt;border:none;border-right:solid windowtext 1.0pt;
+  mso-border-top-alt:solid windowtext .5pt;padding:0in 5.4pt 0in 5.4pt;
+  height:4.5pt'></td>
+ </tr>
+ <tr style='mso-yfti-irow:8;mso-yfti-lastrow:yes;height:22.9pt'>
+  <td width=79 style='width:59.4pt;border:solid windowtext 1.0pt;border-top:
+  none;padding:0in 5.4pt 0in 5.4pt;height:22.9pt'>
+  <p class=MsoNormal><span style='font-size:11.0pt;font-family:"Verdana","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'>7.0<o:p></o:p></span></p>
+  </td>
+  <td width=156 style='width:117.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt;height:22.9pt'>
+  <p class=MsoNormal><span style='font-size:11.0pt;font-family:"Verdana","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'>13 July 2012<o:p></o:p></span></p>
+  </td>
+  <td width=420 style='width:315.0pt;border-top:none;border-left:none;
+  border-bottom:solid windowtext 1.0pt;border-right:solid windowtext 1.0pt;
+  padding:0in 5.4pt 0in 5.4pt;height:22.9pt'>
+  <p class=MsoNormal><span style='font-size:11.0pt;font-family:"Verdana","sans-serif";
+  mso-fareast-font-family:"Times New Roman"'>Targets RX, RL78 and v850 are
+  added.<o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal><span style='font-family:"Verdana","sans-serif"'>&nbsp;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:12.0pt;margin-right:0in;margin-bottom:
+6.0pt;margin-left:0in'><b><span style='font-family:"Verdana","sans-serif"'>Overview:</span></b><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>This
+document is prepared to guide <span class=GramE>beginners<span
+style='mso-spacerun:yes'>  </span>to</span> use proper optimization options to
+achieve proper code or speed optimization.&nbsp; It also describes some known
+problems with optimization and their workarounds.</span><span style='font-family:
+"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>The
+schemes, described below, will work <b>better</b> for ELF tool chain. </span><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:115%'><span
+style='font-family:"Verdana","sans-serif"'>&nbsp;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif";
+mso-bidi-font-style:italic'>Some of the options explained below may affect
+debugging.</span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:115%'><span
+style='font-family:"Verdana","sans-serif"'>&nbsp;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-family:"Verdana","sans-serif"'>&nbsp;<o:p></o:p></span></p>
+
+<h1 style='margin-bottom:0in;margin-bottom:.0001pt'><a name="_Toc131311766"><span
+style='font-family:"Verdana","sans-serif";mso-fareast-font-family:"Times New Roman"'>1
+Code Size Optimization</span></a><span style='font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h1>
+
+<div class=MsoNormal align=center style='text-align:center'><span
+style='font-family:"Verdana","sans-serif"'>
+
+<hr size=3 width="100%" noshade style='color:black' align=center>
+
+</span></div>
+
+<h2 style='margin-top:6.0pt;margin-right:0in;margin-bottom:3.0pt;margin-left:
+.5in;text-indent:-.5in'><a name="_Toc131311767"></a><span class=GramE><span
+style='mso-bookmark:_Toc131311767'><span style='font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman";font-style:normal'>1.1</span></span><span
+style='mso-bookmark:_Toc131311767'><span style='font-size:7.0pt;font-family:
+"Verdana","sans-serif";mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:
+"Times New Roman";font-style:normal'> </span></span><span style='mso-bookmark:
+_Toc131311767'><span style='font-family:"Verdana","sans-serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:"Times New Roman";font-style:normal'>.</span></span></span><span
+style='mso-bookmark:_Toc131311767'><span style='font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:"Times New Roman";
+font-style:normal'> </span></span><span style='mso-bookmark:_Toc131311767'><span
+style='font-family:"Verdana","sans-serif";mso-fareast-font-family:"Times New Roman";
+font-style:normal'>Generic</span></span><span style='mso-bookmark:_Toc131311767'></span><span
+style='font-family:"Verdana","sans-serif";mso-fareast-font-family:"Times New Roman";
+font-style:normal;mso-bidi-font-style:italic'><o:p></o:p></span></h2>
+
+<h3 style='margin:0in;margin-bottom:.0001pt;line-height:150%'><span
+style='font-size:12.0pt;line-height:150%;font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman"'>1.1.1 Using Library Generator</span><span
+style='font-family:"Verdana","sans-serif";mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h3>
+
+<p style='margin:0in;margin-bottom:.0001pt;line-height:150%'><span
+style='font-size:10.0pt;line-height:150%;font-family:"Verdana","sans-serif"'>The
+library generator tool, 'libgen', builds the standard/optimized libraries with
+customized compiler and assembler options. <br>
+<br>
+</span><b><span style='font-family:"Verdana","sans-serif"'>'Library Generator'
+on Command Line:</span></b><span style='font-family:"Verdana","sans-serif"'> <br>
+</span><span style='font-size:10.0pt;line-height:150%;font-family:"Verdana","sans-serif"'><br>
+For information on the usage <span class=GramE>of<span
+style='mso-spacerun:yes'>  </span>'<span class=SpellE>libgen</span>'</span>
+tool and<span style='mso-spacerun:yes'>  </span>supported options, please refer
+to the following link, <br>
+<a href="http://www.kpitgnutools.com/manuals/binutils.html#SEC15">http://www.kpitgnutools.com/manuals/binutils.html#SEC15</a>&nbsp;
+<br>
+<br>
+</span><b><span style='font-family:"Verdana","sans-serif"'>'Library Generator'
+in HEW: </span></b><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p style='margin:0in;margin-bottom:.0001pt;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'><br>
+</span><b><span style='font-family:"Verdana","sans-serif"'>1.1.2 Using
+Optimized libraries <span class=GramE>( “</span></span></b><span class=SpellE><b><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>liboptc.a</span></b></span><b><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>”
+and “<span class=SpellE>liboptm.a</span>”</span></b><b><span style='font-family:
+"Verdana","sans-serif"'>)</span></b><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>Optimized
+libraries are provided with all KPIT GNU ELF toolchains. User can use these
+libraries to get optimized code. Usage of these libraries can generate up to
+40% optimized code as compared to standard libraries. </span><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:9.0pt;text-align:justify'><b><span
+style='font-size:10.0pt;font-family:"Verdana","sans-serif"'>Use on command
+line:</span></b><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>Usage
+of optimized libraries on command line is similar to standard libraries. User
+need to specify the optimized libraries to be searched and included. These
+libraries are available in same path as of standard libraries.</span><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt;text-align:justify;line-height:
+115%'><span style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>e.g.
+#h8300-elf-gcc <span class=SpellE>t.c</span> –<span class=SpellE>mh</span> –<span
+class=SpellE>loptm</span> -<span class=SpellE>loptc</span></span><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:9.0pt;text-align:justify'><b><span
+style='font-size:10.0pt;font-family:"Verdana","sans-serif"'>Use in HEW:</span></b><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoPlainText style='line-height:115%'><span style='font-size:10.0pt;
+line-height:115%;font-family:"Verdana","sans-serif"'>User can select to use
+optimized libraries while creating new project for RX/RL78/H8/SH/V850/M16CM32C
+targets. The option to use optimized libraries can also be selected once the
+project is created. </span><span style='font-family:"Verdana","sans-serif"'>To
+enable the use of optimized libraries, a check box is provided on “archive”
+property page of linker property sheet<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:4.5pt;text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif";
+mso-bidi-font-style:italic'>Sources of optimized libraries are <span
+style='mso-bidi-font-weight:bold'>not</span> available for download.</span><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<h3 style='margin-top:5.0pt;margin-right:0in;margin-bottom:6.0pt;margin-left:
+0in'><span style='font-size:12.0pt;font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman"'>1.1.3 Using Command Line Options and
+attributes</span><span style='font-family:"Verdana","sans-serif";mso-fareast-font-family:
+"Times New Roman"'><o:p></o:p></span></h3>
+
+<p class=MsoNormal style='text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>Optimum
+level of code size optimization can be achieved by using optimization option <b>“Os”</b>.
+</span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>Further
+reduction in code size can be achieved by using following options. <o:p></o:p></span></p>
+
+<p class=MsoListParagraph style='margin-top:6.0pt;margin-right:1.0in;
+margin-bottom:0in;margin-left:.5in;margin-bottom:.0001pt;mso-add-space:auto;
+text-indent:-.25in;line-height:115%;mso-list:l0 level1 lfo3'><![if !supportLists]><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;line-height:
+115%;font-family:"Verdana","sans-serif";mso-fareast-font-family:Verdana;
+mso-bidi-font-family:Verdana'><span style='mso-list:Ignore'>a.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </span></span></span></b><![endif]><b><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>Compiler
+Option “fomit-frame-pointer”</span></b><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:4.0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt;text-align:justify;line-height:115%;
+tab-stops:4.5pt'><span style='font-size:10.0pt;line-height:115%;font-family:
+"Verdana","sans-serif"'>This option will save 2/4 bytes required to save and
+restore frame pointer register in prologue and epilogue of function.<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpFirst style='margin-top:6.0pt;margin-right:1.0in;
+margin-bottom:0in;margin-left:.5in;margin-bottom:.0001pt;mso-add-space:auto;
+text-align:justify;text-indent:-.25in;line-height:115%;mso-list:l0 level1 lfo3'><![if !supportLists]><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;line-height:
+115%;font-family:"Verdana","sans-serif";mso-fareast-font-family:Verdana;
+mso-bidi-font-family:Verdana'><span style='mso-list:Ignore'>b.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </span></span></span></b><![endif]><b><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>Compiler
+Option “fdata-sections” and “<span class=SpellE>ffunction</span>-sections”</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></b></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:6.0pt;margin-right:1.0in;
+margin-bottom:5.0pt;margin-left:.5in;mso-add-space:auto;text-align:justify;
+line-height:115%'><span style='font-size:10.0pt;line-height:115%;font-family:
+"Verdana","sans-serif"'>These options will force compiler to create separate
+sections for all functions and variables. Usage of these options along with
+linker option “<span class=SpellE>gc</span>-section”, explained later, produces
+better results for code size optimization.<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpLast style='margin-top:6.0pt;margin-right:7.0in;
+margin-bottom:0in;margin-left:.5in;margin-bottom:.0001pt;mso-add-space:auto;
+text-align:justify;text-indent:-.25in;line-height:115%;mso-list:l0 level1 lfo3'><![if !supportLists]><b><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif";
+mso-fareast-font-family:Verdana;mso-bidi-font-family:Verdana'><span
+style='mso-list:Ignore'>c.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span></span></span></b><![endif]><b><span style='font-size:10.0pt;line-height:
+115%;font-family:"Verdana","sans-serif"'>Option “fsort-data”<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:2.25pt;margin-bottom:
+0in;margin-left:.5in;margin-bottom:.0001pt;text-align:justify;line-height:150%'><span
+style='font-size:10.0pt;line-height:150%;font-family:"Verdana","sans-serif"'>When
+&quot;-fsort-data&quot; option is passed to compiler while building application
+code, separate data sections are generated for global initialized variables and
+constant data based on their alignment. The &quot;n&quot; (1/2/4) byte aligned
+data will go either in .data.align&quot;n&quot; or .rodata.align&quot;n&quot;
+section. Arrays, structures and unions are also treated in same way. This
+option is enabled with &quot;-Os&quot;. Due to this option, padding of bytes
+between data allocation within section is not required.</span><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:2.0in;margin-bottom:
+5.0pt;margin-left:.5in;text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>This
+will reduce the size of RAM as well as ROM required to store global initialized
+variables. </span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;margin-right:2.0in;margin-bottom:
+6.0pt;margin-left:.5in;text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif";
+mso-bidi-font-style:italic'>This option will be ignored if option
+&quot;-fdata-sections&quot; is passed to compiler.</span><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoListParagraph style='margin-top:9.0pt;margin-right:5.0in;
+margin-bottom:5.0pt;margin-left:.5in;mso-add-space:auto;text-align:justify;
+text-indent:-.25in;line-height:115%;mso-list:l0 level1 lfo3'><![if !supportLists]><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;line-height:
+115%;font-family:"Verdana","sans-serif";mso-fareast-font-family:Verdana;
+mso-bidi-font-family:Verdana'><span style='mso-list:Ignore'>d.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </span></span></span></b><![endif]><b><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>Compiler
+Option “<span class=SpellE>fno</span>-function-<span class=SpellE>cse</span>”</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:-2.25pt;margin-bottom:
+5.0pt;margin-left:.5in;text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>When
+this option is used, compiler does not put function addresses in registers. <span
+class=GramE>i.e</span>. this option makes each instruction that calls a
+constant function contain the function's address explicitly.</span><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoListParagraph style='margin-top:9.0pt;margin-right:3.0in;
+margin-bottom:5.0pt;margin-left:.5in;mso-add-space:auto;text-align:justify;
+text-indent:-.25in;line-height:115%;mso-list:l0 level1 lfo3'><![if !supportLists]><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;line-height:
+115%;font-family:"Verdana","sans-serif";mso-fareast-font-family:Verdana;
+mso-bidi-font-family:Verdana'><span style='mso-list:Ignore'>e.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </span></span></span></b><![endif]><b><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>Compiler
+Option “<span class=SpellE>funit</span>-at-a-time”</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:-2.25pt;margin-bottom:
+5.0pt;margin-left:.5in;text-align:justify;line-height:115%;tab-stops:bar 996.75pt'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>This
+option enables parsing of whole compilation unit before starting to produce
+code</span><span style='font-family:"Verdana","sans-serif"'> </span><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>and
+hence results in optimization. This option removes unreferenced static
+variables and functions. </span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:2.25pt;margin-bottom:
+5.0pt;margin-left:.5in;text-align:justify;line-height:115%;tab-stops:bar 996.75pt'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>However,
+this may result in undefined references when an ‘</span><span class=SpellE><code><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>asm</span></code></span><code><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>’</span></code><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>
+statement refers directly to variables or functions that&nbsp;are otherwise
+unused. In that case either the variable/function shall be listed as an operand
+of the ‘</span><span class=SpellE><code><span style='font-size:10.0pt;
+line-height:115%;font-family:"Verdana","sans-serif"'>asm</span></code></span><code><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>’</span></code><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>
+statement&nbsp;operand or, in the case of top-level ‘</span><span class=SpellE><code><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>asm</span></code></span><code><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>’</span></code><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>
+statements the attribute </span><code><span style='font-size:10.0pt;line-height:
+115%;font-family:"Verdana","sans-serif"'>used</span></code><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>
+shall be used on the declaration.</span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpFirst style='margin-top:12.0pt;margin-right:5.0in;
+margin-bottom:5.0pt;margin-left:.5in;mso-add-space:auto;text-align:justify;
+text-indent:-.25in;line-height:115%;mso-list:l0 level1 lfo3'><![if !supportLists]><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;line-height:
+115%;font-family:"Verdana","sans-serif";mso-fareast-font-family:Verdana;
+mso-bidi-font-family:Verdana'><span style='mso-list:Ignore'>f.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span></b><![endif]><b><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>Compiler
+Option “</span></b><span class=SpellE><code><b><span style='font-size:10.0pt;
+line-height:115%;font-family:"Verdana","sans-serif"'>fpack-struct</span></b></code></span><code><b><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>[=n]</span></b></code><b><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>”
+or attribute “</span></b><code><b><span style='font-size:10.0pt;line-height:
+115%;font-family:"Verdana","sans-serif"'>aligned</span></b></code><b><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>”
+and “packed”</span></b><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></b></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:5.0pt;margin-right:-2.25pt;
+margin-bottom:5.0pt;margin-left:.5in;mso-add-space:auto;text-align:justify;
+line-height:115%'><span style='font-size:10.0pt;line-height:115%;font-family:
+"Verdana","sans-serif"'>This option when specified without a value, pack all
+structure members together without holes. Similarly, it works for mentioned attributes.
+You may refer to section “Specifying Attributes of Variables” in <o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:5.0pt;margin-right:1.0in;
+margin-bottom:5.0pt;margin-left:.5in;mso-add-space:auto;text-align:justify;
+line-height:115%'><span style='font-family:"Verdana","sans-serif"'><a
+href="http://www.kpitgnutools.com/manuals/gcc.html">http://www.kpitgnutools.com/manuals/gcc.html</a></span><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>
+for more details<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:5.0pt;margin-right:1.0in;
+margin-bottom:5.0pt;margin-left:.5in;mso-add-space:auto;text-align:justify;
+line-height:115%'><span style='font-size:10.0pt;line-height:115%;font-family:
+"Verdana","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-right:3.0in;mso-add-space:
+auto;text-align:justify;text-indent:-.25in;line-height:115%;mso-list:l0 level1 lfo3'><![if !supportLists]><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;line-height:
+115%;font-family:"Verdana","sans-serif";mso-fareast-font-family:Verdana;
+mso-bidi-font-family:Verdana'><span style='mso-list:Ignore'>g.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </span></span></span></b><![endif]><b><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>Compiler
+Option “<span class=SpellE>falign</span>-jumps”</span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></b></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-right:2.25pt;mso-add-space:
+auto;text-align:justify;line-height:115%;tab-stops:bar 996.75pt'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>This
+option aligns the branch targets to a power-of-two boundary, for branch targets
+where the targets can only be&nbsp;reached by jumping, skipping up to <var><span
+style='font-family:"Verdana","sans-serif";font-style:normal;mso-bidi-font-style:
+italic'>n</span></var> bytes like </span><samp><span style='font-size:10.0pt;
+line-height:115%;font-family:"Verdana","sans-serif"'>`-<span class=SpellE>falign</span>-functions'</span></samp><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>.
+In this case, no dummy operations need be executed.<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-right:1.0in;mso-add-space:
+auto;text-align:justify'><span style='font-family:"Verdana","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoListParagraphCxSpLast style='margin-top:9.0pt;margin-right:3.0in;
+margin-bottom:5.0pt;margin-left:.5in;mso-add-space:auto;text-align:justify;
+text-indent:-.25in;mso-line-height-alt:1.5pt;mso-list:l0 level1 lfo3'><![if !supportLists]><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;font-family:
+"Verdana","sans-serif";mso-fareast-font-family:Verdana;mso-bidi-font-family:
+Verdana'><span style='mso-list:Ignore'>h.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span></span></span></b><![endif]><b><span style='font-size:10.0pt;font-family:
+"Verdana","sans-serif"'>Linker Option “<span class=SpellE>gc</span>-sections”</span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-top:5.0pt;margin-right:2.25pt;margin-bottom:
+5.0pt;margin-left:.5in;text-align:justify;mso-line-height-alt:1.5pt'><span
+style='font-size:10.0pt;font-family:"Verdana","sans-serif"'>This option will
+remove unused and unreferenced function(s) and variables thereby reducing
+overall code size. <span style='mso-bidi-font-style:italic'>When link-time
+garbage collection is in use (--<span class=SpellE>gc</span>-sections), it is
+necessary to mark sections that should not be eliminated for example “.vects”
+section containing vector </span>table. This is accomplished by surrounding an
+input section's wildcard entry with <span class=GramE>KEEP(</span>), as in
+KEEP(*(.vects)) in linker script.<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpFirst style='margin-top:0in;margin-right:2.0in;
+margin-bottom:0in;margin-left:1.5in;margin-bottom:.0001pt;mso-add-space:auto;
+text-align:justify;line-height:115%'><span style='font-size:10.0pt;line-height:
+115%;font-family:"Verdana","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoListParagraphCxSpLast style='margin-right:2.0in;mso-add-space:auto;
+text-align:justify;text-indent:-.25in;line-height:150%;mso-list:l0 level1 lfo3'><![if !supportLists]><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;line-height:
+150%;font-family:"Verdana","sans-serif";mso-fareast-font-family:Verdana;
+mso-bidi-font-family:Verdana'><span style='mso-list:Ignore'>i.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span></b><![endif]><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;line-height:
+150%;font-family:"Verdana","sans-serif"'>Linker Option “strip-<span
+class=SpellE>all</span>”<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:4.0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt;text-align:justify;line-height:150%'><span
+style='font-size:10.0pt;line-height:150%;font-family:"Verdana","sans-serif"'>This
+option omits all symbol information from the output file.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:4.0in;margin-bottom:0in;
+margin-left:.5in;margin-bottom:.0001pt;text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoListParagraphCxSpFirst style='margin-right:2.0in;mso-add-space:
+auto;text-align:justify;text-indent:-.25in;line-height:150%;mso-list:l0 level1 lfo3'><![if !supportLists]><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;line-height:
+150%;font-family:"Verdana","sans-serif";mso-fareast-font-family:Verdana;
+mso-bidi-font-family:Verdana'><span style='mso-list:Ignore'>j.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span></b><![endif]><b><span
+style='font-size:10.0pt;line-height:150%;font-family:"Verdana","sans-serif"'>Linker
+Option “no-keep-memory”</span></b><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></b></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:5.0pt;margin-right:2.25pt;
+margin-bottom:5.0pt;margin-left:.5in;mso-add-space:auto;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>“<span
+class=GramE>ld</span>” normally optimizes for speed over memory usage by
+caching the symbol tables of <span style='mso-spacerun:yes'> </span><span
+style='mso-spacerun:yes'> </span>input files in memory. This option tells <span
+class=GramE>ld</span> to <span style='mso-spacerun:yes'>  </span>instead optimize
+for memory usage, by rereading the symbol tables as necessary. This may be
+required if <span class=GramE>ld</span>&nbsp;runs out of memory space while
+linking a large executable.<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:5.0pt;margin-right:3.0in;
+margin-bottom:5.0pt;margin-left:.5in;mso-add-space:auto;text-align:justify;
+line-height:115%'><span style='font-family:"Verdana","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoListParagraphCxSpLast style='margin-right:1.0in;mso-add-space:auto;
+text-align:justify;text-indent:-.25in;line-height:115%;mso-list:l0 level1 lfo3'><![if !supportLists]><b><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif";
+mso-fareast-font-family:Verdana;mso-bidi-font-family:Verdana'><span
+style='mso-list:Ignore'>k.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span></span></span></b><![endif]><span class=SpellE><b><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>Compilerattribute'optimize</span></b></span><b><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>'<o:p></o:p></span></b></p>
+
+<p class=MsoPlainText style='margin-left:.5in;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>'<span
+class=GramE>optimize</span>' attribute allows programmer to change the
+optimization level and particular optimization options for an individual
+function.<o:p></o:p></span></p>
+
+<p class=MsoPlainText style='margin-left:.5in;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>Ex<span
+class=GramE>:-</span> int foo(int i)
+__attribute__((optimize(&quot;-O3&quot;)));<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:3.0pt'><b><span
+style='font-size:10.0pt;font-family:"Verdana","sans-serif"'><span class=msoIns><ins
+cite="mailto:vinayk7" datetime="2012-07-13T11:19"><o:p>&nbsp;</o:p></ins></span></span></b></p>
+
+<p class=MsoListParagraphCxSpFirst style='margin-top:5.0pt;margin-right:1.0in;
+margin-bottom:5.0pt;margin-left:.5in;mso-add-space:auto;text-align:justify;
+text-indent:-.25in;mso-list:l0 level1 lfo3'><![if !supportLists]><b><span
+style='font-size:10.0pt;font-family:"Verdana","sans-serif";mso-fareast-font-family:
+Verdana;mso-bidi-font-family:Verdana'><span style='mso-list:Ignore'>l.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span></b><![endif]><b><span
+style='font-size:10.0pt;font-family:"Verdana","sans-serif"'>Linker option ‘-flto’<o:p></o:p></span></b></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:5.0pt;margin-right:2.25pt;
+margin-bottom:0in;margin-left:.5in;margin-bottom:.0001pt;mso-add-space:auto;
+text-align:justify;line-height:115%;tab-stops:bar 996.75pt'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif";
+mso-bidi-font-weight:bold'>T</span><span style='font-size:10.0pt;line-height:
+115%;font-family:"Verdana","sans-serif"'>his option runs the standard link-time
+optimizer. When invoked with source code, it generates GIMPLE (one of GCC's
+internal representations) and writes it to special <span class=GramE>ELF <span
+style='mso-spacerun:yes'> </span><span style='mso-bidi-font-weight:bold'>sections</span></span><span
+style='mso-bidi-font-weight:bold'> in the object file. When the object files
+are linked together, all the function bodies are read from these ELF sections
+and instantiated as if they had been part of the same translation unit.<o:p></o:p></span></span></p>
+
+<p class=MsoListParagraphCxSpLast style='margin-top:5.0pt;margin-right:2.0in;
+margin-bottom:0in;margin-left:.5in;margin-bottom:.0001pt;mso-add-space:auto;
+text-align:justify;line-height:115%'><span style='font-size:10.0pt;line-height:
+115%;font-family:"Verdana","sans-serif";mso-bidi-font-weight:bold'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:0in;margin-right:-2.25pt;margin-bottom:
+0in;margin-left:.5in;margin-bottom:.0001pt;text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif";
+mso-bidi-font-weight:bold'>To use the link-time optimizer, `-flto' needs to be
+specified at compile time and during the final link. For example: <o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpFirst style='margin-right:3.0in;mso-add-space:
+auto;text-align:justify;line-height:115%'><span class=SpellE><span class=GramE><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif";
+mso-bidi-font-weight:bold'>gcc</span></span></span><span style='font-size:10.0pt;
+line-height:115%;font-family:"Verdana","sans-serif";mso-bidi-font-weight:bold'>
+-c -O2 -flto <span class=SpellE>foo.c</span><o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-right:-6.75pt;mso-add-space:
+auto;text-align:justify;line-height:115%'><span class=SpellE><span class=GramE><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif";
+mso-bidi-font-weight:bold'>gcc</span></span></span><span style='font-size:10.0pt;
+line-height:115%;font-family:"Verdana","sans-serif";mso-bidi-font-weight:bold'>
+-c -O2 -flto <span class=SpellE>bar.c</span><o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpLast style='margin-right:2.0in;mso-add-space:auto;
+text-align:justify;line-height:115%'><span class=SpellE><span class=GramE><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif";
+mso-bidi-font-weight:bold'>gcc</span></span></span><span style='font-size:10.0pt;
+line-height:115%;font-family:"Verdana","sans-serif";mso-bidi-font-weight:bold'>
+-o <span class=SpellE>myprog</span> -flto -O2 <span class=SpellE>foo.o</span> <span
+class=SpellE>bar.o</span><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:115%'><b><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;margin-right:2.0in;margin-bottom:
+5.0pt;margin-left:0in;text-align:justify'><b><span style='font-size:10.0pt;
+font-family:"Verdana","sans-serif"'>“DON'Ts”:</span></b><span style='font-family:
+"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;margin-right:2.0in;margin-bottom:
+5.0pt;margin-left:0in;text-align:justify'><span style='font-size:10.0pt;
+font-family:"Verdana","sans-serif"'>In order to achieve further code size
+optimization, ensure that following option is <span style='mso-bidi-font-weight:
+bold'>not</span> used.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;tab-stops:132.3pt'><span
+style='font-family:"Verdana","sans-serif"'><span style='mso-tab-count:1'>             </span><o:p></o:p></span></p>
+
+<p class=MsoListParagraph style='margin-top:5.0pt;margin-right:1.0in;
+margin-bottom:5.0pt;margin-left:.5in;mso-add-space:auto;text-align:justify;
+text-indent:-.25in;line-height:115%;mso-list:l11 level1 lfo7'><![if !supportLists]><b
+style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;mso-bidi-font-size:
+12.0pt;line-height:115%;font-family:"Verdana","sans-serif";mso-fareast-font-family:
+Verdana;mso-bidi-font-family:Verdana'><span style='mso-list:Ignore'>a.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp; </span></span></span></b><![endif]><b><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>Linker
+Option “emit-<span class=SpellE>relocs</span>”</span></b><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>This
+option Leaves relocation sections and contents in fully linked executables
+resulting in a larger executable.</span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>Therefore,
+in order to achieve better code optimization, this option should not be used.
+By default, this option is disabled.</span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;margin-right:0in;margin-bottom:3.0pt;
+margin-left:0in;text-align:justify;line-height:115%'><span style='font-family:
+"Verdana","sans-serif"'>&nbsp;<o:p></o:p></span></p>
+
+<h2 style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:.5in;
+margin-bottom:.0001pt;text-indent:-.5in'><a name="_Toc131311768"><span
+style='font-family:"Verdana","sans-serif";mso-fareast-font-family:"Times New Roman";
+font-style:normal'>1.2</span></a><span style='mso-bookmark:_Toc131311768'><span
+style='font-family:"Verdana","sans-serif";mso-fareast-font-family:"Times New Roman";
+mso-bidi-font-family:"Times New Roman";font-style:normal'>&nbsp;</span></span><span
+style='mso-bookmark:_Toc131311768'><span style='font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman";font-style:normal'>H8 Specific</span></span><span
+style='mso-bookmark:_Toc131311768'></span><span style='font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman";font-style:normal;mso-bidi-font-style:
+italic'><o:p></o:p></span></h2>
+
+<h3 style='margin-bottom:6.0pt;text-align:justify;line-height:115%'><span
+style='font-size:12.0pt;line-height:115%;font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman"'>1.2.1</span><span class=GramE><span
+style='font-size:7.0pt;line-height:115%;font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:"Times New Roman"'>&nbsp;
+</span><span style='font-size:12.0pt;line-height:115%;font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman"'>Using</span></span><span
+style='font-size:12.0pt;line-height:115%;font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman"'> Command Line Options and attributes</span><span
+style='font-family:"Verdana","sans-serif";mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h3>
+
+<p class=MsoNormal style='text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>Following
+target specific options can be used for H8 targets to achieve code size
+optimization,<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify;line-height:115%'><b><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>a.&nbsp;Option
+“<span class=SpellE>mtinydata</span>” (v0601 and onward)</span></b><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>When
+&quot;-<span class=SpellE>mtinydata</span>&quot; target specific command line
+option is passed to the compiler while building the application
+code,&nbsp;compiler creates &quot;.<span class=SpellE>tinyrodata</span>&quot; ,
+&quot;.<span class=SpellE>tinydata</span>&quot; and&nbsp; &quot;.<span
+class=SpellE>tinybss</span>&quot; sections. All the constant variables are
+placed in&nbsp;&quot;.<span class=SpellE>tinyrodata</span>&quot; section which
+gets relocated into the lower most 32kb memory region of H8. The initialized
+global variables are placed in &quot;.<span class=SpellE>tinydata</span>&quot;
+section and all un-initialized variables are placed in &quot;.<span
+class=SpellE>tinybss</span>&quot; section which is relocated into the upper
+most 32kb of memory region of H8. Hence, all these variables can be accessed
+using 16-bit&nbsp;addressing method. Thus the size of the code generated will
+be reduced resulting in code size optimization. </span><span style='font-family:
+"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif";
+mso-bidi-font-style:italic'>The &quot;.<span class=SpellE>tinybss</span>&quot;
+implementation does not work as expected. It is a known problem</span><span
+style='font-family:"Verdana","sans-serif";mso-bidi-font-style:italic'>.</span><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:9.0pt;text-align:justify'><b><span
+style='font-size:10.0pt;font-family:"Verdana","sans-serif"'>b.&nbsp;Option “</span></b><span
+class=SpellE><code><b><span style='font-size:10.0pt;font-family:"Verdana","sans-serif"'>mrelax</span></b></code></span><code><b><span
+style='font-size:10.0pt;font-family:"Verdana","sans-serif"'>”</span></b></code><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:115%'><span style='font-size:10.0pt;
+line-height:115%;font-family:"Verdana","sans-serif"'>This option shortens some
+address references at link time, when possible; uses the linker option
+“-relax”. Linker can perform global optimization on following instructions when
+option for relaxing is passed, </span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:4.5pt;text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>(“<span
+class=SpellE>jmp</span>”, “<span class=SpellE>jsr</span>”, “</span><span
+class=SpellE><code><span style='font-size:10.0pt;line-height:115%;font-family:
+"Verdana","sans-serif"'>mov.b</span></code></span><span style='font-size:10.0pt;
+line-height:115%;font-family:"Verdana","sans-serif"'> instructions which uses
+the sixteen-bit absolute address form, but refers top page of memory”, “</span><span
+class=SpellE><code><span style='font-size:10.0pt;line-height:115%;font-family:
+"Verdana","sans-serif"'>mov.b</span></code></span><code><span style='font-size:
+10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>/w/l</span></code><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>
+instructions which use register indirect with 32 bit displacement address form,
+but refers top page of memory”, “bit manipulation instructions like </span><code><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>band,
+<span class=SpellE>bclr</span>, <span class=SpellE>biand</span>, <span
+class=SpellE>bild</span>, <span class=SpellE>bior</span>, <span class=SpellE>bist</span>,
+<span class=SpellE>bixor</span>, <span class=SpellE>bld</span>, <span
+class=SpellE>bnot</span>, <span class=SpellE>bor</span>, <span class=SpellE>bset</span>,
+<span class=SpellE>bst</span>, <span class=SpellE>btst</span>, <span
+class=SpellE>bxor</span></span></code><span style='font-size:10.0pt;line-height:
+115%;font-family:"Verdana","sans-serif"'> which use 32 bit and 16 bit absolute
+address form, but refers top page of memory”, “ </span><span class=SpellE><code><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>ldc.w</span></code></span><code><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>
+and <span class=SpellE>stc.w</span></span></code><span style='font-size:10.0pt;
+line-height:115%;font-family:"Verdana","sans-serif"'> instructions which use 32
+bit absolute address form, but refers top page of memory”, </span><span
+class=SpellE><code><span style='font-size:10.0pt;line-height:115%;font-family:
+"Verdana","sans-serif"'>ldc.w</span></code></span><code><span style='font-size:
+10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>, <span
+class=SpellE>stc.w</span></span></code><span style='font-size:10.0pt;
+line-height:115%;font-family:"Verdana","sans-serif"'> instructions which use
+register indirect with 32 bit displacement address form, but refers top page of
+memory”}.</span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>Please
+<span class=GramE>refer<span style='mso-spacerun:yes'>  </span>following</span>
+link for more details:-</span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:3.0pt;line-height:115%'><code><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'><a
+href="http://www.kpitgnutools.com/manuals/ld.html">http://www.kpitgnutools.com/manuals/ld.html</a>
+</span></code><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:9.0pt;text-align:justify'><b><span
+style='font-size:10.0pt;font-family:"Verdana","sans-serif"'>c.&nbsp;Attribute
+&quot;<span class=SpellE>function_vector</span>&quot; </span></b><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>Any
+function can use this attribute along with vector location address. GNUH8
+compiler uses indirect memory addressing jump instruction &quot;<span
+class=SpellE>jsr</span> @aa<span class=GramE>:8</span>&quot; for this
+attribute. Programmer has to write address of function (function pointer) at
+vector address location. Whenever this function is called from another
+function, program will jump to vector address location and pick up function
+pointer and then jump to that function. This process will reduce the speed of
+execution but it certainly reduces the code size by 2 byte for every function
+call. If certain function is called 100 times in application,&nbsp;then user
+saves 200 bytes in total. Programmer can use function vector attributes for
+frequently called functions and&nbsp;unused IVT locations to reduce code size.</span><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:3.0pt;text-align:justify;line-height:
+115%'><span style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>&nbsp;&nbsp;&nbsp;
+<span class=GramE>Example :</span></span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:3.0pt;text-align:justify;line-height:
+115%'><span style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span class=GramE>void</span> foo (void) __attribute__ ((<span class=SpellE>function_vector</span>(<span
+class=SpellE>vector_address</span>)));</span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:3.0pt;text-align:justify;line-height:
+115%'><span style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span class=GramE>void</span> foo (void)</span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:3.0pt;text-align:justify;line-height:
+115%'><span style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{}</span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:3.0pt;text-align:justify;line-height:
+115%'><span style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span class=GramE>void</span> bar (void)</span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:3.0pt;text-align:justify;line-height:
+115%'><span style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{</span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:3.0pt;text-align:justify;line-height:
+115%'><span style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span class=GramE>foo(</span>);</span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:3.0pt;text-align:justify;line-height:
+115%'><span style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;}</span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:3.0pt;text-align:justify'><span
+style='font-family:"Verdana","sans-serif"'>&nbsp;<o:p></o:p></span></p>
+
+<h2 style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:.5in;
+margin-bottom:.0001pt;text-indent:-.5in'><a name="_Toc131311769"><span
+style='font-family:"Verdana","sans-serif";mso-fareast-font-family:"Times New Roman";
+font-style:normal'>1.3</span></a><span style='mso-bookmark:_Toc131311769'><span
+style='font-family:"Verdana","sans-serif";mso-fareast-font-family:"Times New Roman";
+mso-bidi-font-family:"Times New Roman";font-style:normal'>&nbsp;</span></span><span
+style='mso-bookmark:_Toc131311769'><span style='font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman";font-style:normal'>SH Specific</span></span><span
+style='mso-bookmark:_Toc131311769'></span><span style='font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman";font-style:normal;mso-bidi-font-style:
+italic'><o:p></o:p></span></h2>
+
+<h3 style='margin-top:6.0pt;margin-right:0in;margin-bottom:6.0pt;margin-left:
+0in;text-align:justify'><a name="_SH_options"></a><span style='font-size:12.0pt;
+font-family:"Verdana","sans-serif";mso-fareast-font-family:"Times New Roman"'>1.3.1</span><span
+class=GramE><span style='font-size:7.0pt;font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:"Times New Roman"'>&nbsp;
+</span><span style='font-size:12.0pt;font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman"'>Using</span></span><span
+style='font-size:12.0pt;font-family:"Verdana","sans-serif";mso-fareast-font-family:
+"Times New Roman"'> Command Line Options and attributes</span><span
+style='font-family:"Verdana","sans-serif";mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h3>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+font-family:"Verdana","sans-serif"'>Following target specific options can be
+used for SH targets to achieve code size optimization:-</span><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;text-align:justify'><b><span
+style='font-size:10.0pt;font-family:"Verdana","sans-serif"'>a.&nbsp;Option “<span
+class=SpellE>mrelax</span>”</span></b><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+font-family:"Verdana","sans-serif"'>This option shortens some address
+references at link time, when possible; uses the linker option “-relax”. Please
+refer the following link for more details:-</span><span style='font-family:
+"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt;text-align:justify'><code><span
+style='font-size:10.0pt;font-family:"Verdana","sans-serif"'><a
+href="http://www.kpitgnutools.com/manuals/ld.html">http://www.kpitgnutools.com/manuals/ld.html</a></span></code><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><b><span style='font-size:10.0pt;
+font-family:"Verdana","sans-serif"'>b.&nbsp;Option “<span class=SpellE>ffast</span>-math</span></b><code><b><span
+style='font-size:10.0pt;font-family:"Verdana","sans-serif"'>”</span></b></code><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:4.5pt;text-align:justify'><span
+style='font-size:10.0pt;font-family:"Verdana","sans-serif"'>This option, when
+used for SH4A targets, enables the generation of sh4a target specific
+instructions, resulting in code size reduction and speed improvement.</span><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:13.5pt;text-align:justify'><span
+class=SpellE><b><span style='font-size:10.0pt;font-family:"Verdana","sans-serif"'>c.Option“mbitops</span></b></span><b><span
+style='font-size:10.0pt;font-family:"Verdana","sans-serif"'>”<br>
+</span></b><span style='font-size:10.0pt;font-family:"Verdana","sans-serif"'>Bit
+instructions in SH2A target will be generated only on enabling the command line
+option &quot;-mbitops&quot;.</span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<h2 style='margin:0in;margin-bottom:.0001pt;text-align:justify'><a
+name="_Toc131311770"><span style='font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman";font-style:normal'>1.4</span></a><span
+style='mso-bookmark:_Toc131311770'><span style='font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:"Times New Roman";
+font-style:normal'>&nbsp;</span></span><span style='mso-bookmark:_Toc131311770'><span
+style='font-family:"Verdana","sans-serif";mso-fareast-font-family:"Times New Roman";
+font-style:normal'>M16CM32C Specific</span></span><span style='mso-bookmark:
+_Toc131311770'></span><span style='font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman";font-style:normal;mso-bidi-font-style:
+italic'><o:p></o:p></span></h2>
+
+<h3 style='text-align:justify'><a name="_using_cmmd_line_options"></a><span
+style='font-size:12.0pt;font-family:"Verdana","sans-serif";mso-fareast-font-family:
+"Times New Roman"'>1.4.1</span><span class=GramE><span style='font-size:7.0pt;
+font-family:"Verdana","sans-serif";mso-fareast-font-family:"Times New Roman";
+mso-bidi-font-family:"Times New Roman"'>&nbsp; </span><span style='font-size:
+12.0pt;font-family:"Verdana","sans-serif";mso-fareast-font-family:"Times New Roman"'>Using</span></span><span
+style='font-size:12.0pt;font-family:"Verdana","sans-serif";mso-fareast-font-family:
+"Times New Roman"'> Command Line Options and attributes</span><span
+style='font-family:"Verdana","sans-serif";mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h3>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+font-family:"Verdana","sans-serif"'>Following target specific options can be
+used for M16CM32C targets to achieve code size optimization,</span><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:4.5pt;text-align:justify'><b><span
+style='font-size:10.0pt;font-family:"Verdana","sans-serif"'>a.&nbsp;Attribute
+&quot;<span class=SpellE>function_vector</span>&quot; </span></b><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>On
+M16C targets, <span class=SpellE>function_vector</span> attribute declares a
+special page subroutine call function. Use of this attribute reduces the code
+size by 2 bytes per each call generated to the subroutine. The <span
+class=SpellE>arguement</span> to attribute is vector number entry from the
+special page vector table which contains 16 low-order bits of subroutine's
+entry address. Each vector table has special page <span class=GramE>number(</span>18
+to 255) which are used in JSRS instruction. Jump address of&nbsp;the routines
+are generated adding 0F0000H (in case of M16C targets) or FF0000H (in case of
+M32C targets), to 2 byte addresses set in the vector table. Therefore you need
+to ensure that all the special page vector routines should get mapped within
+the address range 0F0000H to 0FFFFFH (for M16C) and FF0000H to FFFFFFH (for
+M32C). </span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:115%'><span
+style='font-family:"Verdana","sans-serif"'>&nbsp;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>In
+the following example 2 bytes will be saved for each call to <span
+class=SpellE>fuction</span> &quot;foo&quot;. </span><span style='font-family:
+"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<table class=MsoNormalTable border=0 cellpadding=0 width=575 style='width:431.25pt;
+ mso-cellspacing:1.5pt;mso-yfti-tbllook:1184;mso-padding-alt:0in 5.4pt 0in 5.4pt'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+  <td style='padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal style='margin-bottom:6.0pt;line-height:115%'><span
+  style='font-family:"Verdana","sans-serif"'>&nbsp;<o:p></o:p></span></p>
+  </td>
+  <td width=484 style='width:363.0pt;padding:.75pt .75pt .75pt .75pt'>
+  <p class=MsoNormal style='margin-bottom:6.0pt;line-height:115%'><span
+  style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>void
+  foo (void) __attribute__((<span class=SpellE>function_vector</span>(0x18)));<br>
+  void foo (void)<br>
+  {<br>
+  }<br>
+  <br>
+  void bar (void)<br>
+  {<br>
+  &nbsp;&nbsp;&nbsp; foo();<br>
+  }</span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+  </td>
+ </tr>
+</table>
+
+<p class=MsoNormal style='margin-bottom:4.5pt;text-align:justify;line-height:
+115%'><span style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>If
+functions are defined in one file and are called in another file, then be sure
+to write this declaration in both files. </span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:4.5pt;text-align:justify;line-height:
+115%'><span style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif";
+mso-bidi-font-style:italic'>This attribute is ignored for <b>R8C</b> target.</span><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt;text-align:justify'><span
+style='font-family:"Verdana","sans-serif"'>&nbsp;<o:p></o:p></span></p>
+
+<h2 style='margin-top:0in;margin-right:0in;margin-bottom:0in;margin-left:.5in;
+margin-bottom:.0001pt;text-indent:-.5in;mso-list:l12 level2 lfo2'><a
+name="_1.5_RX_Specific"></a><![if !supportLists]><span style='font-family:"Verdana","sans-serif";
+mso-fareast-font-family:Verdana;mso-bidi-font-family:Verdana;font-style:normal'><span
+style='mso-list:Ignore'>1.5<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman";font-style:normal'>RX Specific<o:p></o:p></span></h2>
+
+<h3 style='margin-top:6.0pt;margin-right:0in;margin-bottom:6.0pt;margin-left:
+0in;text-align:justify'><span style='font-size:12.0pt;font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman"'>1.5.1 Using Command Line Options and
+attributes<o:p></o:p></span></h3>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+font-family:"Verdana","sans-serif"'>Following target specific options can be
+used for RX targets to achieve code size optimization,<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:4.5pt;margin-right:1.0in;margin-bottom:
+0in;margin-left:0in;margin-bottom:.0001pt;text-align:justify;line-height:115%'><span
+class=GramE><b><span style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>a.-<span
+class=SpellE>msmall</span>-data-limit=</span></b></span><b><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>N <o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>Specifies
+the maximum size in bytes of global and static variables <span class=GramE>that<span
+style='mso-spacerun:yes'>  </span>can</span> be placed in small data area.
+Using the small data area can lead to smaller and faster code, but the size of
+area is limited and it is up to the programmer to ensure that the area does not
+overflow. Also when the small data area is used one of the RX's registers
+(usually r13) is reserved for pointing to this area, so it is no longer
+available for use by the compiler. This could result in slower and/or larger
+code if variables which once could have been held in the reserved register are
+now pushed onto the stack.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+font-family:"Verdana","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:4.5pt;margin-right:1.0in;margin-bottom:
+0in;margin-left:0in;margin-bottom:.0001pt;text-align:justify;line-height:115%'><b><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>b.
+-<span class=SpellE>mrelax</span> <o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>Enable
+linker relaxation. Linker relaxation is a process whereby the linker will
+attempt to reduce the size of a program by finding shorter versions of various
+instructions. <span class=GramE>Disabled by default.</span><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:6.0pt;text-align:justify'><span
+style='font-family:"Verdana","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<h2 style='margin-top:0in;margin-right:0in;margin-bottom:3.0pt;margin-left:
+.5in;text-indent:-.5in;mso-list:l12 level2 lfo2'><a name="_1.6_RL78_Specific"></a><![if !supportLists]><span
+style='font-family:"Verdana","sans-serif";mso-fareast-font-family:Verdana;
+mso-bidi-font-family:Verdana;font-style:normal'><span style='mso-list:Ignore'>1.6<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><![endif]><span
+style='font-family:"Verdana","sans-serif";mso-fareast-font-family:"Times New Roman";
+font-style:normal'>RL78 Specific<o:p></o:p></span></h2>
+
+<h3 style='margin-top:6.0pt;margin-right:0in;margin-bottom:6.0pt;margin-left:
+0in;text-align:justify'><span style='font-size:12.0pt;font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman"'>1.6.1 Using Command Line Options and
+attributes<o:p></o:p></span></h3>
+
+<p class=MsoNormal style='margin-top:4.5pt;margin-right:2.0in;margin-bottom:
+0in;margin-left:0in;margin-bottom:.0001pt;line-height:115%'><a
+name="_1.7_V850_Specific"></a><b><span style='font-size:10.0pt;line-height:
+115%;font-family:"Verdana","sans-serif"'>a. -<span class=SpellE>mmul</span>=none,
+-<span class=SpellE>mmul</span>=g13, -<span class=SpellE>mmul</span>=rl78<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-right:-2.25pt;text-align:justify;line-height:
+115%'><span style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>Specifies
+the type of hardware multiplication support to be used. The default is none,
+which uses software multiplication functions. The g13 option is for hardware
+multiply/divide peripheral only on RL78/G13 targets. The rl78 option is for
+standard hardware multiplication defined in RL78 software manual.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-right:1.0in;text-align:justify;line-height:
+115%'><span style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-right:1.0in;text-align:justify;line-height:
+115%'><span style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>This
+reduces the number of instructions used for multiplication and achieves code
+size optimization.<o:p></o:p></span></p>
+
+<h2 style='margin:0in;margin-bottom:.0001pt'><a name="_1.7_V850_Specific_1"></a><span
+style='font-family:"Verdana","sans-serif";mso-fareast-font-family:"Times New Roman";
+font-style:normal'><o:p>&nbsp;</o:p></span></h2>
+
+<h2 style='margin:0in;margin-bottom:.0001pt'><a name="_1.7_V850_Specific_2"></a><span
+style='font-family:"Verdana","sans-serif";mso-fareast-font-family:"Times New Roman";
+font-style:normal'>1.7 V850 Specific<o:p></o:p></span></h2>
+
+<h3 style='margin-top:6.0pt;margin-right:0in;margin-bottom:6.0pt;margin-left:
+0in;text-align:justify;line-height:115%'><span style='font-size:12.0pt;
+line-height:115%;font-family:"Verdana","sans-serif";mso-fareast-font-family:
+"Times New Roman"'>1.7.1 Using Command Line Options and attributes<o:p></o:p></span></h3>
+
+<p class=MsoNormal style='margin-bottom:12.0pt;text-align:justify;line-height:
+115%'><span style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>Following
+target specific options can be used for V850 target to achieve code size
+optimization:-<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:12.0pt;margin-right:2.25pt;margin-bottom:
+0in;margin-left:0in;margin-bottom:.0001pt;text-align:justify;line-height:115%'><span
+class=GramE><b><span style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>a.-<span
+class=SpellE>mno</span>-prolog-function</span></b></span><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'><br>
+Do not use external functions to save and restore registers at the prologue and
+epilogue of a function. The external functions are slower, but use less code
+space if more than one function saves the same number of registers. The -<span
+class=SpellE>mprolog</span>-function option is on by default if you optimize.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-right:2.0in;text-align:justify;line-height:
+115%'><b style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;
+line-height:115%;font-family:"Verdana","sans-serif"'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='margin-right:2.0in;text-align:justify;line-height:
+115%'><b style='mso-bidi-font-weight:normal'><span style='font-size:10.0pt;
+line-height:115%;font-family:"Verdana","sans-serif"'>b. <span style='mso-bidi-font-weight:
+bold'>–<span class=SpellE>mspace</span><o:p></o:p></span></span></b></p>
+
+<p class=MsoNormal style='margin-right:2.0in;text-align:justify;line-height:
+115%'><span style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>Try
+to make the code as small as possible. At present, this just turns on the -<span
+class=SpellE>mep</span> and -<span class=SpellE>mprolog</span>-function
+options.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-family:"Verdana","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<h1 style='margin-bottom:0in;margin-bottom:.0001pt;text-align:justify'><a
+name="_Toc131311771"><span style='font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman"'>2.</span></a><span style='mso-bookmark:
+_Toc131311771'><span style='font-family:"Verdana","sans-serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:"Times New Roman"'>&nbsp;</span></span><span
+style='mso-bookmark:_Toc131311771'><span style='font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman"'>Speed Optimization</span></span><span
+style='font-family:"Verdana","sans-serif";mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h1>
+
+<div class=MsoNormal align=center style='text-align:center'><span
+style='font-family:"Verdana","sans-serif"'>
+
+<hr size=3 width="100%" noshade style='color:black' align=center>
+
+</span></div>
+
+<h2 style='margin-top:9.0pt;margin-right:0in;margin-bottom:0in;margin-left:
+0in;margin-bottom:.0001pt;text-align:justify'><a name="_Toc131311772"><span
+style='font-family:"Verdana","sans-serif";mso-fareast-font-family:"Times New Roman";
+font-style:normal'>2.1</span></a><span style='mso-bookmark:_Toc131311772'><span
+style='font-family:"Verdana","sans-serif";mso-fareast-font-family:"Times New Roman";
+mso-bidi-font-family:"Times New Roman";font-style:normal'> </span></span><span
+style='mso-bookmark:_Toc131311772'><span style='font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman";font-style:normal'>Generic</span></span><span
+style='mso-bookmark:_Toc131311772'></span><span style='font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman";font-style:normal;mso-bidi-font-style:
+italic'><o:p></o:p></span></h2>
+
+<h3 style='margin-top:4.5pt;margin-right:0in;margin-bottom:4.5pt;margin-left:
+0in;text-align:justify;line-height:115%'><span style='font-size:12.0pt;
+line-height:115%;font-family:"Verdana","sans-serif";mso-fareast-font-family:
+"Times New Roman"'>2.1.1 Using Command Line Options and attributes</span><span
+style='font-family:"Verdana","sans-serif";mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h3>
+
+<p class=MsoNormal style='margin-bottom:3.0pt;text-align:justify;line-height:
+115%'><span style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>Optimum
+level of speed optimization can be achieved by using <b>“O3”</b>. At “O3”, GCC
+enables&nbsp;</span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:3.0pt;text-align:justify;line-height:
+115%'><span class=GramE><span style='font-size:10.0pt;line-height:115%;
+font-family:"Verdana","sans-serif"'>all</span></span><span style='font-size:
+10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'> the options from
+“O2”, along with more advanced methods, such as “<span class=SpellE>inlining</span>”
+functions, renaming registers,&nbsp;</span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:3.0pt;text-align:justify;line-height:
+115%'><span class=GramE><span style='font-size:10.0pt;line-height:115%;
+font-family:"Verdana","sans-serif"'>and</span></span><span style='font-size:
+10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'> other scheduling
+improvements.</span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-bottom:3.0pt;text-align:justify;line-height:
+115%'><span style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>Further
+improvement in speed can be achieved by using the following options. This
+scheme will work better only for Release version of source code and only for
+ELF tool chain.</span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:9.0pt;margin-right:0in;margin-bottom:2.25pt;
+margin-left:0in;text-align:justify;line-height:115%'><b><span style='font-size:
+10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>a.&nbsp;Compiler
+Option “<span class=SpellE>funit</span>-at-a-time”</span></b><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>This
+option enables parsing of the whole compilation unit before starting to produce
+code. This allows some extra optimizations to take place. This option removes
+unreferenced static variables and functions. </span><span style='font-family:
+"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>However,
+this may result in undefined references when an ‘</span><span class=SpellE><code><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>asm</span></code></span><code><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>’</span></code><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>
+statement refers directly to variables or functions that&nbsp;are otherwise
+unused. In that case either the variable/function shall be listed as an operand
+of the ‘</span><span class=SpellE><code><span style='font-size:10.0pt;
+line-height:115%;font-family:"Verdana","sans-serif"'>asm</span></code></span><code><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>’</span></code><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>
+statement operand or, in the case of top-level ‘</span><span class=SpellE><code><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>asm</span></code></span><code><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>’</span></code><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>
+statements the attribute </span><code><span style='font-size:10.0pt;line-height:
+115%;font-family:"Verdana","sans-serif"'>used</span></code><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>
+shall be used on the declaration.</span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:9.0pt;margin-right:0in;margin-bottom:2.25pt;
+margin-left:0in;text-align:justify;line-height:115%'><b><span style='font-size:
+10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>b.&nbsp;Compiler
+Option “<span class=SpellE>funroll</span>-loops”</span></b><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>This
+option unrolls loop whose number of iterations can be determined at compile
+time or upon entry to the loop. </span><samp><span style='font-size:10.0pt;
+line-height:115%;font-family:"Verdana","sans-serif"'>This option</span></samp><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>
+implies both </span><samp><span style='font-size:10.0pt;line-height:115%;
+font-family:"Verdana","sans-serif"'>`-<span class=SpellE>fstrength</span>-reduce'</span></samp><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>
+and </span><samp><span style='font-size:10.0pt;line-height:115%;font-family:
+"Verdana","sans-serif"'>`-<span class=SpellE>frerun</span>-<span class=SpellE>cse</span>-after-loop'</span></samp><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>.
+This option makes code larger, and may or may not make it run faster.</span><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:9.0pt;margin-right:0in;margin-bottom:2.25pt;
+margin-left:0in;text-align:justify;line-height:115%'><b><span style='font-size:
+10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>c.&nbsp;Compiler
+Option “<span class=SpellE>fno-gcse</span>”</span></b><span style='font-family:
+"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:115%'><span
+class=option><span lang=EN style='font-size:10.0pt;line-height:115%;font-family:
+"Verdana","sans-serif";mso-ansi-language:EN'>This option m</span></span><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>ay
+give better runtime performance as it disables the global common sub-expression
+elimination.</span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:9.0pt;margin-right:0in;margin-bottom:3.0pt;
+margin-left:0in;text-align:justify;line-height:115%'><b><span style='font-size:
+10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>d.&nbsp;Compiler
+Option “<span class=SpellE>finline</span>-*”</span></b><span style='font-family:
+"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>&nbsp;Most
+of these options are enabled by default when optimization switch “O3” is used.</span><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:115%'><span
+style='font-family:"Verdana","sans-serif"'>&nbsp;<o:p></o:p></span></p>
+
+<h2 style='margin:0in;margin-bottom:.0001pt;text-align:justify'><a
+name="_Toc131311773"><span style='font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman";font-style:normal'>2.2</span></a><span
+style='mso-bookmark:_Toc131311773'><span style='font-size:16.0pt;font-family:
+"Verdana","sans-serif";mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:
+"Times New Roman";font-style:normal'>&nbsp;</span></span><span
+style='mso-bookmark:_Toc131311773'><span style='font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman";font-style:normal'>H8 Specific</span></span><span
+style='mso-bookmark:_Toc131311773'></span><span style='font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman";font-style:normal;mso-bidi-font-style:
+italic'><o:p></o:p></span></h2>
+
+<h3 style='margin-top:4.5pt;margin-right:0in;margin-bottom:4.0pt;margin-left:
+0in;text-align:justify'><span style='font-size:12.0pt;font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman"'>2.2.1</span><span class=GramE><span
+style='font-size:7.0pt;font-family:"Verdana","sans-serif";mso-fareast-font-family:
+"Times New Roman";mso-bidi-font-family:"Times New Roman"'>&nbsp; </span><span
+style='font-size:12.0pt;font-family:"Verdana","sans-serif";mso-fareast-font-family:
+"Times New Roman"'>Using</span></span><span style='font-size:12.0pt;font-family:
+"Verdana","sans-serif";mso-fareast-font-family:"Times New Roman"'> Command Line
+Options and attributes</span><span style='font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h3>
+
+<p class=MsoNormal style='margin-top:4.5pt;text-align:justify;line-height:115%'><b><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>a.&nbsp;Option
+“<span class=SpellE>mtinydata</span>” (v0601 and onward)<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-top:4.5pt;margin-right:-6.75pt;margin-bottom:
+0in;margin-left:0in;margin-bottom:.0001pt;text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>When
+&quot;-<span class=SpellE>mtinydata</span>&quot; target specific command line
+option is passed to the compiler while building the application code, compiler
+creates &quot;.<span class=SpellE>tinyrodata</span>&quot; , &quot;.<span
+class=SpellE>tinydata</span>&quot; and<span style='mso-spacerun:yes'> 
+</span>&quot;.<span class=SpellE>tinybss</span>&quot; sections. All the
+constant variables are placed into the &quot;.<span class=SpellE>tinyrodata</span>&quot;
+section which gets relocated into the lower most 32kb memory region of H8. The
+initialized global variables are placed into the &quot;.<span class=SpellE>tinydata</span>&quot;
+section and all un-initialized variables are placed into the &quot;.<span
+class=SpellE>tinybss</span>&quot; section which is relocated into the upper
+most 32kb of memory region of H8. Hence, all these variables can be accessed
+using 16-bit addressing method. Thus the size of the code generated will be
+reduced resulting <span class=SpellE>inachieving</span> the code size
+optimization. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:4.5pt;text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>The
+&quot;.<span class=SpellE>tinybss</span>&quot; implementation does not work as
+expected. It is a known problem.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:3.0pt;text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>When
+&quot;-<span class=SpellE>mtinydata</span>&quot; target specific command line
+option is passed to the compiler while building the application code, compiler
+creates &quot;.<span class=SpellE>tinyrodata</span>&quot; , &quot;.<span
+class=SpellE>tinydata</span>&quot; and&nbsp; &quot;.<span class=SpellE>tinybss</span>&quot;
+sections. All the constant variables are placed into the &quot;.<span
+class=SpellE>tinyrodata</span>&quot; section which gets relocated into the
+lower most 32kb memory region of H8. The initialized global variables are
+placed into the &quot;.<span class=SpellE>tinydata</span>&quot; section and all
+un-initialized variables are placed into the &quot;.<span class=SpellE>tinybss</span>&quot;
+section which is relocated into the upper most 32kb of memory region of H8.
+Hence, all these variables can be accessed using 16-bit addressing method. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:4.5pt;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif";
+mso-bidi-font-style:italic'>The &quot;.<span class=SpellE>tinybss</span>&quot;
+implementation does not work as expected. It is a known problem.</span><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:4.5pt;line-height:115%'><span
+style='font-family:"Verdana","sans-serif"'>&nbsp;<a name="_Toc131311774"><o:p></o:p></a></span></p>
+
+<h2 style='margin-top:0in;margin-right:1.0in;margin-bottom:0in;margin-left:
+0in;margin-bottom:.0001pt;text-align:justify'><span style='mso-bookmark:_Toc131311774'><span
+style='font-family:"Verdana","sans-serif";mso-fareast-font-family:"Times New Roman";
+font-style:normal'>2.3&nbsp;SH Specific</span></span><span style='font-family:
+"Verdana","sans-serif";mso-fareast-font-family:"Times New Roman";font-style:
+normal'><o:p></o:p></span></h2>
+
+<h3 style='margin-top:4.5pt;margin-right:0in;margin-bottom:4.0pt;margin-left:
+0in;text-align:justify'><span style='font-size:12.0pt;font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman"'>2.3.1<span class=GramE>&nbsp; Using</span>
+Command Line Options and attributes<o:p></o:p></span></h3>
+
+<p class=MsoNormal style='margin-top:4.5pt;text-align:justify;line-height:115%'><b><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>a.&nbsp;Option
+“<span class=SpellE>ffast</span>-math”</span></b><span style='font-size:10.0pt;
+line-height:115%;font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:3.0pt;text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>This
+option, when used for SH4A targets, enables the generation of sh4a target
+specific instructions, resulting in code size reduction and speed improvement.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>&nbsp;<o:p></o:p></span></p>
+
+<h2 style='margin-top:0in;margin-right:2.0in;margin-bottom:0in;margin-left:
+0in;margin-bottom:.0001pt;text-align:justify'><a name="_Toc131311775"><span
+style='font-family:"Verdana","sans-serif";mso-fareast-font-family:"Times New Roman";
+font-style:normal'>2.4&nbsp;M16CM32C Specific</span></a><span style='font-family:
+"Verdana","sans-serif";mso-fareast-font-family:"Times New Roman";font-style:
+normal'><o:p></o:p></span></h2>
+
+<h3 style='margin-top:4.5pt;margin-right:0in;margin-bottom:4.0pt;margin-left:
+0in;text-align:justify'><span style='font-size:12.0pt;font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman"'>2.4.1 Using Command Line Options and
+attributes<o:p></o:p></span></h3>
+
+<p class=MsoNormal style='margin-top:3.0pt;text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>No
+target specific options or attributes are available for M16C architecture
+targets to achieve code size optimization. <o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:115%'><span style='font-size:10.0pt;
+line-height:115%;font-family:"Verdana","sans-serif"'>&nbsp;</span><b><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:Arial'><o:p></o:p></span></b></p>
+
+<h2 style='margin-top:0in;margin-right:3.0in;margin-bottom:0in;margin-left:
+0in;margin-bottom:.0001pt;text-align:justify'><a name="_Toc131311776"></a><a
+name="_2.5_RX_Specific"></a><span style='mso-bookmark:_Toc131311776'><span
+style='font-family:"Verdana","sans-serif";mso-fareast-font-family:"Times New Roman";
+font-style:normal'>2.5 RX Specific<o:p></o:p></span></span></h2>
+
+<h3 style='margin-top:4.5pt;margin-right:0in;margin-bottom:4.0pt;margin-left:
+0in;text-align:justify'><span style='mso-bookmark:_Toc131311776'><span
+style='font-size:12.0pt;font-family:"Verdana","sans-serif";mso-fareast-font-family:
+"Times New Roman"'>2.5.1 Using Command Line Options and attributes<o:p></o:p></span></span></h3>
+
+<p class=MsoToc2 style='margin-left:0in;line-height:115%'><span
+style='mso-bookmark:_Toc131311776'>There are no RX specific speed optimization
+related options.</span></p>
+
+<p class=MsoToc2 style='margin-left:0in;line-height:115%'><span
+style='mso-bookmark:_Toc131311776'><o:p>&nbsp;</o:p></span></p>
+
+<h2 style='margin-top:0in;margin-right:2.0in;margin-bottom:0in;margin-left:
+0in;margin-bottom:.0001pt;text-align:justify'><span style='mso-bookmark:_Toc131311776'><a
+name="_2.6_RL78_Specific"></a><span style='font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman";font-style:normal'>2.6 RL78 Specific<o:p></o:p></span></span></h2>
+
+<h3 style='margin-top:4.5pt;margin-right:0in;margin-bottom:4.0pt;margin-left:
+0in;text-align:justify'><span style='mso-bookmark:_Toc131311776'><span
+style='font-size:12.0pt;font-family:"Verdana","sans-serif";mso-fareast-font-family:
+"Times New Roman"'>2.6.1 Using Command Line Options and attributes<o:p></o:p></span></span></h3>
+
+<p class=MsoToc2 style='margin-left:0in;line-height:115%'><span
+style='mso-bookmark:_Toc131311776'>There are no RL78 specific speed
+optimization related options.</span></p>
+
+<p class=MsoToc2 style='line-height:115%'><span style='mso-bookmark:_Toc131311776'><o:p>&nbsp;</o:p></span></p>
+
+<h2 style='margin-top:0in;margin-right:3.0in;margin-bottom:0in;margin-left:
+0in;margin-bottom:.0001pt;text-align:justify'><span style='mso-bookmark:_Toc131311776'><a
+name="_2.7_V850_Specific"></a><span style='font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman";font-style:normal'>2.7 V850 Specific<o:p></o:p></span></span></h2>
+
+<h3 style='margin-top:4.5pt;margin-right:0in;margin-bottom:4.0pt;margin-left:
+0in;text-align:justify'><span style='mso-bookmark:_Toc131311776'><span
+style='font-size:12.0pt;font-family:"Verdana","sans-serif";mso-fareast-font-family:
+"Times New Roman"'>2.7.1 Using Command Line Options and attributes<o:p></o:p></span></span></h3>
+
+<p class=MsoNormal style='margin-right:1.0in;text-align:justify;line-height:
+115%'><span style='mso-bookmark:_Toc131311776'><span class=SpellE><span
+class=GramE><b><span style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>a.-mep</span></b></span></span></span><span
+style='mso-bookmark:_Toc131311776'><b><span style='font-size:10.0pt;line-height:
+115%;font-family:"Verdana","sans-serif"'><o:p></o:p></span></b></span></p>
+
+<p class=MsoToc2 style='margin:0in;margin-bottom:.0001pt;line-height:115%'><span
+style='mso-bookmark:_Toc131311776'>Do not optimize (do optimize) basic blocks
+that use the same index pointer 4 or more times to copy pointer into the <span
+class=SpellE>ep</span> register, and use the shorter <span class=SpellE>sld</span>
+and <span class=SpellE>sst</span> instructions. The -<span class=SpellE>mep</span>
+option is on by default if you optimize.</span></p>
+
+<h1 style='margin-bottom:0in;margin-bottom:.0001pt;text-align:justify'><span
+style='mso-bookmark:_Toc131311776'><span style='font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman"'>3.&nbsp;Workaround for some known
+problems with</span></span><span style='font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman"'> Optimization<o:p></o:p></span></h1>
+
+<div class=MsoNormal align=center style='text-align:center'><span
+style='font-family:"Verdana","sans-serif"'>
+
+<hr size=3 width="100%" noshade style='color:black' align=center>
+
+</span></div>
+
+<h2 style='margin-top:9.0pt;margin-right:0in;margin-bottom:0in;margin-left:
+0in;margin-bottom:.0001pt;text-align:justify'><a name="_Toc131311777"><span
+style='font-family:"Verdana","sans-serif";mso-fareast-font-family:"Times New Roman";
+font-style:normal'>3.1&nbsp;Generic</span></a><span style='mso-bookmark:_Toc131311777'></span><span
+style='font-family:"Verdana","sans-serif";mso-fareast-font-family:"Times New Roman";
+font-style:normal;mso-bidi-font-style:italic'><o:p></o:p></span></h2>
+
+<h3 style='margin-top:4.5pt;margin-right:0in;margin-bottom:4.5pt;margin-left:
+0in;text-align:justify'><span style='font-size:12.0pt;font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman"'>3.1.1<span class=GramE>&nbsp; Null</span>
+pointer deletion check</span><span style='font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h3>
+
+<p class=MsoNormal style='text-align:justify'><b><span style='font-size:10.0pt;
+font-family:"Verdana","sans-serif"'>Example Snippet:</span></b><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Verdana","sans-serif"'>---------------------------------------------------------------------</span><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Verdana","sans-serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span class=GramE>unsigned</span> long foo (void)</span><span style='font-family:
+"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Verdana","sans-serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{</span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-indent:.5in'><span style='font-size:10.0pt;
+font-family:"Verdana","sans-serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span class=GramE>volatile</span> unsigned long <span class=SpellE>i</span> =
+4;</span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-indent:.5in'><span style='font-size:10.0pt;
+font-family:"Verdana","sans-serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span class=GramE>while</span> (<span class=SpellE>i</span>)</span><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-indent:.5in'><span style='font-size:10.0pt;
+font-family:"Verdana","sans-serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{</span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:.5in'><span
+style='font-size:10.0pt;font-family:"Verdana","sans-serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span class=SpellE>i</span> -= <span class=SpellE><span class=GramE>sizeof</span></span><span
+class=GramE>(</span>unsigned long);</span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:.5in'><span
+style='font-size:10.0pt;font-family:"Verdana","sans-serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span class=GramE>if</span> (*(unsigned long *)<span class=SpellE>i</span> ==
+12)</span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:.5in'><span
+style='font-size:10.0pt;font-family:"Verdana","sans-serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span class=GramE>return</span> <span class=SpellE>i</span>;</span><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-indent:.5in'><span style='font-size:10.0pt;
+font-family:"Verdana","sans-serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+}</span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Verdana","sans-serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+} </span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Verdana","sans-serif"'>----------------------------------------------------------------------</span><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:4.5pt;line-height:115%'><b><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>Optimization
+options:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; “</span></b><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>O2”
+and above.<span style='mso-tab-count:1'>       </span></span><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:115%'><b><span style='font-size:10.0pt;
+line-height:115%;font-family:"Verdana","sans-serif"'>Targets observed on:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></b><span style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>ALL
+</span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:4.5pt;line-height:115%'><b><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>Observation:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></b><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>The
+“while” loop in above code is executed only once. Compiler doesn't check
+whether &quot;<span class=SpellE>i</span>&quot; is changed in while loop or
+not. All other essential code is optimized away by compiler. </span><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:4.5pt;line-height:115%'><b><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>Workaround:</span></b><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:115%'><span style='font-size:10.0pt;
+line-height:115%;font-family:"Verdana","sans-serif"'>User need to pass an option
+“-<span class=SpellE>fno</span>-delete-null-pointer-checks” along with “-O2” to
+solve above-mentioned problem.</span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<h3 style='margin-top:12.0pt;margin-right:0in;margin-bottom:0in;margin-left:
+.5in;margin-bottom:.0001pt;text-indent:-.5in;line-height:115%'><span
+style='font-size:12.0pt;line-height:115%;font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman"'>3.1.2</span><span class=GramE><span
+style='font-size:12.0pt;line-height:115%;font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:"Times New Roman";
+font-weight:normal'>&nbsp;</span><span style='font-size:12.0pt;line-height:
+115%;font-family:"Verdana","sans-serif";mso-fareast-font-family:"Times New Roman"'>
+“</span></span><span style='font-size:12.0pt;line-height:115%;font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman"'>const” array optimization</span><span
+style='font-family:"Verdana","sans-serif";mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></h3>
+
+<p class=MsoNormal style='text-align:justify;line-height:115%'><b><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>Example
+Snippet:</span></b><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:115%'><span style='font-size:10.0pt;
+line-height:115%;font-family:"Verdana","sans-serif"'>---------------------------------------------------------------------------------------------------------</span><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:115%'><span style='font-size:10.0pt;
+line-height:115%;font-family:"Verdana","sans-serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+#define STEPPER_1_DTC 1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+#define STEPPER_2_DTC 2<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+#define STEPPER_3_DTC 3<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+#define NO_TBL 0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+const unsigned short <span class=SpellE><span class=GramE>dtcVectors</span></span><span
+class=GramE>[</span>]&nbsp;__attribute__ (( section(&quot;.<span class=SpellE>dtc_vec</span>&quot;)
+)) =<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{</span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+STEPPER_1_DTC,&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; STEPPER_2_DTC,&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; STEPPER_3_DTC,&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NO_TBL,&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; NO_TBL,&nbsp;</span><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:115%'><span style='font-size:10.0pt;
+line-height:115%;font-family:"Verdana","sans-serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+};<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+int <span class=GramE>main(</span>void)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{</span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span class=GramE>return</span> 0;</span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:115%'><span style='font-size:10.0pt;
+line-height:115%;font-family:"Verdana","sans-serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+} </span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:115%'><span style='font-size:10.0pt;
+line-height:115%;font-family:"Verdana","sans-serif"'>---------------------------------------------------------------------------------------------------------</span><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:4.5pt;line-height:115%'><b><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>Optimization
+options:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></b><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>
+“O1” and above.</span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:115%'><b><span style='font-size:10.0pt;
+line-height:115%;font-family:"Verdana","sans-serif"'>Targets observed
+on:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></b><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>ALL
+</span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:4.5pt;line-height:115%'><b><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>Observation:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></b><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>If
+above file is compiled with C++ compiler and with optimization enabled, the
+compiler optimizes away the const array. Though this array is not directly
+referenced (as may case of vector table), compiler removes it as unused
+variable. </span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:9.0pt;line-height:115%'><b><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>Workaround:</span></b><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>The
+C compiler behaves differently and doesn't optimize away the const array. Hence
+in the above-mentioned situation, the solution is to move const array in C file
+instead of C++ file.</span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<h2 style='margin-top:9.0pt;margin-right:0in;margin-bottom:0in;margin-left:
+0in;margin-bottom:.0001pt;text-align:justify'><a name="_Toc131311778"><span
+style='font-family:"Verdana","sans-serif";mso-fareast-font-family:"Times New Roman";
+font-style:normal'>3.2&nbsp;H8 Specific</span></a><span style='mso-bookmark:
+_Toc131311778'></span><span style='font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman";font-style:normal;mso-bidi-font-style:
+italic'><o:p></o:p></span></h2>
+
+<h3 style='margin-top:4.5pt;margin-right:0in;margin-bottom:4.5pt;margin-left:
+0in;text-align:justify;line-height:115%'><span style='font-size:12.0pt;
+line-height:115%;font-family:"Verdana","sans-serif";mso-fareast-font-family:
+"Times New Roman"'>3.2.1<span class=GramE>&nbsp; Un</span>-necessary Loop
+unrolling</span><span style='font-family:"Verdana","sans-serif";mso-fareast-font-family:
+"Times New Roman"'><o:p></o:p></span></h3>
+
+<p class=MsoNormal style='text-align:justify;line-height:115%'><b><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>Example
+Snippet:</span></b><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:115%'><span style='font-size:10.0pt;
+line-height:115%;font-family:"Verdana","sans-serif"'>-----------------------------------------------------</span><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:115%'><span style='font-size:10.0pt;
+line-height:115%;font-family:"Verdana","sans-serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span class=GramE>void</span> <span class=SpellE>theLoop</span>( void )</span><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:115%'><span style='font-size:10.0pt;
+line-height:115%;font-family:"Verdana","sans-serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{</span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-indent:.5in;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span class=GramE>unsigned</span> long <span class=SpellE>cnt</span> = 0L;</span><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-indent:.5in;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span class=GramE>do</span></span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-indent:.5in;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span class=SpellE><span class=GramE>cnt</span></span>++;</span><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-indent:.5in;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span class=GramE>while</span> (<span class=SpellE>cnt</span> &lt; 1000000L);</span><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:115%'><span style='font-size:10.0pt;
+line-height:115%;font-family:"Verdana","sans-serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+} </span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:115%'><span style='font-size:10.0pt;
+line-height:115%;font-family:"Verdana","sans-serif"'>-----------------------------------------------------</span><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:4.5pt;line-height:115%'><b><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>Optimization
+options:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; “O2” and above.</span></b><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:115%'><b><span style='font-size:10.0pt;
+line-height:115%;font-family:"Verdana","sans-serif"'>Targets observed
+on:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; H8300H, H8300HN, H8S,
+<span class=GramE>H8SN</span> </span></b><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:4.5pt;line-height:115%'><b><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>Observation:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></b><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>In
+generated output, loop is incremented by 50 or 25 or any random number instead
+of incrementing by one.&nbsp; </span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:4.5pt;line-height:115%'><b><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>Workaround
+1:</span></b><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>User
+need to pass either of an option “-<span class=SpellE>fno</span>-strength-reduce”
+or “-<span class=SpellE>fno</span>-loop-optimize” along with “-O2” to solve
+above-mentioned problem. </span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:4.5pt;line-height:115%'><b><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>Workaround
+2:</span></b><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>Please
+include following statement inside empty while/for loop.</span><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span class=SpellE><span class=GramE>asm</span></span><span class=GramE>(</span>&quot;<span
+class=SpellE>nop</span>&quot;);</span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<h2 style='margin-top:9.0pt;margin-right:0in;margin-bottom:0in;margin-left:
+0in;margin-bottom:.0001pt;text-align:justify;line-height:115%'><a
+name="_Toc131311779"><span style='font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman";font-style:normal'>3.3&nbsp;SH
+Specific</span></a><span style='font-family:"Verdana","sans-serif";mso-fareast-font-family:
+"Times New Roman";font-style:normal'><span style='mso-tab-count:1'>    </span></span><span
+style='font-family:"Verdana","sans-serif";mso-fareast-font-family:"Times New Roman";
+font-style:normal;mso-bidi-font-style:italic'><o:p></o:p></span></h2>
+
+<p class=MsoNormal style='line-height:115%'><span style='font-size:10.0pt;
+line-height:115%;font-family:"Verdana","sans-serif"'>Currently there are no
+such cases available for SH targets.</span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<h2 style='margin-top:9.0pt;margin-right:4.0in;margin-bottom:0in;margin-left:
+0in;margin-bottom:.0001pt;text-align:justify;line-height:115%'><a
+name="_Toc131311780"><span style='font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman";font-style:normal'>3.4&nbsp;M16CM32C
+Specific</span></a><span style='font-family:"Verdana","sans-serif";mso-fareast-font-family:
+"Times New Roman";font-style:normal'><o:p></o:p></span></h2>
+
+<p class=MsoNormal style='line-height:115%'><span style='font-size:10.0pt;
+line-height:115%;font-family:"Verdana","sans-serif"'>Currently there are no
+such cases available for M16C architecture series targets.<a
+name="_3.5_RX_Specific"></a><o:p></o:p></span></p>
+
+<h2 style='margin-top:9.0pt;margin-right:3.0in;margin-bottom:0in;margin-left:
+0in;margin-bottom:.0001pt;text-align:justify;line-height:115%'><a
+name="_3.5_RX_Specific_1"></a><span style='font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman";font-style:normal'>3.5 RX Specific<o:p></o:p></span></h2>
+
+<p class=MsoNormal style='line-height:115%'><span style='font-size:10.0pt;
+line-height:115%;font-family:"Verdana","sans-serif"'>Currently there are no
+such cases available for RX targets.</span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<h2 style='margin-top:9.0pt;margin-right:2.0in;margin-bottom:0in;margin-left:
+0in;margin-bottom:.0001pt;text-align:justify;line-height:115%'><a
+name="_3.6_RL78_Specific"></a><span style='font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman";font-style:normal'>3.6 RL78 Specific<o:p></o:p></span></h2>
+
+<p class=MsoNormal style='line-height:115%'><a name="_3.7_V850_Specific"></a><a
+name="_3.7_V850_Specific_1"></a><span style='font-size:10.0pt;line-height:115%;
+font-family:"Verdana","sans-serif"'>Currently there are no such cases available
+for RL78 targets.<o:p></o:p></span></p>
+
+<h2 style='margin-top:9.0pt;margin-right:1.0in;margin-bottom:0in;margin-left:
+0in;margin-bottom:.0001pt;text-align:justify;line-height:115%'><a
+name="_3.7_V850_Specific_2"></a><span style='font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman";font-style:normal'>3.7 V850 Specific<o:p></o:p></span></h2>
+
+<p class=MsoNormal style='line-height:115%'><span style='font-size:10.0pt;
+line-height:115%;font-family:"Verdana","sans-serif"'>Currently there are no
+such cases available for V850 targets.</span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:115%'><span style='font-family:"Verdana","sans-serif"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='line-height:115%'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:14.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>&nbsp;</span></b><a
+name="_Toc131311781"><b style='mso-bidi-font-weight:normal'><span
+style='font-size:14.0pt;line-height:115%;font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman"'>4.&nbsp;Optimization that user can
+do in application code itself</span></b></a><b style='mso-bidi-font-weight:
+normal'><span style='font-size:14.0pt;line-height:115%;font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></b></p>
+
+<div class=MsoNormal align=center style='text-align:center'><span
+style='font-family:"Verdana","sans-serif"'>
+
+<hr size=3 width="100%" noshade style='color:black' align=center>
+
+</span></div>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:10.0pt;
+font-family:"Verdana","sans-serif";color:black'>After applying optimization
+capabilities offered by the compiler, you may take your application a step
+further. However, this time by helping compiler by writing smart code. </span><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:10.0pt;font-family:"Verdana","sans-serif";
+color:black'>Here are some tips about how you can achieve this,</span><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<h2 style='margin-bottom:6.0pt;text-align:justify'><a name="_Toc131311782"><span
+style='font-size:13.0pt;font-family:"Verdana","sans-serif";mso-fareast-font-family:
+"Times New Roman";font-style:normal'>4.1&nbsp;Care to be taken in startup
+assembly file</span></a><span style='mso-bookmark:_Toc131311782'></span><span
+style='font-family:"Verdana","sans-serif";mso-fareast-font-family:"Times New Roman";
+font-style:normal;mso-bidi-font-style:italic'><o:p></o:p></span></h2>
+
+<p class=MsoNormal style='text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>Remove
+call to library routine “_exit” from startup assembly file or make it
+conditional so as to call only in debug mode. In release mode, use branch
+instruction for implementing unending loop. Macros DEBUG and Release are added
+in HEW debug and release modes. Call to “_exit” will be only in debug mode.
+This will save around 1K bytes in case of SH target.</span><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<h2 style='margin-bottom:6.0pt;text-align:justify'><a name="_Toc131311783"><span
+style='font-size:13.0pt;font-family:"Verdana","sans-serif";mso-fareast-font-family:
+"Times New Roman";font-style:normal'>4.2</span></a><span style='mso-bookmark:
+_Toc131311783'><span style='font-size:13.0pt;font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:"Times New Roman";
+font-style:normal'>&nbsp;</span></span><span style='mso-bookmark:_Toc131311783'><span
+style='font-size:13.0pt;font-family:"Verdana","sans-serif";mso-fareast-font-family:
+"Times New Roman";font-style:normal'>General Tips</span></span><span
+style='mso-bookmark:_Toc131311783'></span><span style='font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman";font-style:normal;mso-bidi-font-style:
+italic'><o:p></o:p></span></h2>
+
+<p class=MsoListParagraphCxSpFirst style='margin-top:6.0pt;margin-right:2.15pt;
+margin-bottom:6.0pt;margin-left:.75in;mso-add-space:auto;text-align:justify;
+text-indent:-.25in;line-height:115%;mso-list:l3 level1 lfo11;tab-stops:bar 994.5pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif";
+mso-fareast-font-family:Verdana;mso-bidi-font-family:Verdana'><span
+style='mso-list:Ignore'>a.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%;
+font-family:"Verdana","sans-serif";color:black'>If the function exits by
+returning the value of another function with the same parameters that were
+passed to your function, put the parameters in the same order in function
+prototypes. The compiler can then branch directly to the other function.</span><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:6.0pt;margin-right:2.15pt;
+margin-bottom:6.0pt;margin-left:.75in;mso-add-space:auto;text-align:justify;
+text-indent:-.25in;line-height:115%;mso-list:l3 level1 lfo11;tab-stops:bar 994.5pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif";
+mso-fareast-font-family:Verdana;mso-bidi-font-family:Verdana'><span
+style='mso-list:Ignore'>b.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%;
+font-family:"Verdana","sans-serif";color:black'>Do not declare virtual
+functions inline. When declaring functions, use the “const” for constant
+variables.</span><span style='font-size:10.0pt;line-height:115%;font-family:
+"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:6.0pt;margin-right:2.15pt;
+margin-bottom:6.0pt;margin-left:.75in;mso-add-space:auto;text-align:justify;
+text-indent:-.25in;line-height:115%;mso-list:l3 level1 lfo11;tab-stops:bar 994.5pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif";
+mso-fareast-font-family:Verdana;mso-bidi-font-family:Verdana'><span
+style='mso-list:Ignore'>c.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%;
+font-family:"Verdana","sans-serif";color:black'>Use full prototype for all
+functions in “C” code.</span><span style='font-size:10.0pt;line-height:115%;
+font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:6.0pt;margin-right:2.15pt;
+margin-bottom:6.0pt;margin-left:.75in;mso-add-space:auto;text-align:justify;
+text-indent:-.25in;line-height:115%;mso-list:l3 level1 lfo11;tab-stops:bar 994.5pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif";
+mso-fareast-font-family:Verdana;mso-bidi-font-family:Verdana'><span
+style='mso-list:Ignore'>d.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%;
+font-family:"Verdana","sans-serif";color:black'>Use the built-in functions,
+instead of coding your own. In C program, functions are mapped to built-in
+functions, if you include “<span class=SpellE>math.h</span>” and “<span
+class=SpellE>string.h</span>”.</span><span style='font-size:10.0pt;line-height:
+115%;font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:6.0pt;margin-right:2.15pt;
+margin-bottom:6.0pt;margin-left:.75in;mso-add-space:auto;text-align:justify;
+text-indent:-.25in;line-height:115%;mso-list:l3 level1 lfo11;tab-stops:bar 994.5pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif";
+mso-fareast-font-family:Verdana;mso-bidi-font-family:Verdana'><span
+style='mso-list:Ignore'>e.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%;
+font-family:"Verdana","sans-serif";color:black'>Whenever possible, minimize
+breaking application source into too many small functions.</span><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:6.0pt;margin-right:2.15pt;
+margin-bottom:6.0pt;margin-left:.75in;mso-add-space:auto;text-align:justify;
+text-indent:-.25in;line-height:115%;mso-list:l3 level1 lfo11;tab-stops:bar 994.5pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif";
+mso-fareast-font-family:Verdana;mso-bidi-font-family:Verdana'><span
+style='mso-list:Ignore'>f.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%;
+font-family:"Verdana","sans-serif";color:black'>Virtual functions and virtual
+inheritance to be used only when necessary, as these features are costly in
+object space and <span class=GramE>function</span> invocation performance.</span><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:6.0pt;margin-right:2.15pt;
+margin-bottom:6.0pt;margin-left:.75in;mso-add-space:auto;text-align:justify;
+text-indent:-.25in;line-height:115%;mso-list:l3 level1 lfo11;tab-stops:bar 994.5pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif";
+mso-fareast-font-family:Verdana;mso-bidi-font-family:Verdana'><span
+style='mso-list:Ignore'>g.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%;
+font-family:"Verdana","sans-serif";color:black'>While declaring a structure,
+put the variables in descending order i.e. declare the largest size member
+first.</span><span style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:6.0pt;margin-right:2.15pt;
+margin-bottom:6.0pt;margin-left:.75in;mso-add-space:auto;text-align:justify;
+text-indent:-.25in;line-height:115%;mso-list:l3 level1 lfo11;tab-stops:bar 994.5pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif";
+mso-fareast-font-family:Verdana;mso-bidi-font-family:Verdana'><span
+style='mso-list:Ignore'>h.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%;
+font-family:"Verdana","sans-serif";color:black'>Also, its good idea to put
+members in a structure near each other, if their usage is mostly together.</span><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:6.0pt;margin-right:2.15pt;
+margin-bottom:6.0pt;margin-left:.75in;mso-add-space:auto;text-align:justify;
+text-indent:-.25in;line-height:115%;mso-list:l3 level1 lfo11;tab-stops:bar 994.5pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif";
+mso-fareast-font-family:Verdana;mso-bidi-font-family:Verdana'><span
+style='mso-list:Ignore'>i.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%;
+font-family:"Verdana","sans-serif";color:black'>Reduce usage of global
+variables, static variables and volatile, whenever possible.</span><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:6.0pt;margin-right:2.15pt;
+margin-bottom:6.0pt;margin-left:.75in;mso-add-space:auto;text-align:justify;
+text-indent:-.25in;line-height:115%;mso-list:l3 level1 lfo11;tab-stops:bar 994.5pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif";
+mso-fareast-font-family:Verdana;mso-bidi-font-family:Verdana'><span
+style='mso-list:Ignore'>j.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%;
+font-family:"Verdana","sans-serif";color:black'>Whenever possible, use
+constants instead of variables.</span><span style='font-size:10.0pt;line-height:
+115%;font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:6.0pt;margin-right:2.15pt;
+margin-bottom:6.0pt;margin-left:.75in;mso-add-space:auto;text-align:justify;
+text-indent:-.25in;line-height:115%;mso-list:l3 level1 lfo11;tab-stops:bar 994.5pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif";
+mso-fareast-font-family:Verdana;mso-bidi-font-family:Verdana'><span
+style='mso-list:Ignore'>k.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%;
+font-family:"Verdana","sans-serif"'>Avoid taking the address of a variable.
+Taking the address of a variable inhibits optimizations that would otherwise be
+done on calculations involving that variable.<o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpMiddle style='margin-top:6.0pt;margin-right:2.15pt;
+margin-bottom:6.0pt;margin-left:.75in;mso-add-space:auto;text-align:justify;
+text-indent:-.25in;line-height:115%;mso-list:l3 level1 lfo11;tab-stops:bar 994.5pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif";
+mso-fareast-font-family:Verdana;mso-bidi-font-family:Verdana'><span
+style='mso-list:Ignore'>l.<span style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><![endif]><span style='font-size:10.0pt;line-height:115%;
+font-family:"Verdana","sans-serif";color:black'>Whenever possible, avoid
+forcing the compiler to convert numbers between two <span class=SpellE>datatypes</span>.</span><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoListParagraphCxSpLast style='margin-top:6.0pt;margin-right:2.15pt;
+margin-bottom:6.0pt;margin-left:.75in;mso-add-space:auto;text-align:justify;
+text-indent:-.25in;line-height:115%;mso-list:l3 level1 lfo11;tab-stops:bar 994.5pt'><![if !supportLists]><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif";
+mso-fareast-font-family:Verdana;mso-bidi-font-family:Verdana'><span
+style='mso-list:Ignore'>m.<span style='font:7.0pt "Times New Roman"'>&nbsp; </span></span></span><![endif]><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif";
+color:black'>Avoid the use of go-to statements.</span><span style='font-size:
+10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;margin-right:0in;margin-bottom:6.0pt;
+margin-left:.5in;text-align:justify;text-indent:-.5in'><span style='font-family:
+"Verdana","sans-serif"'>&nbsp;<a name="_Toc131311784"><o:p></o:p></a></span></p>
+
+<p class=MsoNormal style='margin-top:6.0pt;margin-right:0in;margin-bottom:6.0pt;
+margin-left:.5in;text-align:justify;text-indent:-.5in;line-height:115%'><span
+style='mso-bookmark:_Toc131311784'><b style='mso-bidi-font-weight:normal'><span
+style='font-size:14.0pt;line-height:115%;font-family:"Verdana","sans-serif";
+mso-fareast-font-family:"Times New Roman"'>5.&nbsp;Summary</span></b></span><b
+style='mso-bidi-font-weight:normal'><span style='font-size:14.0pt;line-height:
+115%;font-family:"Verdana","sans-serif";mso-fareast-font-family:"Times New Roman"'><o:p></o:p></span></b></p>
+
+<div class=MsoNormal align=center style='text-align:center;line-height:115%'><span
+style='font-family:"Verdana","sans-serif"'>
+
+<hr size=3 width="100%" noshade style='color:black' align=center>
+
+</span></div>
+
+<p class=MsoNormal style='margin-top:6.0pt;margin-right:0in;margin-bottom:3.0pt;
+margin-left:0in;text-align:justify;line-height:115%'><span style='font-size:
+10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>To summarize, user
+can use following set of options (command line) to achieve,</span><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:6.75pt;margin-right:0in;margin-bottom:
+4.5pt;margin-left:0in;text-align:justify;line-height:115%'><span class=GramE><b><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>a</span></b></span><b><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>.&nbsp;maximum
+code size optimization</span></b><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>--------------------------------------------------------------------------------------------------------</span><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-Os&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-<span class=SpellE>fno</span>-function-<span class=SpellE>cse</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -<span
+class=SpellE>funit</span>-at-a-time &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -<span
+class=SpellE>falign</span>-jumps&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-<span class=GramE>fdata-</span>sections&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-<span class=SpellE>ffunction</span>-sections&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+–<span class=SpellE>Wl</span>,--<span class=SpellE>gc</span>-sections
+&nbsp;&nbsp;&nbsp; </span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+AND &nbsp;&nbsp; &lt; target specific options &gt; </span><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:115%'><span style='font-size:10.0pt;
+line-height:115%;font-family:"Verdana","sans-serif"'>--------------------------------------------------------------------------------------------------------</span><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:9.0pt;margin-right:0in;margin-bottom:4.5pt;
+margin-left:0in;line-height:115%'><span class=GramE><b><span style='font-size:
+10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>b</span></b></span><b><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>.&nbsp;maximum
+code speed optimization</span></b><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>--------------------------------------------------------------------------------------------------------</span><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-O3&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-<span class=SpellE>fno</span>-function-<span class=SpellE>cse</span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -<span
+class=SpellE>funit</span>-at-a-time &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -<span
+class=SpellE>funroll</span>-loops&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+-<span class=SpellE><span class=GramE>fno-</span>gcse</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+AND &nbsp;&nbsp; &lt; target specific options &gt; </span><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='line-height:115%'><span style='font-size:10.0pt;
+line-height:115%;font-family:"Verdana","sans-serif"'>--------------------------------------------------------------------------------------------------------</span><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-top:9.0pt;margin-right:0in;margin-bottom:6.0pt;
+margin-left:0in;line-height:115%'><b><span style='font-size:10.0pt;line-height:
+115%;font-family:"Verdana","sans-serif"'>c.&nbsp;Code Size as well as Code
+Speed Optimization</span></b><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>As
+explained above, “Os” can be used for code size optimization and “O3” for code
+speed optimization. </span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>However,
+<b>“average”</b> of both the optimization can be achieved by using optimization
+option <b>“O2”</b>.&nbsp;</span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>This
+option helps to get minimum code size while maintaining better code speed.</span><span
+style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify;line-height:115%'><span
+style='font-size:10.0pt;line-height:115%;font-family:"Verdana","sans-serif"'>Therefore,
+it is recommended to use option “O2” to get optimum results for compromised
+effect&nbsp;of “Os” and “O3”.</span><span style='font-family:"Verdana","sans-serif"'><o:p></o:p></span></p>
+
+</blockquote>
+
+</blockquote>
+
+</div>
+
+</body>
+
+</html>

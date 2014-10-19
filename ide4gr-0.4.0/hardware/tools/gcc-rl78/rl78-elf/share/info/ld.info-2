@@ -1,0 +1,1319 @@
+This is ld.info, produced by makeinfo version 4.8 from
+/home/kpit/fsfsrc/elf-v13.01-src-rl78/binutils-2.23-20121219/ld/ld.texinfo.
+
+INFO-DIR-SECTION Software development
+START-INFO-DIR-ENTRY
+* Ld: (ld).                       The GNU linker.
+END-INFO-DIR-ENTRY
+
+   This file documents the GNU linker LD (GNU Binutils) version 2.23.51.
+
+   Copyright (C) 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
+2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2012 Free
+Software Foundation, Inc.
+
+   Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.3 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with no Front-Cover Texts, and with no Back-Cover
+Texts.  A copy of the license is included in the section entitled "GNU
+Free Documentation License".
+
+
+File: ld.info,  Node: GNU Free Documentation License,  Next: LD Index,  Prev: MRI,  Up: Top
+
+Appendix B GNU Free Documentation License
+*****************************************
+
+                     Version 1.3, 3 November 2008
+
+     Copyright (C) 2000, 2001, 2002, 2007, 2008 Free Software Foundation, Inc.
+     `http://fsf.org/'
+
+     Everyone is permitted to copy and distribute verbatim copies
+     of this license document, but changing it is not allowed.
+
+  0. PREAMBLE
+
+     The purpose of this License is to make a manual, textbook, or other
+     functional and useful document "free" in the sense of freedom: to
+     assure everyone the effective freedom to copy and redistribute it,
+     with or without modifying it, either commercially or
+     noncommercially.  Secondarily, this License preserves for the
+     author and publisher a way to get credit for their work, while not
+     being considered responsible for modifications made by others.
+
+     This License is a kind of "copyleft", which means that derivative
+     works of the document must themselves be free in the same sense.
+     It complements the GNU General Public License, which is a copyleft
+     license designed for free software.
+
+     We have designed this License in order to use it for manuals for
+     free software, because free software needs free documentation: a
+     free program should come with manuals providing the same freedoms
+     that the software does.  But this License is not limited to
+     software manuals; it can be used for any textual work, regardless
+     of subject matter or whether it is published as a printed book.
+     We recommend this License principally for works whose purpose is
+     instruction or reference.
+
+  1. APPLICABILITY AND DEFINITIONS
+
+     This License applies to any manual or other work, in any medium,
+     that contains a notice placed by the copyright holder saying it
+     can be distributed under the terms of this License.  Such a notice
+     grants a world-wide, royalty-free license, unlimited in duration,
+     to use that work under the conditions stated herein.  The
+     "Document", below, refers to any such manual or work.  Any member
+     of the public is a licensee, and is addressed as "you".  You
+     accept the license if you copy, modify or distribute the work in a
+     way requiring permission under copyright law.
+
+     A "Modified Version" of the Document means any work containing the
+     Document or a portion of it, either copied verbatim, or with
+     modifications and/or translated into another language.
+
+     A "Secondary Section" is a named appendix or a front-matter section
+     of the Document that deals exclusively with the relationship of the
+     publishers or authors of the Document to the Document's overall
+     subject (or to related matters) and contains nothing that could
+     fall directly within that overall subject.  (Thus, if the Document
+     is in part a textbook of mathematics, a Secondary Section may not
+     explain any mathematics.)  The relationship could be a matter of
+     historical connection with the subject or with related matters, or
+     of legal, commercial, philosophical, ethical or political position
+     regarding them.
+
+     The "Invariant Sections" are certain Secondary Sections whose
+     titles are designated, as being those of Invariant Sections, in
+     the notice that says that the Document is released under this
+     License.  If a section does not fit the above definition of
+     Secondary then it is not allowed to be designated as Invariant.
+     The Document may contain zero Invariant Sections.  If the Document
+     does not identify any Invariant Sections then there are none.
+
+     The "Cover Texts" are certain short passages of text that are
+     listed, as Front-Cover Texts or Back-Cover Texts, in the notice
+     that says that the Document is released under this License.  A
+     Front-Cover Text may be at most 5 words, and a Back-Cover Text may
+     be at most 25 words.
+
+     A "Transparent" copy of the Document means a machine-readable copy,
+     represented in a format whose specification is available to the
+     general public, that is suitable for revising the document
+     straightforwardly with generic text editors or (for images
+     composed of pixels) generic paint programs or (for drawings) some
+     widely available drawing editor, and that is suitable for input to
+     text formatters or for automatic translation to a variety of
+     formats suitable for input to text formatters.  A copy made in an
+     otherwise Transparent file format whose markup, or absence of
+     markup, has been arranged to thwart or discourage subsequent
+     modification by readers is not Transparent.  An image format is
+     not Transparent if used for any substantial amount of text.  A
+     copy that is not "Transparent" is called "Opaque".
+
+     Examples of suitable formats for Transparent copies include plain
+     ASCII without markup, Texinfo input format, LaTeX input format,
+     SGML or XML using a publicly available DTD, and
+     standard-conforming simple HTML, PostScript or PDF designed for
+     human modification.  Examples of transparent image formats include
+     PNG, XCF and JPG.  Opaque formats include proprietary formats that
+     can be read and edited only by proprietary word processors, SGML or
+     XML for which the DTD and/or processing tools are not generally
+     available, and the machine-generated HTML, PostScript or PDF
+     produced by some word processors for output purposes only.
+
+     The "Title Page" means, for a printed book, the title page itself,
+     plus such following pages as are needed to hold, legibly, the
+     material this License requires to appear in the title page.  For
+     works in formats which do not have any title page as such, "Title
+     Page" means the text near the most prominent appearance of the
+     work's title, preceding the beginning of the body of the text.
+
+     The "publisher" means any person or entity that distributes copies
+     of the Document to the public.
+
+     A section "Entitled XYZ" means a named subunit of the Document
+     whose title either is precisely XYZ or contains XYZ in parentheses
+     following text that translates XYZ in another language.  (Here XYZ
+     stands for a specific section name mentioned below, such as
+     "Acknowledgements", "Dedications", "Endorsements", or "History".)
+     To "Preserve the Title" of such a section when you modify the
+     Document means that it remains a section "Entitled XYZ" according
+     to this definition.
+
+     The Document may include Warranty Disclaimers next to the notice
+     which states that this License applies to the Document.  These
+     Warranty Disclaimers are considered to be included by reference in
+     this License, but only as regards disclaiming warranties: any other
+     implication that these Warranty Disclaimers may have is void and
+     has no effect on the meaning of this License.
+
+  2. VERBATIM COPYING
+
+     You may copy and distribute the Document in any medium, either
+     commercially or noncommercially, provided that this License, the
+     copyright notices, and the license notice saying this License
+     applies to the Document are reproduced in all copies, and that you
+     add no other conditions whatsoever to those of this License.  You
+     may not use technical measures to obstruct or control the reading
+     or further copying of the copies you make or distribute.  However,
+     you may accept compensation in exchange for copies.  If you
+     distribute a large enough number of copies you must also follow
+     the conditions in section 3.
+
+     You may also lend copies, under the same conditions stated above,
+     and you may publicly display copies.
+
+  3. COPYING IN QUANTITY
+
+     If you publish printed copies (or copies in media that commonly
+     have printed covers) of the Document, numbering more than 100, and
+     the Document's license notice requires Cover Texts, you must
+     enclose the copies in covers that carry, clearly and legibly, all
+     these Cover Texts: Front-Cover Texts on the front cover, and
+     Back-Cover Texts on the back cover.  Both covers must also clearly
+     and legibly identify you as the publisher of these copies.  The
+     front cover must present the full title with all words of the
+     title equally prominent and visible.  You may add other material
+     on the covers in addition.  Copying with changes limited to the
+     covers, as long as they preserve the title of the Document and
+     satisfy these conditions, can be treated as verbatim copying in
+     other respects.
+
+     If the required texts for either cover are too voluminous to fit
+     legibly, you should put the first ones listed (as many as fit
+     reasonably) on the actual cover, and continue the rest onto
+     adjacent pages.
+
+     If you publish or distribute Opaque copies of the Document
+     numbering more than 100, you must either include a
+     machine-readable Transparent copy along with each Opaque copy, or
+     state in or with each Opaque copy a computer-network location from
+     which the general network-using public has access to download
+     using public-standard network protocols a complete Transparent
+     copy of the Document, free of added material.  If you use the
+     latter option, you must take reasonably prudent steps, when you
+     begin distribution of Opaque copies in quantity, to ensure that
+     this Transparent copy will remain thus accessible at the stated
+     location until at least one year after the last time you
+     distribute an Opaque copy (directly or through your agents or
+     retailers) of that edition to the public.
+
+     It is requested, but not required, that you contact the authors of
+     the Document well before redistributing any large number of
+     copies, to give them a chance to provide you with an updated
+     version of the Document.
+
+  4. MODIFICATIONS
+
+     You may copy and distribute a Modified Version of the Document
+     under the conditions of sections 2 and 3 above, provided that you
+     release the Modified Version under precisely this License, with
+     the Modified Version filling the role of the Document, thus
+     licensing distribution and modification of the Modified Version to
+     whoever possesses a copy of it.  In addition, you must do these
+     things in the Modified Version:
+
+       A. Use in the Title Page (and on the covers, if any) a title
+          distinct from that of the Document, and from those of
+          previous versions (which should, if there were any, be listed
+          in the History section of the Document).  You may use the
+          same title as a previous version if the original publisher of
+          that version gives permission.
+
+       B. List on the Title Page, as authors, one or more persons or
+          entities responsible for authorship of the modifications in
+          the Modified Version, together with at least five of the
+          principal authors of the Document (all of its principal
+          authors, if it has fewer than five), unless they release you
+          from this requirement.
+
+       C. State on the Title page the name of the publisher of the
+          Modified Version, as the publisher.
+
+       D. Preserve all the copyright notices of the Document.
+
+       E. Add an appropriate copyright notice for your modifications
+          adjacent to the other copyright notices.
+
+       F. Include, immediately after the copyright notices, a license
+          notice giving the public permission to use the Modified
+          Version under the terms of this License, in the form shown in
+          the Addendum below.
+
+       G. Preserve in that license notice the full lists of Invariant
+          Sections and required Cover Texts given in the Document's
+          license notice.
+
+       H. Include an unaltered copy of this License.
+
+       I. Preserve the section Entitled "History", Preserve its Title,
+          and add to it an item stating at least the title, year, new
+          authors, and publisher of the Modified Version as given on
+          the Title Page.  If there is no section Entitled "History" in
+          the Document, create one stating the title, year, authors,
+          and publisher of the Document as given on its Title Page,
+          then add an item describing the Modified Version as stated in
+          the previous sentence.
+
+       J. Preserve the network location, if any, given in the Document
+          for public access to a Transparent copy of the Document, and
+          likewise the network locations given in the Document for
+          previous versions it was based on.  These may be placed in
+          the "History" section.  You may omit a network location for a
+          work that was published at least four years before the
+          Document itself, or if the original publisher of the version
+          it refers to gives permission.
+
+       K. For any section Entitled "Acknowledgements" or "Dedications",
+          Preserve the Title of the section, and preserve in the
+          section all the substance and tone of each of the contributor
+          acknowledgements and/or dedications given therein.
+
+       L. Preserve all the Invariant Sections of the Document,
+          unaltered in their text and in their titles.  Section numbers
+          or the equivalent are not considered part of the section
+          titles.
+
+       M. Delete any section Entitled "Endorsements".  Such a section
+          may not be included in the Modified Version.
+
+       N. Do not retitle any existing section to be Entitled
+          "Endorsements" or to conflict in title with any Invariant
+          Section.
+
+       O. Preserve any Warranty Disclaimers.
+
+     If the Modified Version includes new front-matter sections or
+     appendices that qualify as Secondary Sections and contain no
+     material copied from the Document, you may at your option
+     designate some or all of these sections as invariant.  To do this,
+     add their titles to the list of Invariant Sections in the Modified
+     Version's license notice.  These titles must be distinct from any
+     other section titles.
+
+     You may add a section Entitled "Endorsements", provided it contains
+     nothing but endorsements of your Modified Version by various
+     parties--for example, statements of peer review or that the text
+     has been approved by an organization as the authoritative
+     definition of a standard.
+
+     You may add a passage of up to five words as a Front-Cover Text,
+     and a passage of up to 25 words as a Back-Cover Text, to the end
+     of the list of Cover Texts in the Modified Version.  Only one
+     passage of Front-Cover Text and one of Back-Cover Text may be
+     added by (or through arrangements made by) any one entity.  If the
+     Document already includes a cover text for the same cover,
+     previously added by you or by arrangement made by the same entity
+     you are acting on behalf of, you may not add another; but you may
+     replace the old one, on explicit permission from the previous
+     publisher that added the old one.
+
+     The author(s) and publisher(s) of the Document do not by this
+     License give permission to use their names for publicity for or to
+     assert or imply endorsement of any Modified Version.
+
+  5. COMBINING DOCUMENTS
+
+     You may combine the Document with other documents released under
+     this License, under the terms defined in section 4 above for
+     modified versions, provided that you include in the combination
+     all of the Invariant Sections of all of the original documents,
+     unmodified, and list them all as Invariant Sections of your
+     combined work in its license notice, and that you preserve all
+     their Warranty Disclaimers.
+
+     The combined work need only contain one copy of this License, and
+     multiple identical Invariant Sections may be replaced with a single
+     copy.  If there are multiple Invariant Sections with the same name
+     but different contents, make the title of each such section unique
+     by adding at the end of it, in parentheses, the name of the
+     original author or publisher of that section if known, or else a
+     unique number.  Make the same adjustment to the section titles in
+     the list of Invariant Sections in the license notice of the
+     combined work.
+
+     In the combination, you must combine any sections Entitled
+     "History" in the various original documents, forming one section
+     Entitled "History"; likewise combine any sections Entitled
+     "Acknowledgements", and any sections Entitled "Dedications".  You
+     must delete all sections Entitled "Endorsements."
+
+  6. COLLECTIONS OF DOCUMENTS
+
+     You may make a collection consisting of the Document and other
+     documents released under this License, and replace the individual
+     copies of this License in the various documents with a single copy
+     that is included in the collection, provided that you follow the
+     rules of this License for verbatim copying of each of the
+     documents in all other respects.
+
+     You may extract a single document from such a collection, and
+     distribute it individually under this License, provided you insert
+     a copy of this License into the extracted document, and follow
+     this License in all other respects regarding verbatim copying of
+     that document.
+
+  7. AGGREGATION WITH INDEPENDENT WORKS
+
+     A compilation of the Document or its derivatives with other
+     separate and independent documents or works, in or on a volume of
+     a storage or distribution medium, is called an "aggregate" if the
+     copyright resulting from the compilation is not used to limit the
+     legal rights of the compilation's users beyond what the individual
+     works permit.  When the Document is included in an aggregate, this
+     License does not apply to the other works in the aggregate which
+     are not themselves derivative works of the Document.
+
+     If the Cover Text requirement of section 3 is applicable to these
+     copies of the Document, then if the Document is less than one half
+     of the entire aggregate, the Document's Cover Texts may be placed
+     on covers that bracket the Document within the aggregate, or the
+     electronic equivalent of covers if the Document is in electronic
+     form.  Otherwise they must appear on printed covers that bracket
+     the whole aggregate.
+
+  8. TRANSLATION
+
+     Translation is considered a kind of modification, so you may
+     distribute translations of the Document under the terms of section
+     4.  Replacing Invariant Sections with translations requires special
+     permission from their copyright holders, but you may include
+     translations of some or all Invariant Sections in addition to the
+     original versions of these Invariant Sections.  You may include a
+     translation of this License, and all the license notices in the
+     Document, and any Warranty Disclaimers, provided that you also
+     include the original English version of this License and the
+     original versions of those notices and disclaimers.  In case of a
+     disagreement between the translation and the original version of
+     this License or a notice or disclaimer, the original version will
+     prevail.
+
+     If a section in the Document is Entitled "Acknowledgements",
+     "Dedications", or "History", the requirement (section 4) to
+     Preserve its Title (section 1) will typically require changing the
+     actual title.
+
+  9. TERMINATION
+
+     You may not copy, modify, sublicense, or distribute the Document
+     except as expressly provided under this License.  Any attempt
+     otherwise to copy, modify, sublicense, or distribute it is void,
+     and will automatically terminate your rights under this License.
+
+     However, if you cease all violation of this License, then your
+     license from a particular copyright holder is reinstated (a)
+     provisionally, unless and until the copyright holder explicitly
+     and finally terminates your license, and (b) permanently, if the
+     copyright holder fails to notify you of the violation by some
+     reasonable means prior to 60 days after the cessation.
+
+     Moreover, your license from a particular copyright holder is
+     reinstated permanently if the copyright holder notifies you of the
+     violation by some reasonable means, this is the first time you have
+     received notice of violation of this License (for any work) from
+     that copyright holder, and you cure the violation prior to 30 days
+     after your receipt of the notice.
+
+     Termination of your rights under this section does not terminate
+     the licenses of parties who have received copies or rights from
+     you under this License.  If your rights have been terminated and
+     not permanently reinstated, receipt of a copy of some or all of
+     the same material does not give you any rights to use it.
+
+ 10. FUTURE REVISIONS OF THIS LICENSE
+
+     The Free Software Foundation may publish new, revised versions of
+     the GNU Free Documentation License from time to time.  Such new
+     versions will be similar in spirit to the present version, but may
+     differ in detail to address new problems or concerns.  See
+     `http://www.gnu.org/copyleft/'.
+
+     Each version of the License is given a distinguishing version
+     number.  If the Document specifies that a particular numbered
+     version of this License "or any later version" applies to it, you
+     have the option of following the terms and conditions either of
+     that specified version or of any later version that has been
+     published (not as a draft) by the Free Software Foundation.  If
+     the Document does not specify a version number of this License,
+     you may choose any version ever published (not as a draft) by the
+     Free Software Foundation.  If the Document specifies that a proxy
+     can decide which future versions of this License can be used, that
+     proxy's public statement of acceptance of a version permanently
+     authorizes you to choose that version for the Document.
+
+ 11. RELICENSING
+
+     "Massive Multiauthor Collaboration Site" (or "MMC Site") means any
+     World Wide Web server that publishes copyrightable works and also
+     provides prominent facilities for anybody to edit those works.  A
+     public wiki that anybody can edit is an example of such a server.
+     A "Massive Multiauthor Collaboration" (or "MMC") contained in the
+     site means any set of copyrightable works thus published on the MMC
+     site.
+
+     "CC-BY-SA" means the Creative Commons Attribution-Share Alike 3.0
+     license published by Creative Commons Corporation, a not-for-profit
+     corporation with a principal place of business in San Francisco,
+     California, as well as future copyleft versions of that license
+     published by that same organization.
+
+     "Incorporate" means to publish or republish a Document, in whole or
+     in part, as part of another Document.
+
+     An MMC is "eligible for relicensing" if it is licensed under this
+     License, and if all works that were first published under this
+     License somewhere other than this MMC, and subsequently
+     incorporated in whole or in part into the MMC, (1) had no cover
+     texts or invariant sections, and (2) were thus incorporated prior
+     to November 1, 2008.
+
+     The operator of an MMC Site may republish an MMC contained in the
+     site under CC-BY-SA on the same site at any time before August 1,
+     2009, provided the MMC is eligible for relicensing.
+
+
+ADDENDUM: How to use this License for your documents
+====================================================
+
+To use this License in a document you have written, include a copy of
+the License in the document and put the following copyright and license
+notices just after the title page:
+
+       Copyright (C)  YEAR  YOUR NAME.
+       Permission is granted to copy, distribute and/or modify this document
+       under the terms of the GNU Free Documentation License, Version 1.3
+       or any later version published by the Free Software Foundation;
+       with no Invariant Sections, no Front-Cover Texts, and no Back-Cover
+       Texts.  A copy of the license is included in the section entitled ``GNU
+       Free Documentation License''.
+
+   If you have Invariant Sections, Front-Cover Texts and Back-Cover
+Texts, replace the "with...Texts." line with this:
+
+         with the Invariant Sections being LIST THEIR TITLES, with
+         the Front-Cover Texts being LIST, and with the Back-Cover Texts
+         being LIST.
+
+   If you have Invariant Sections without Cover Texts, or some other
+combination of the three, merge those two alternatives to suit the
+situation.
+
+   If your document contains nontrivial examples of program code, we
+recommend releasing these examples in parallel under your choice of
+free software license, such as the GNU General Public License, to
+permit their use in free software.
+
+
+File: ld.info,  Node: LD Index,  Prev: GNU Free Documentation License,  Up: Top
+
+LD Index
+********
+
+ [index ]
+* Menu:
+
+* ":                                     Symbols.            (line    6)
+* -(:                                    Options.            (line  706)
+* --accept-unknown-input-arch:           Options.            (line  724)
+* --add-needed:                          Options.            (line  748)
+* --add-stdcall-alias:                   Options.            (line 1597)
+* --allow-multiple-definition:           Options.            (line 1003)
+* --allow-shlib-undefined:               Options.            (line 1009)
+* --architecture=ARCH:                   Options.            (line  123)
+* --as-needed:                           Options.            (line  734)
+* --audit AUDITLIB:                      Options.            (line  112)
+* --auxiliary=NAME:                      Options.            (line  255)
+* --bank-window:                         Options.            (line 2029)
+* --base-file:                           Options.            (line 1602)
+* --be8:                                 ARM.                (line   28)
+* --bss-plt:                             PowerPC ELF32.      (line   16)
+* --build-id:                            Options.            (line 1559)
+* --build-id=STYLE:                      Options.            (line 1559)
+* --check-sections:                      Options.            (line  827)
+* --copy-dt-needed-entries:              Options.            (line  839)
+* --cref:                                Options.            (line  859)
+* --default-imported-symver:             Options.            (line 1046)
+* --default-script=SCRIPT:               Options.            (line  541)
+* --default-symver:                      Options.            (line 1042)
+* --defsym=SYMBOL=EXP:                   Options.            (line  887)
+* --demangle[=STYLE]:                    Options.            (line  900)
+* --depaudit AUDITLIB:                   Options.            (line  177)
+* --disable-auto-image-base:             Options.            (line 1781)
+* --disable-auto-import:                 Options.            (line 1916)
+* --disable-long-section-names:          Options.            (line 1612)
+* --disable-new-dtags:                   Options.            (line 1522)
+* --disable-runtime-pseudo-reloc:        Options.            (line 1929)
+* --disable-stdcall-fixup:               Options.            (line 1634)
+* --discard-all:                         Options.            (line  587)
+* --discard-locals:                      Options.            (line  591)
+* --dll:                                 Options.            (line 1607)
+* --dll-search-prefix:                   Options.            (line 1787)
+* --dotsyms:                             PowerPC64 ELF64.    (line   33)
+* --dsbt-index:                          Options.            (line 2006)
+* --dsbt-size:                           Options.            (line 2001)
+* --dynamic-linker=FILE:                 Options.            (line  913)
+* --dynamic-list-cpp-new:                Options.            (line  819)
+* --dynamic-list-cpp-typeinfo:           Options.            (line  823)
+* --dynamic-list-data:                   Options.            (line  816)
+* --dynamic-list=DYNAMIC-LIST-FILE:      Options.            (line  803)
+* --dynamicbase:                         Options.            (line 1965)
+* --eh-frame-hdr:                        Options.            (line 1513)
+* --emit-relocs:                         Options.            (line  476)
+* --emit-stack-syms:                     SPU ELF.            (line   46)
+* --emit-stub-syms <1>:                  SPU ELF.            (line   15)
+* --emit-stub-syms <2>:                  PowerPC64 ELF64.    (line   29)
+* --emit-stub-syms:                      PowerPC ELF32.      (line   47)
+* --enable-auto-image-base:              Options.            (line 1773)
+* --enable-auto-import:                  Options.            (line 1796)
+* --enable-extra-pe-debug:               Options.            (line 1934)
+* --enable-long-section-names:           Options.            (line 1612)
+* --enable-new-dtags:                    Options.            (line 1522)
+* --enable-runtime-pseudo-reloc:         Options.            (line 1921)
+* --enable-stdcall-fixup:                Options.            (line 1634)
+* --entry=ENTRY:                         Options.            (line  187)
+* --error-unresolved-symbols:            Options.            (line 1466)
+* --errors-to-file=FILE:                 Options.            (line  920)
+* --exclude-all-symbols:                 Options.            (line 1688)
+* --exclude-libs:                        Options.            (line  197)
+* --exclude-modules-for-implib:          Options.            (line  208)
+* --exclude-symbols:                     Options.            (line 1682)
+* --export-all-symbols:                  Options.            (line 1658)
+* --export-dynamic:                      Options.            (line  221)
+* --extra-overlay-stubs:                 SPU ELF.            (line   19)
+* --fatal-warnings:                      Options.            (line  924)
+* --file-alignment:                      Options.            (line 1692)
+* --filter=NAME:                         Options.            (line  276)
+* --fix-arm1176:                         ARM.                (line  111)
+* --fix-cortex-a8:                       i960.               (line   39)
+* --fix-v4bx:                            ARM.                (line   49)
+* --fix-v4bx-interworking:               ARM.                (line   62)
+* --force-dynamic:                       Options.            (line  485)
+* --force-exe-suffix:                    Options.            (line  929)
+* --forceinteg:                          Options.            (line 1970)
+* --format=FORMAT:                       Options.            (line  134)
+* --format=VERSION:                      TI COFF.            (line    6)
+* --gc-sections:                         Options.            (line  939)
+* --got:                                 Options.            (line 2042)
+* --got=TYPE:                            M68K.               (line    6)
+* --gpsize=VALUE:                        Options.            (line  309)
+* --hash-size=NUMBER:                    Options.            (line 1531)
+* --hash-style=STYLE:                    Options.            (line 1539)
+* --heap:                                Options.            (line 1698)
+* --help:                                Options.            (line  976)
+* --image-base:                          Options.            (line 1705)
+* --just-symbols=FILE:                   Options.            (line  508)
+* --kill-at:                             Options.            (line 1714)
+* --large-address-aware:                 Options.            (line 1719)
+* --ld-generated-unwind-info:            Options.            (line 1517)
+* --leading-underscore:                  Options.            (line 1652)
+* --library-path=DIR:                    Options.            (line  368)
+* --library=NAMESPEC:                    Options.            (line  335)
+* --local-store=lo:hi:                   SPU ELF.            (line   24)
+* --major-image-version:                 Options.            (line 1728)
+* --major-os-version:                    Options.            (line 1733)
+* --major-subsystem-version:             Options.            (line 1737)
+* --merge-exidx-entries:                 i960.               (line   48)
+* --minor-image-version:                 Options.            (line 1742)
+* --minor-os-version:                    Options.            (line 1747)
+* --minor-subsystem-version:             Options.            (line 1751)
+* --mri-script=MRI-CMDFILE:              Options.            (line  158)
+* --multi-subspace:                      HPPA ELF32.         (line    6)
+* --nmagic:                              Options.            (line  439)
+* --no-accept-unknown-input-arch:        Options.            (line  724)
+* --no-add-needed:                       Options.            (line  748)
+* --no-allow-shlib-undefined:            Options.            (line 1009)
+* --no-as-needed:                        Options.            (line  734)
+* --no-bind:                             Options.            (line 1984)
+* --no-check-sections:                   Options.            (line  827)
+* --no-copy-dt-needed-entries:           Options.            (line  839)
+* --no-define-common:                    Options.            (line  871)
+* --no-demangle:                         Options.            (line  900)
+* --no-dotsyms:                          PowerPC64 ELF64.    (line   33)
+* --no-enum-size-warning:                ARM.                (line  120)
+* --no-export-dynamic:                   Options.            (line  221)
+* --no-fatal-warnings:                   Options.            (line  924)
+* --no-fix-arm1176:                      ARM.                (line  111)
+* --no-fix-cortex-a8:                    i960.               (line   39)
+* --no-gc-sections:                      Options.            (line  939)
+* --no-isolation:                        Options.            (line 1977)
+* --no-keep-memory:                      Options.            (line  988)
+* --no-leading-underscore:               Options.            (line 1652)
+* --no-merge-exidx-entries <1>:          i960.               (line   48)
+* --no-merge-exidx-entries:              Options.            (line 2013)
+* --no-multi-toc:                        PowerPC64 ELF64.    (line   74)
+* --no-omagic:                           Options.            (line  454)
+* --no-opd-optimize:                     PowerPC64 ELF64.    (line   48)
+* --no-overlays:                         SPU ELF.            (line    9)
+* --no-plt-align:                        PowerPC64 ELF64.    (line   96)
+* --no-plt-static-chain:                 PowerPC64 ELF64.    (line  103)
+* --no-plt-thread-safe:                  PowerPC64 ELF64.    (line  109)
+* --no-print-gc-sections:                Options.            (line  961)
+* --no-seh:                              Options.            (line 1980)
+* --no-tls-optimize <1>:                 PowerPC64 ELF64.    (line   43)
+* --no-tls-optimize:                     PowerPC ELF32.      (line   51)
+* --no-toc-optimize:                     PowerPC64 ELF64.    (line   60)
+* --no-toc-sort:                         PowerPC64 ELF64.    (line   86)
+* --no-trampoline:                       Options.            (line 2023)
+* --no-undefined:                        Options.            (line  995)
+* --no-undefined-version:                Options.            (line 1037)
+* --no-warn-mismatch:                    Options.            (line 1050)
+* --no-warn-search-mismatch:             Options.            (line 1059)
+* --no-wchar-size-warning:               ARM.                (line  127)
+* --no-whole-archive:                    Options.            (line 1063)
+* --noinhibit-exec:                      Options.            (line 1067)
+* --non-overlapping-opd:                 PowerPC64 ELF64.    (line   54)
+* --nxcompat:                            Options.            (line 1973)
+* --oformat=OUTPUT-FORMAT:               Options.            (line 1079)
+* --omagic:                              Options.            (line  445)
+* --out-implib:                          Options.            (line 1764)
+* --output-def:                          Options.            (line 1756)
+* --output=OUTPUT:                       Options.            (line  460)
+* --pic-executable:                      Options.            (line 1092)
+* --pic-veneer:                          ARM.                (line  133)
+* --plt-align:                           PowerPC64 ELF64.    (line   96)
+* --plt-static-chain:                    PowerPC64 ELF64.    (line  103)
+* --plt-thread-safe:                     PowerPC64 ELF64.    (line  109)
+* --plugin:                              SPU ELF.            (line    6)
+* --print-gc-sections:                   Options.            (line  961)
+* --print-map:                           Options.            (line  402)
+* --print-output-format:                 Options.            (line  970)
+* --reduce-memory-overheads:             Options.            (line 1545)
+* --relax:                               Options.            (line 1108)
+* --relax on i960:                       i960.               (line   31)
+* --relax on PowerPC:                    PowerPC ELF32.      (line    6)
+* --relax on Xtensa:                     Xtensa.             (line   27)
+* --relocatable:                         Options.            (line  489)
+* --retain-symbols-file=FILENAME:        Options.            (line 1134)
+* --script=SCRIPT:                       Options.            (line  532)
+* --sdata-got:                           PowerPC ELF32.      (line   33)
+* --section-alignment:                   Options.            (line 1939)
+* --section-start=SECTIONNAME=ORG:       Options.            (line 1290)
+* --secure-plt:                          PowerPC ELF32.      (line   26)
+* --sort-common:                         Options.            (line 1232)
+* --sort-section=alignment:              Options.            (line 1247)
+* --sort-section=name:                   Options.            (line 1243)
+* --split-by-file:                       Options.            (line 1251)
+* --split-by-reloc:                      Options.            (line 1256)
+* --stack:                               Options.            (line 1945)
+* --stack-analysis:                      SPU ELF.            (line   29)
+* --stats:                               Options.            (line 1269)
+* --strip-all:                           Options.            (line  519)
+* --strip-debug:                         Options.            (line  523)
+* --stub-group-size:                     PowerPC64 ELF64.    (line    6)
+* --stub-group-size=N <1>:               HPPA ELF32.         (line   12)
+* --stub-group-size=N:                   ARM.                (line  138)
+* --subsystem:                           Options.            (line 1952)
+* --support-old-code:                    ARM.                (line    6)
+* --sysroot=DIRECTORY:                   Options.            (line 1273)
+* --target-help:                         Options.            (line  980)
+* --target1-abs:                         ARM.                (line   32)
+* --target1-rel:                         ARM.                (line   32)
+* --target2=TYPE:                        ARM.                (line   37)
+* --thumb-entry=ENTRY:                   ARM.                (line   17)
+* --trace:                               Options.            (line  528)
+* --trace-symbol=SYMBOL:                 Options.            (line  597)
+* --traditional-format:                  Options.            (line 1278)
+* --tsaware:                             Options.            (line 1990)
+* --undefined=SYMBOL:                    Options.            (line  554)
+* --unique[=SECTION]:                    Options.            (line  572)
+* --unresolved-symbols:                  Options.            (line 1309)
+* --use-blx:                             ARM.                (line   74)
+* --use-nul-prefixed-import-tables:      ARM.                (line   23)
+* --verbose[=NUMBER]:                    Options.            (line 1338)
+* --version:                             Options.            (line  581)
+* --version-script=VERSION-SCRIPTFILE:   Options.            (line 1346)
+* --vfp11-denorm-fix:                    ARM.                (line   83)
+* --warn-alternate-em:                   Options.            (line 1458)
+* --warn-common:                         Options.            (line 1357)
+* --warn-constructors:                   Options.            (line 1425)
+* --warn-multiple-gp:                    Options.            (line 1430)
+* --warn-once:                           Options.            (line 1444)
+* --warn-section-align:                  Options.            (line 1448)
+* --warn-shared-textrel:                 Options.            (line 1455)
+* --warn-unresolved-symbols:             Options.            (line 1461)
+* --wdmdriver:                           Options.            (line 1987)
+* --whole-archive:                       Options.            (line 1470)
+* --wrap=SYMBOL:                         Options.            (line 1484)
+* -A ARCH:                               Options.            (line  122)
+* -a KEYWORD:                            Options.            (line  105)
+* -assert KEYWORD:                       Options.            (line  755)
+* -b FORMAT:                             Options.            (line  134)
+* -Bdynamic:                             Options.            (line  758)
+* -Bgroup:                               Options.            (line  768)
+* -Bshareable:                           Options.            (line 1225)
+* -Bstatic:                              Options.            (line  775)
+* -Bsymbolic:                            Options.            (line  790)
+* -Bsymbolic-functions:                  Options.            (line  797)
+* -c MRI-CMDFILE:                        Options.            (line  158)
+* -call_shared:                          Options.            (line  758)
+* -d:                                    Options.            (line  168)
+* -dc:                                   Options.            (line  168)
+* -dn:                                   Options.            (line  775)
+* -dp:                                   Options.            (line  168)
+* -dT SCRIPT:                            Options.            (line  541)
+* -dy:                                   Options.            (line  758)
+* -E:                                    Options.            (line  221)
+* -e ENTRY:                              Options.            (line  187)
+* -EB:                                   Options.            (line  248)
+* -EL:                                   Options.            (line  251)
+* -F NAME:                               Options.            (line  276)
+* -f NAME:                               Options.            (line  255)
+* -fini=NAME:                            Options.            (line  300)
+* -g:                                    Options.            (line  306)
+* -G VALUE:                              Options.            (line  309)
+* -h NAME:                               Options.            (line  317)
+* -i:                                    Options.            (line  326)
+* -IFILE:                                Options.            (line  913)
+* -init=NAME:                            Options.            (line  329)
+* -L DIR:                                Options.            (line  368)
+* -l NAMESPEC:                           Options.            (line  335)
+* -M:                                    Options.            (line  402)
+* -m EMULATION:                          Options.            (line  392)
+* -Map=MAPFILE:                          Options.            (line  984)
+* -N:                                    Options.            (line  445)
+* -n:                                    Options.            (line  439)
+* -no-relax:                             Options.            (line 1108)
+* -non_shared:                           Options.            (line  775)
+* -nostdlib:                             Options.            (line 1073)
+* -O LEVEL:                              Options.            (line  466)
+* -o OUTPUT:                             Options.            (line  460)
+* -P AUDITLIB:                           Options.            (line  177)
+* -pie:                                  Options.            (line 1092)
+* -q:                                    Options.            (line  476)
+* -qmagic:                               Options.            (line 1102)
+* -Qy:                                   Options.            (line 1105)
+* -r:                                    Options.            (line  489)
+* -R FILE:                               Options.            (line  508)
+* -rpath-link=DIR:                       Options.            (line 1170)
+* -rpath=DIR:                            Options.            (line 1148)
+* -S:                                    Options.            (line  523)
+* -s:                                    Options.            (line  519)
+* -shared:                               Options.            (line 1225)
+* -soname=NAME:                          Options.            (line  317)
+* -static:                               Options.            (line  775)
+* -t:                                    Options.            (line  528)
+* -T SCRIPT:                             Options.            (line  532)
+* -Tbss=ORG:                             Options.            (line 1299)
+* -Tdata=ORG:                            Options.            (line 1299)
+* -Ttext-segment=ORG:                    Options.            (line 1305)
+* -Ttext=ORG:                            Options.            (line 1299)
+* -u SYMBOL:                             Options.            (line  554)
+* -Ur:                                   Options.            (line  562)
+* -V:                                    Options.            (line  581)
+* -v:                                    Options.            (line  581)
+* -X:                                    Options.            (line  591)
+* -x:                                    Options.            (line  587)
+* -Y PATH:                               Options.            (line  606)
+* -y SYMBOL:                             Options.            (line  597)
+* -z defs:                               Options.            (line  995)
+* -z KEYWORD:                            Options.            (line  610)
+* -z muldefs:                            Options.            (line 1003)
+* .:                                     Location Counter.   (line    6)
+* /DISCARD/:                             Output Section Discarding.
+                                                             (line   21)
+* :PHDR:                                 Output Section Phdr.
+                                                             (line    6)
+* =FILLEXP:                              Output Section Fill.
+                                                             (line    6)
+* >REGION:                               Output Section Region.
+                                                             (line    6)
+* [COMMON]:                              Input Section Common.
+                                                             (line   29)
+* ABSOLUTE (MRI):                        MRI.                (line   33)
+* absolute and relocatable symbols:      Expression Section. (line    6)
+* absolute expressions:                  Expression Section. (line    6)
+* ABSOLUTE(EXP):                         Builtin Functions.  (line   10)
+* ADDR(SECTION):                         Builtin Functions.  (line   17)
+* address, section:                      Output Section Address.
+                                                             (line    6)
+* ALIAS (MRI):                           MRI.                (line   44)
+* ALIGN (MRI):                           MRI.                (line   50)
+* align expression:                      Builtin Functions.  (line   38)
+* align location counter:                Builtin Functions.  (line   38)
+* ALIGN(ALIGN):                          Builtin Functions.  (line   38)
+* ALIGN(EXP,ALIGN):                      Builtin Functions.  (line   38)
+* ALIGN(SECTION_ALIGN):                  Forced Output Alignment.
+                                                             (line    6)
+* aligned common symbols:                WIN32.              (line  424)
+* ALIGNOF(SECTION):                      Builtin Functions.  (line   64)
+* allocating memory:                     MEMORY.             (line    6)
+* architecture:                          Miscellaneous Commands.
+                                                             (line   72)
+* architectures:                         Options.            (line  122)
+* archive files, from cmd line:          Options.            (line  335)
+* archive search path in linker script:  File Commands.      (line   74)
+* arithmetic:                            Expressions.        (line    6)
+* arithmetic operators:                  Operators.          (line    6)
+* ARM interworking support:              ARM.                (line    6)
+* ARM1176 erratum workaround:            ARM.                (line  111)
+* AS_NEEDED(FILES):                      File Commands.      (line   54)
+* ASSERT:                                Miscellaneous Commands.
+                                                             (line    9)
+* assertion in linker script:            Miscellaneous Commands.
+                                                             (line    9)
+* assignment in scripts:                 Assignments.        (line    6)
+* AT(LMA):                               Output Section LMA. (line    6)
+* AT>LMA_REGION:                         Output Section LMA. (line    6)
+* automatic data imports:                WIN32.              (line  191)
+* back end:                              BFD.                (line    6)
+* BASE (MRI):                            MRI.                (line   54)
+* BE8:                                   ARM.                (line   28)
+* BFD canonical format:                  Canonical format.   (line   11)
+* BFD requirements:                      BFD.                (line   16)
+* big-endian objects:                    Options.            (line  248)
+* binary input format:                   Options.            (line  134)
+* BLOCK(EXP):                            Builtin Functions.  (line   77)
+* bug criteria:                          Bug Criteria.       (line    6)
+* bug reports:                           Bug Reporting.      (line    6)
+* bugs in ld:                            Reporting Bugs.     (line    6)
+* BYTE(EXPRESSION):                      Output Section Data.
+                                                             (line    6)
+* C++ constructors, arranging in link:   Output Section Keywords.
+                                                             (line   19)
+* CHIP (MRI):                            MRI.                (line   58)
+* COLLECT_NO_DEMANGLE:                   Environment.        (line   29)
+* combining symbols, warnings on:        Options.            (line 1357)
+* command files:                         Scripts.            (line    6)
+* command line:                          Options.            (line    6)
+* common allocation:                     Options.            (line  168)
+* common allocation in linker script:    Miscellaneous Commands.
+                                                             (line   20)
+* common symbol placement:               Input Section Common.
+                                                             (line    6)
+* COMMONPAGESIZE:                        Symbolic Constants. (line   13)
+* compatibility, MRI:                    Options.            (line  158)
+* CONSTANT:                              Symbolic Constants. (line    6)
+* constants in linker scripts:           Constants.          (line    6)
+* constraints on output sections:        Output Section Constraint.
+                                                             (line    6)
+* CONSTRUCTORS:                          Output Section Keywords.
+                                                             (line   19)
+* constructors:                          Options.            (line  562)
+* constructors, arranging in link:       Output Section Keywords.
+                                                             (line   19)
+* Cortex-A8 erratum workaround:          i960.               (line   39)
+* crash of linker:                       Bug Criteria.       (line    9)
+* CREATE_OBJECT_SYMBOLS:                 Output Section Keywords.
+                                                             (line    9)
+* creating a DEF file:                   WIN32.              (line  158)
+* cross reference table:                 Options.            (line  859)
+* cross references:                      Miscellaneous Commands.
+                                                             (line   56)
+* current output location:               Location Counter.   (line    6)
+* data:                                  Output Section Data.
+                                                             (line    6)
+* DATA_SEGMENT_ALIGN(MAXPAGESIZE, COMMONPAGESIZE): Builtin Functions.
+                                                             (line   82)
+* DATA_SEGMENT_END(EXP):                 Builtin Functions.  (line  103)
+* DATA_SEGMENT_RELRO_END(OFFSET, EXP):   Builtin Functions.  (line  109)
+* dbx:                                   Options.            (line 1283)
+* DEF files, creating:                   Options.            (line 1756)
+* default emulation:                     Environment.        (line   21)
+* default input format:                  Environment.        (line    9)
+* DEFINED(SYMBOL):                       Builtin Functions.  (line  120)
+* deleting local symbols:                Options.            (line  587)
+* demangling, default:                   Environment.        (line   29)
+* demangling, from command line:         Options.            (line  900)
+* direct linking to a dll:               WIN32.              (line  239)
+* discarding sections:                   Output Section Discarding.
+                                                             (line    6)
+* discontinuous memory:                  MEMORY.             (line    6)
+* DLLs, creating:                        Options.            (line 1658)
+* DLLs, linking to:                      Options.            (line 1787)
+* dot:                                   Location Counter.   (line    6)
+* dot inside sections:                   Location Counter.   (line   36)
+* dot outside sections:                  Location Counter.   (line   66)
+* dynamic linker, from command line:     Options.            (line  913)
+* dynamic symbol table:                  Options.            (line  221)
+* ELF program headers:                   PHDRS.              (line    6)
+* emulation:                             Options.            (line  392)
+* emulation, default:                    Environment.        (line   21)
+* END (MRI):                             MRI.                (line   62)
+* endianness:                            Options.            (line  248)
+* entry point:                           Entry Point.        (line    6)
+* entry point, from command line:        Options.            (line  187)
+* entry point, thumb:                    ARM.                (line   17)
+* ENTRY(SYMBOL):                         Entry Point.        (line    6)
+* error on valid input:                  Bug Criteria.       (line   12)
+* example of linker script:              Simple Example.     (line    6)
+* exporting DLL symbols:                 WIN32.              (line   19)
+* expression evaluation order:           Evaluation.         (line    6)
+* expression sections:                   Expression Section. (line    6)
+* expression, absolute:                  Builtin Functions.  (line   10)
+* expressions:                           Expressions.        (line    6)
+* EXTERN:                                Miscellaneous Commands.
+                                                             (line   13)
+* fatal signal:                          Bug Criteria.       (line    9)
+* file name wildcard patterns:           Input Section Wildcards.
+                                                             (line    6)
+* FILEHDR:                               PHDRS.              (line   62)
+* filename symbols:                      Output Section Keywords.
+                                                             (line    9)
+* fill pattern, entire section:          Output Section Fill.
+                                                             (line    6)
+* FILL(EXPRESSION):                      Output Section Data.
+                                                             (line   39)
+* finalization function:                 Options.            (line  300)
+* first input file:                      File Commands.      (line   82)
+* first instruction:                     Entry Point.        (line    6)
+* FIX_V4BX:                              ARM.                (line   49)
+* FIX_V4BX_INTERWORKING:                 ARM.                (line   62)
+* FORCE_COMMON_ALLOCATION:               Miscellaneous Commands.
+                                                             (line   20)
+* forcing input section alignment:       Forced Input Alignment.
+                                                             (line    6)
+* forcing output section alignment:      Forced Output Alignment.
+                                                             (line    6)
+* forcing the creation of dynamic sections: Options.         (line  485)
+* FORMAT (MRI):                          MRI.                (line   66)
+* functions in expressions:              Builtin Functions.  (line    6)
+* garbage collection <1>:                Input Section Keep. (line    6)
+* garbage collection:                    Options.            (line  939)
+* generating optimized output:           Options.            (line  466)
+* GNU linker:                            Overview.           (line    6)
+* GNUTARGET:                             Environment.        (line    9)
+* GROUP(FILES):                          File Commands.      (line   47)
+* grouping input files:                  File Commands.      (line   47)
+* groups of archives:                    Options.            (line  706)
+* H8/300 support:                        H8/300.             (line    6)
+* header size:                           Builtin Functions.  (line  183)
+* heap size:                             Options.            (line 1698)
+* help:                                  Options.            (line  976)
+* HIDDEN:                                HIDDEN.             (line    6)
+* holes:                                 Location Counter.   (line   12)
+* holes, filling:                        Output Section Data.
+                                                             (line   39)
+* HPPA multiple sub-space stubs:         HPPA ELF32.         (line    6)
+* HPPA stub grouping:                    HPPA ELF32.         (line   12)
+* i960 support:                          i960.               (line    6)
+* image base:                            Options.            (line 1705)
+* implicit linker scripts:               Implicit Linker Scripts.
+                                                             (line    6)
+* import libraries:                      WIN32.              (line   10)
+* INCLUDE FILENAME:                      File Commands.      (line    9)
+* including a linker script:             File Commands.      (line    9)
+* including an entire archive:           Options.            (line 1470)
+* incremental link:                      Options.            (line  326)
+* INHIBIT_COMMON_ALLOCATION:             Miscellaneous Commands.
+                                                             (line   25)
+* initialization function:               Options.            (line  329)
+* initialized data in ROM:               Output Section LMA. (line   39)
+* input file format in linker script:    Format Commands.    (line   35)
+* input filename symbols:                Output Section Keywords.
+                                                             (line    9)
+* input files in linker scripts:         File Commands.      (line   19)
+* input files, displaying:               Options.            (line  528)
+* input format:                          Options.            (line  134)
+* input object files in linker scripts:  File Commands.      (line   19)
+* input section alignment:               Forced Input Alignment.
+                                                             (line    6)
+* input section basics:                  Input Section Basics.
+                                                             (line    6)
+* input section wildcards:               Input Section Wildcards.
+                                                             (line    6)
+* input sections:                        Input Section.      (line    6)
+* INPUT(FILES):                          File Commands.      (line   19)
+* INSERT:                                Miscellaneous Commands.
+                                                             (line   30)
+* insert user script into default script: Miscellaneous Commands.
+                                                             (line   30)
+* integer notation:                      Constants.          (line    6)
+* integer suffixes:                      Constants.          (line   15)
+* internal object-file format:           Canonical format.   (line   11)
+* invalid input:                         Bug Criteria.       (line   14)
+* K and M integer suffixes:              Constants.          (line   15)
+* KEEP:                                  Input Section Keep. (line    6)
+* l =:                                   MEMORY.             (line   74)
+* lazy evaluation:                       Evaluation.         (line    6)
+* ld bugs, reporting:                    Bug Reporting.      (line    6)
+* LD_FEATURE(STRING):                    Miscellaneous Commands.
+                                                             (line   78)
+* LDEMULATION:                           Environment.        (line   21)
+* len =:                                 MEMORY.             (line   74)
+* LENGTH =:                              MEMORY.             (line   74)
+* LENGTH(MEMORY):                        Builtin Functions.  (line  137)
+* library search path in linker script:  File Commands.      (line   74)
+* link map:                              Options.            (line  402)
+* link-time runtime library search path: Options.            (line 1170)
+* linker crash:                          Bug Criteria.       (line    9)
+* linker script concepts:                Basic Script Concepts.
+                                                             (line    6)
+* linker script example:                 Simple Example.     (line    6)
+* linker script file commands:           File Commands.      (line    6)
+* linker script format:                  Script Format.      (line    6)
+* linker script input object files:      File Commands.      (line   19)
+* linker script simple commands:         Simple Commands.    (line    6)
+* linker scripts:                        Scripts.            (line    6)
+* LIST (MRI):                            MRI.                (line   77)
+* little-endian objects:                 Options.            (line  251)
+* LOAD (MRI):                            MRI.                (line   84)
+* load address:                          Output Section LMA. (line    6)
+* LOADADDR(SECTION):                     Builtin Functions.  (line  140)
+* loading, preventing:                   Output Section Type.
+                                                             (line   22)
+* local symbols, deleting:               Options.            (line  591)
+* location counter:                      Location Counter.   (line    6)
+* LONG(EXPRESSION):                      Output Section Data.
+                                                             (line    6)
+* M and K integer suffixes:              Constants.          (line   15)
+* M68HC11 and 68HC12 support:            M68HC11/68HC12.     (line    6)
+* machine architecture:                  Miscellaneous Commands.
+                                                             (line   72)
+* machine dependencies:                  Machine Dependent.  (line    6)
+* mapping input sections to output sections: Input Section.  (line    6)
+* MAX:                                   Builtin Functions.  (line  143)
+* MAXPAGESIZE:                           Symbolic Constants. (line   10)
+* MEMORY:                                MEMORY.             (line    6)
+* memory region attributes:              MEMORY.             (line   34)
+* memory regions:                        MEMORY.             (line    6)
+* memory regions and sections:           Output Section Region.
+                                                             (line    6)
+* memory usage:                          Options.            (line  988)
+* MIN:                                   Builtin Functions.  (line  146)
+* Motorola 68K GOT generation:           M68K.               (line    6)
+* MRI compatibility:                     MRI.                (line    6)
+* MSP430 extra sections:                 MSP430.             (line   11)
+* NAME (MRI):                            MRI.                (line   90)
+* name, section:                         Output Section Name.
+                                                             (line    6)
+* names:                                 Symbols.            (line    6)
+* naming the output file:                Options.            (line  460)
+* NEXT(EXP):                             Builtin Functions.  (line  150)
+* NMAGIC:                                Options.            (line  439)
+* NO_ENUM_SIZE_WARNING:                  ARM.                (line  120)
+* NO_WCHAR_SIZE_WARNING:                 ARM.                (line  127)
+* NOCROSSREFS(SECTIONS):                 Miscellaneous Commands.
+                                                             (line   56)
+* NOLOAD:                                Output Section Type.
+                                                             (line   22)
+* not enough room for program headers:   Builtin Functions.  (line  188)
+* o =:                                   MEMORY.             (line   69)
+* objdump -i:                            BFD.                (line    6)
+* object file management:                BFD.                (line    6)
+* object files:                          Options.            (line   29)
+* object formats available:              BFD.                (line    6)
+* object size:                           Options.            (line  309)
+* OMAGIC:                                Options.            (line  445)
+* ONLY_IF_RO:                            Output Section Constraint.
+                                                             (line    6)
+* ONLY_IF_RW:                            Output Section Constraint.
+                                                             (line    6)
+* opening object files:                  BFD outline.        (line    6)
+* operators for arithmetic:              Operators.          (line    6)
+* options:                               Options.            (line    6)
+* ORDER (MRI):                           MRI.                (line   95)
+* org =:                                 MEMORY.             (line   69)
+* ORIGIN =:                              MEMORY.             (line   69)
+* ORIGIN(MEMORY):                        Builtin Functions.  (line  156)
+* orphan:                                Orphan Sections.    (line    6)
+* output file after errors:              Options.            (line 1067)
+* output file format in linker script:   Format Commands.    (line   10)
+* output file name in linker script:     File Commands.      (line   64)
+* output format:                         Options.            (line  970)
+* output section alignment:              Forced Output Alignment.
+                                                             (line    6)
+* output section attributes:             Output Section Attributes.
+                                                             (line    6)
+* output section data:                   Output Section Data.
+                                                             (line    6)
+* OUTPUT(FILENAME):                      File Commands.      (line   64)
+* OUTPUT_ARCH(BFDARCH):                  Miscellaneous Commands.
+                                                             (line   72)
+* OUTPUT_FORMAT(BFDNAME):                Format Commands.    (line   10)
+* OVERLAY:                               Overlay Description.
+                                                             (line    6)
+* overlays:                              Overlay Description.
+                                                             (line    6)
+* partial link:                          Options.            (line  489)
+* PE import table prefixing:             ARM.                (line   23)
+* PHDRS:                                 PHDRS.              (line    6)
+* PIC_VENEER:                            ARM.                (line  133)
+* position independent executables:      Options.            (line 1094)
+* PowerPC ELF32 options:                 PowerPC ELF32.      (line   16)
+* PowerPC GOT:                           PowerPC ELF32.      (line   33)
+* PowerPC long branches:                 PowerPC ELF32.      (line    6)
+* PowerPC PLT:                           PowerPC ELF32.      (line   16)
+* PowerPC stub symbols:                  PowerPC ELF32.      (line   47)
+* PowerPC TLS optimization:              PowerPC ELF32.      (line   51)
+* PowerPC64 dot symbols:                 PowerPC64 ELF64.    (line   33)
+* PowerPC64 ELF64 options:               PowerPC64 ELF64.    (line    6)
+* PowerPC64 multi-TOC:                   PowerPC64 ELF64.    (line   74)
+* PowerPC64 OPD optimization:            PowerPC64 ELF64.    (line   48)
+* PowerPC64 OPD spacing:                 PowerPC64 ELF64.    (line   54)
+* PowerPC64 PLT call stub static chain:  PowerPC64 ELF64.    (line  103)
+* PowerPC64 PLT call stub thread safety: PowerPC64 ELF64.    (line  109)
+* PowerPC64 PLT stub alignment:          PowerPC64 ELF64.    (line   96)
+* PowerPC64 stub grouping:               PowerPC64 ELF64.    (line    6)
+* PowerPC64 stub symbols:                PowerPC64 ELF64.    (line   29)
+* PowerPC64 TLS optimization:            PowerPC64 ELF64.    (line   43)
+* PowerPC64 TOC optimization:            PowerPC64 ELF64.    (line   60)
+* PowerPC64 TOC sorting:                 PowerPC64 ELF64.    (line   86)
+* precedence in expressions:             Operators.          (line    6)
+* prevent unnecessary loading:           Output Section Type.
+                                                             (line   22)
+* program headers:                       PHDRS.              (line    6)
+* program headers and sections:          Output Section Phdr.
+                                                             (line    6)
+* program headers, not enough room:      Builtin Functions.  (line  188)
+* program segments:                      PHDRS.              (line    6)
+* PROVIDE:                               PROVIDE.            (line    6)
+* PROVIDE_HIDDEN:                        PROVIDE_HIDDEN.     (line    6)
+* PUBLIC (MRI):                          MRI.                (line  103)
+* QUAD(EXPRESSION):                      Output Section Data.
+                                                             (line    6)
+* quoted symbol names:                   Symbols.            (line    6)
+* read-only text:                        Options.            (line  439)
+* read/write from cmd line:              Options.            (line  445)
+* region alias:                          REGION_ALIAS.       (line    6)
+* region names:                          REGION_ALIAS.       (line    6)
+* REGION_ALIAS(ALIAS, REGION):           REGION_ALIAS.       (line    6)
+* regions of memory:                     MEMORY.             (line    6)
+* relative expressions:                  Expression Section. (line    6)
+* relaxing addressing modes:             Options.            (line 1108)
+* relaxing on H8/300:                    H8/300.             (line    9)
+* relaxing on i960:                      i960.               (line   31)
+* relaxing on M68HC11:                   M68HC11/68HC12.     (line   12)
+* relaxing on Xtensa:                    Xtensa.             (line   27)
+* relocatable and absolute symbols:      Expression Section. (line    6)
+* relocatable output:                    Options.            (line  489)
+* removing sections:                     Output Section Discarding.
+                                                             (line    6)
+* reporting bugs in ld:                  Reporting Bugs.     (line    6)
+* requirements for BFD:                  BFD.                (line   16)
+* retain relocations in final executable: Options.           (line  476)
+* retaining specified symbols:           Options.            (line 1134)
+* ROM initialized data:                  Output Section LMA. (line   39)
+* round up expression:                   Builtin Functions.  (line   38)
+* round up location counter:             Builtin Functions.  (line   38)
+* runtime library name:                  Options.            (line  317)
+* runtime library search path:           Options.            (line 1148)
+* runtime pseudo-relocation:             WIN32.              (line  217)
+* scaled integers:                       Constants.          (line   15)
+* scommon section:                       Input Section Common.
+                                                             (line   20)
+* script files:                          Options.            (line  532)
+* scripts:                               Scripts.            (line    6)
+* search directory, from cmd line:       Options.            (line  368)
+* search path in linker script:          File Commands.      (line   74)
+* SEARCH_DIR(PATH):                      File Commands.      (line   74)
+* SECT (MRI):                            MRI.                (line  109)
+* section address:                       Output Section Address.
+                                                             (line    6)
+* section address in expression:         Builtin Functions.  (line   17)
+* section alignment:                     Builtin Functions.  (line   64)
+* section alignment, warnings on:        Options.            (line 1448)
+* section data:                          Output Section Data.
+                                                             (line    6)
+* section fill pattern:                  Output Section Fill.
+                                                             (line    6)
+* section load address:                  Output Section LMA. (line    6)
+* section load address in expression:    Builtin Functions.  (line  140)
+* section name:                          Output Section Name.
+                                                             (line    6)
+* section name wildcard patterns:        Input Section Wildcards.
+                                                             (line    6)
+* section size:                          Builtin Functions.  (line  167)
+* section, assigning to memory region:   Output Section Region.
+                                                             (line    6)
+* section, assigning to program header:  Output Section Phdr.
+                                                             (line    6)
+* SECTIONS:                              SECTIONS.           (line    6)
+* sections, discarding:                  Output Section Discarding.
+                                                             (line    6)
+* segment origins, cmd line:             Options.            (line 1299)
+* SEGMENT_START(SEGMENT, DEFAULT):       Builtin Functions.  (line  159)
+* segments, ELF:                         PHDRS.              (line    6)
+* shared libraries:                      Options.            (line 1227)
+* SHORT(EXPRESSION):                     Output Section Data.
+                                                             (line    6)
+* SIZEOF(SECTION):                       Builtin Functions.  (line  167)
+* SIZEOF_HEADERS:                        Builtin Functions.  (line  183)
+* small common symbols:                  Input Section Common.
+                                                             (line   20)
+* SORT:                                  Input Section Wildcards.
+                                                             (line   63)
+* SORT_BY_ALIGNMENT:                     Input Section Wildcards.
+                                                             (line   54)
+* SORT_BY_INIT_PRIORITY:                 Input Section Wildcards.
+                                                             (line   58)
+* SORT_BY_NAME:                          Input Section Wildcards.
+                                                             (line   46)
+* SORT_NONE:                             Input Section Wildcards.
+                                                             (line  104)
+* SPU:                                   SPU ELF.            (line   29)
+* SPU ELF options:                       SPU ELF.            (line    6)
+* SPU extra overlay stubs:               SPU ELF.            (line   19)
+* SPU local store size:                  SPU ELF.            (line   24)
+* SPU overlay stub symbols:              SPU ELF.            (line   15)
+* SPU overlays:                          SPU ELF.            (line    9)
+* SPU plugins:                           SPU ELF.            (line    6)
+* SQUAD(EXPRESSION):                     Output Section Data.
+                                                             (line    6)
+* stack size:                            Options.            (line 1945)
+* standard Unix system:                  Options.            (line    7)
+* start of execution:                    Entry Point.        (line    6)
+* STARTUP(FILENAME):                     File Commands.      (line   82)
+* stderr redirect:                       Options.            (line  920)
+* strip all symbols:                     Options.            (line  519)
+* strip debugger symbols:                Options.            (line  523)
+* stripping all but some symbols:        Options.            (line 1134)
+* STUB_GROUP_SIZE:                       ARM.                (line  138)
+* SUBALIGN(SUBSECTION_ALIGN):            Forced Input Alignment.
+                                                             (line    6)
+* suffixes for integers:                 Constants.          (line   15)
+* symbol defaults:                       Builtin Functions.  (line  120)
+* symbol definition, scripts:            Assignments.        (line    6)
+* symbol names:                          Symbols.            (line    6)
+* symbol tracing:                        Options.            (line  597)
+* symbol versions:                       VERSION.            (line    6)
+* symbol-only input:                     Options.            (line  508)
+* symbolic constants:                    Symbolic Constants. (line    6)
+* symbols, from command line:            Options.            (line  887)
+* symbols, relocatable and absolute:     Expression Section. (line    6)
+* symbols, retaining selectively:        Options.            (line 1134)
+* synthesizing linker:                   Options.            (line 1108)
+* synthesizing on H8/300:                H8/300.             (line   14)
+* TARGET(BFDNAME):                       Format Commands.    (line   35)
+* TARGET1:                               ARM.                (line   32)
+* TARGET2:                               ARM.                (line   37)
+* text segment origin, cmd line:         Options.            (line 1306)
+* thumb entry point:                     ARM.                (line   17)
+* TI COFF versions:                      TI COFF.            (line    6)
+* traditional format:                    Options.            (line 1278)
+* trampoline generation on M68HC11:      M68HC11/68HC12.     (line   31)
+* trampoline generation on M68HC12:      M68HC11/68HC12.     (line   31)
+* unallocated address, next:             Builtin Functions.  (line  150)
+* undefined symbol:                      Options.            (line  554)
+* undefined symbol in linker script:     Miscellaneous Commands.
+                                                             (line   13)
+* undefined symbols, warnings on:        Options.            (line 1444)
+* uninitialized data placement:          Input Section Common.
+                                                             (line    6)
+* unspecified memory:                    Output Section Data.
+                                                             (line   39)
+* usage:                                 Options.            (line  976)
+* USE_BLX:                               ARM.                (line   74)
+* using a DEF file:                      WIN32.              (line   57)
+* using auto-export functionality:       WIN32.              (line   22)
+* Using decorations:                     WIN32.              (line  162)
+* variables, defining:                   Assignments.        (line    6)
+* verbose[=NUMBER]:                      Options.            (line 1338)
+* version:                               Options.            (line  581)
+* version script:                        VERSION.            (line    6)
+* version script, symbol versions:       Options.            (line 1346)
+* VERSION {script text}:                 VERSION.            (line    6)
+* versions of symbols:                   VERSION.            (line    6)
+* VFP11_DENORM_FIX:                      ARM.                (line   83)
+* warnings, on combining symbols:        Options.            (line 1357)
+* warnings, on section alignment:        Options.            (line 1448)
+* warnings, on undefined symbols:        Options.            (line 1444)
+* weak externals:                        WIN32.              (line  407)
+* what is this?:                         Overview.           (line    6)
+* wildcard file name patterns:           Input Section Wildcards.
+                                                             (line    6)
+* Xtensa options:                        Xtensa.             (line   56)
+* Xtensa processors:                     Xtensa.             (line    6)
+
+
